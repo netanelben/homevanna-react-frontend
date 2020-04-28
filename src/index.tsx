@@ -5,6 +5,8 @@ import Header from "./components/header/header";
 import HouseCard from "./components/HouseCard";
 import SellingCard from "./components/SellingCard";
 import PropertyCharacteristics from "./components/PropertyCharacteristics";
+import FinancialHighlight from "./components/FinancialHighlight";
+import Features from "./components/Features";
 
 import "./css/index.css";
 import "./css/common.scss";
@@ -16,7 +18,11 @@ ReactDOM.render(
     <br />
     <SellingCard />
     <br />
+    <Features />
+    <br />
     <PropertyCharacteristics />
+    <br />
+    <FinancialHighlight />
   </React.StrictMode>,
   document.getElementById("root")
 );

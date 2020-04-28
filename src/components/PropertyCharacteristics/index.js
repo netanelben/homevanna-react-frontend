@@ -1,17 +1,5 @@
 import React, { useState } from "react";
-import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
-  Row,
-  Col,
-} from "reactstrap";
+import { TabContent, TabPane, Nav, NavItem, Row, Col } from "reactstrap";
 import classnames from "classnames";
 
 import "./style.scss";
@@ -27,7 +15,7 @@ const PropertyCharacteristics = () => {
     <div className="PropertyCharacteristics">
       <Row>
         <Col sm="8">
-          <div className="title">Property Characteristics</div>
+          <div className="card-title">Property Characteristics</div>
           <Nav tabs>
             <NavItem
               className={classnames({ active: activeTab === "1" })}
@@ -73,7 +61,7 @@ const PropertyCharacteristics = () => {
         </Col>
 
         <Col sm="4" className="management">
-          <div className="title">Property Management</div>
+          <div className="card-title">Property Management</div>
           <div className="why-choose-card">
             Why choose?
             <br />
