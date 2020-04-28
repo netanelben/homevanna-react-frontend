@@ -1,0 +1,77 @@
+.SellingCard {
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 19px 16px;
+  width: 100%;
+  max-width: 400px;
+  color: #373a3c;
+
+  .header {
+    justify-content: space-between;
+
+    span {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+  }
+
+  .type {
+    font-size: 16px;
+  }
+
+  .price-and-links {
+    margin: 6px 0;
+    justify-content: space-between;
+
+    .price {
+      font-size: 48px;
+      margin-bottom: 7px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 14px;
+    }
+  }
+
+  .list-price {
+    font-size: 20px;
+    margin-bottom: 23px;
+  }
+
+  input {
+    font-size: 40px;
+    width: 100%;
+    max-width: 270px;
+    height: 56px;
+    border: 1px solid #c0c8ce;
+    border-radius: 3px;
+    padding-left: 16px;
+  }
+
+  .controls {
+    padding-top: 16px;
+
+    button {
+      color: #fff;
+      font-size: 16px;
+      width: 151px;
+      height: 32px;
+      border-radius: 3px;
+    }
+  }
+
+  .controls button:first-of-type {
+    background-color: #ff9900;
+    text-transform: uppercase;
+  }
+
+  .controls button:last-of-type {
+    color: #3a9fd1;
+    background-color: transparent;
+  }
+}

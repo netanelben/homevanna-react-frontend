@@ -1,0 +1,45 @@
+.PropertyCharacteristics {
+  width: 100%;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 14px 16px 20px;
+
+  .title {
+    font-size: 24px;
+    color: #656d72;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  p {
+    font-size: 16px;
+    color: #656d72;
+  }
+
+  .list {
+    color: #656d72;
+    padding: 10px 0 0 30px;
+
+    li {
+      margin-bottom: 25px;
+    }
+  }
+
+  .management {
+    .why-choose-card {
+      background-color: rgba(74, 144, 226, 0.1);
+      font-size: 16px;
+      color: #656d72;
+      padding: 15px 16px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+
+    button {
+      background-color: #66ccff;
+      color: #fff;
+      border-radius: 2px;
+      padding: 4px 16px;
+    }
+  }
+}

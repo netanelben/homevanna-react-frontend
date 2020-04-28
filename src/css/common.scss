@@ -1,0 +1,47 @@
+body {
+  background-color: #dfedfb;
+  padding: 10px;
+}
+
+button {
+  border: 0;
+}
+
+a {
+  color: #3a9fd1;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-tabs {
+  border-color: rgba(74, 144, 226, 0.5);
+
+  .nav-item {
+    color: #3a9fd1;
+    padding: 0 8px;
+    font-size: 16px;
+    line-height: 2;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      border: 0;
+    }
+
+    &.active {
+      color: #000000;
+      border: 0;
+      border-bottom: 4px solid #66ccff;
+    }
+  }
+}
+
+.tab-content {
+  padding-top: 15px;
+}
