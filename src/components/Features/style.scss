@@ -20,4 +20,32 @@
       }
     }
   }
+
+  .feature-list {
+    color: #656d72;
+    font-size: 16px;
+    text-align: center;
+
+    .icn {
+      width: 24px;
+      height: 24px;
+    }
+
+    a {
+      display: block;
+      color: #656d72;
+      font-size: 14px;
+    }
+
+    .nh-rating {
+      ul {
+        margin-top: 5px !important;
+      }
+
+      svg {
+        height: 13px !important;
+        width: 13px !important;
+      }
+    }
+  }
 }

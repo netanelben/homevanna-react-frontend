@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col } from "reactstrap";
+import BeautyStars from "beauty-stars";
+import EmbeddedMap from "./EmbeddedMap";
 
 import "./style.scss";
 
@@ -10,12 +12,41 @@ const Features = ({
   leastEnd,
   HOA,
   floodRisk,
+  rating,
+  schools,
 }) => {
   return (
     <div className="Features">
       <div className="card-title">Features</div>
       <Row>
-        <Col sm="6">check</Col>
+        <Col sm="6">
+          <EmbeddedMap />
+
+          <div className="feature-list flex">
+            <div>
+              <i className="icn icn-market" />
+              Markets
+              <a href="#">View Stats</a>
+            </div>
+
+            <div className="nh-rating">
+              <i className="icn icn-neighborhood" />
+              Neighborhood
+              <BeautyStars
+                value={rating}
+                editable={false}
+                gap={5}
+                inactiveColor="eee"
+              />
+            </div>
+
+            <div>
+              <i className="icn icn-schools" />
+              Schools
+              <div>{schools}</div>
+            </div>
+          </div>
+        </Col>
 
         <Col sm="6">
           <ul className="list">
@@ -59,6 +90,8 @@ Features.defaultProps = {
   leastEnd: "12/25/2019",
   HOA: "None",
   floodRisk: "Not Required",
+  rating: 3,
+  schools: "1 / 3 / 1",
 };
 
 export default Features;
