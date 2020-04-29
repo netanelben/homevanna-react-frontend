@@ -39,7 +39,7 @@ const InvestParams = ({
         </TabPane>
       </TabContent>
 
-      <Nav tabs justified>
+      <Nav tabs justified className="upper-border">
         <NavItem
           className={classnames({ active: activeTab === "1" })}
           onClick={() => {

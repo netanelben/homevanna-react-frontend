@@ -25,33 +25,6 @@
     }
   }
 
-  .rc-slider {
-    .rc-slider-rail {
-      height: 2px;
-      background-color: rgba(75, 145, 226, 0.5);
-    }
-
-    .rc-slider-track {
-      background-color: transparent;
-    }
-
-    .rc-slider-handle {
-      width: 16px;
-      height: 16px;
-      margin-top: -7px;
-    }
-  }
-
-  .nav-tabs {
-    border-bottom: 0;
-    border-top: 1px solid rgba(74, 144, 226, 0.5);
-
-    .nav-item.active {
-      border-bottom: 0;
-      border-top: 4px solid #66ccff;
-    }
-  }
-
   .row > div:first-of-type {
     padding-right: 24px;
   }

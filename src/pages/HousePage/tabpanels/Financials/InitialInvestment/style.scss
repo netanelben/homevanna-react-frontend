@@ -1,0 +1,28 @@
+.InitialInvestment {
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 21px 24px 4px;
+
+  .title {
+    text-transform: uppercase;
+    text-align: left;
+    color: #656d72;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .price-large {
+    margin-bottom: 27px;
+  }
+
+  .flex {
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .section {
+    font-size: 18px;
+    color: #656d72;
+    margin-bottom: 22px;
+  }
+}

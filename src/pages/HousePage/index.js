@@ -4,12 +4,12 @@ import { Row, Col, TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import PageHeader from "./PageHeader";
 import SellingCard from "../../components/SellingCard";
 import PurchaseControls from "../../components/PurchaseControls";
-import { Summary } from "./tabpanels";
+import { Summary, Financials } from "./tabpanels";
 
 import "./style.scss";
 
 const HousePage = () => {
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = useState("2");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
@@ -74,7 +74,9 @@ const HousePage = () => {
           <TabPane tabId="1">
             <Summary />
           </TabPane>
-          <TabPane tabId="2">2</TabPane>
+          <TabPane tabId="2">
+            <Financials />
+          </TabPane>
           <TabPane tabId="3">3</TabPane>
           <TabPane tabId="4">4</TabPane>
           <TabPane tabId="5">5</TabPane>

@@ -1,0 +1,66 @@
+.TotalReturn {
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 21px 24px 4px;
+
+  .title {
+    text-transform: uppercase;
+    text-align: left;
+    color: #656d72;
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .price-large {
+    margin-bottom: 27px;
+  }
+
+  .flex {
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .tab-content {
+    .title {
+      text-transform: none;
+
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .cash-info {
+    font-size: 18px;
+    color: #656d72;
+    max-width: 80%;
+    margin-bottom: 12px;
+
+    .text-large {
+      font-size: 20px;
+    }
+  }
+
+  .table {
+    color: #656d72;
+    font-size: 18px;
+  }
+
+  .table thead th {
+    font-weight: 500;
+  }
+
+  .table thead th,
+  .table tbody tr {
+    border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+  }
+
+  .table tbody tr {
+    font-weight: 300;
+  }
+
+  .table td,
+  .table th {
+    padding: 6px;
+  }
+}

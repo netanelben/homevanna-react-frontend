@@ -12,7 +12,7 @@ const SellingCard = ({ price, listPrice }) => {
       <span className="type">Initial Investment</span>
 
       <div className="price-and-links flex">
-        <span className="price">${price}</span>
+        <span className="price-large">${price}</span>
         <div className="links">
           <a href="#">Share</a>
           <a href="#">Add to Cart</a>

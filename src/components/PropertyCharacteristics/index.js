@@ -70,7 +70,7 @@ const PropertyCharacteristics = () => {
             preferred property management teams protect your assets and keep
             things running smoothly.
           </div>
-          <button>View Options</button>
+          <button className="btn-blue">View Options</button>
         </Col>
       </Row>
     </div>
