@@ -2,11 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import Header from "./components/header/header";
-import HouseCard from "./components/HouseCard";
-import SellingCard from "./components/SellingCard";
-import PropertyCharacteristics from "./components/PropertyCharacteristics";
-import FinancialHighlight from "./components/FinancialHighlight";
-import Features from "./components/Features";
+import IndexPage from "./IndexPage";
 
 import "./css/index.css";
 import "./css/common.scss";
@@ -14,15 +10,7 @@ import "./css/common.scss";
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <HouseCard />
-    <br />
-    <SellingCard />
-    <br />
-    <Features />
-    <br />
-    <PropertyCharacteristics />
-    <br />
-    <FinancialHighlight />
+    <IndexPage />
   </React.StrictMode>,
   document.getElementById("root")
 );

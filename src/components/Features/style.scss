@@ -25,10 +25,23 @@
     color: #656d72;
     font-size: 16px;
     text-align: center;
+    padding: 16px 0;
 
     .icn {
+      display: block;
+      margin: 0 auto 9px;
       width: 24px;
       height: 24px;
+      background-color: #eee;
+    }
+
+    > div > span {
+      color: #656d72;
+      font-size: 16px;
+    }
+
+    > div > div {
+      font-size: 14px;
     }
 
     a {
@@ -39,7 +52,7 @@
 
     .nh-rating {
       ul {
-        margin-top: 5px !important;
+        margin-top: 4px !important;
       }
 
       svg {

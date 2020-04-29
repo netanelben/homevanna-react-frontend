@@ -25,24 +25,25 @@ const Features = ({
           <div className="feature-list flex">
             <div>
               <i className="icn icn-market" />
-              Markets
+              <span>Markets</span>
               <a href="#">View Stats</a>
             </div>
 
             <div className="nh-rating">
               <i className="icn icn-neighborhood" />
-              Neighborhood
+              <span>Neighborhood</span>
               <BeautyStars
                 value={rating}
                 editable={false}
                 gap={5}
+                activeColor="656D72"
                 inactiveColor="eee"
               />
             </div>
 
             <div>
               <i className="icn icn-schools" />
-              Schools
+              <span>Schools</span>
               <div>{schools}</div>
             </div>
           </div>
