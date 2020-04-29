@@ -4,8 +4,8 @@ import * as serviceWorker from "./serviceWorker";
 import Header from "./components/header/header";
 import HousePage from "./pages/HousePage";
 
-import "./css/index.css";
 import "./css/common.scss";
+import "./css/index.css";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,0 +1,47 @@
+.PageHeader {
+  height: 744px;
+  max-height: 744px;
+  background-color: #ddd;
+  color: #fff;
+  padding-bottom: 135px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  .container {
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .address-line-1 {
+    line-height: 130%;
+    font-size: 40px;
+  }
+
+  .address-line-2 {
+    line-height: 1;
+    font-size: 24px;
+  }
+
+  .gallery {
+    font-size: 16px;
+    text-transform: uppercase;
+
+    ul {
+      list-style-type: none;
+      padding: 9px 0 0;
+      margin: 0;
+
+      li {
+        background-color: #eee;
+        display: inline-block;
+        width: 60px;
+        height: 40px;
+
+        &:not(:last-of-type) {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}

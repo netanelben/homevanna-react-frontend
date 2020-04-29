@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import { Row, Col } from "reactstrap";
 import BeautyStars from "beauty-stars";
 import EmbeddedMap from "./EmbeddedMap";
+import {
+  faChartLine,
+  faStreetView,
+  faGraduationCap,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.scss";
 
@@ -24,13 +30,13 @@ const Features = ({
 
           <div className="feature-list flex">
             <div>
-              <i className="icn icn-market" />
+              <FontAwesomeIcon icon={faChartLine} />
               <span>Markets</span>
               <a href="#">View Stats</a>
             </div>
 
             <div className="nh-rating">
-              <i className="icn icn-neighborhood" />
+              <FontAwesomeIcon icon={faStreetView} />
               <span>Neighborhood</span>
               <BeautyStars
                 value={rating}
@@ -42,7 +48,7 @@ const Features = ({
             </div>
 
             <div>
-              <i className="icn icn-schools" />
+              <FontAwesomeIcon icon={faGraduationCap} />
               <span>Schools</span>
               <div>{schools}</div>
             </div>

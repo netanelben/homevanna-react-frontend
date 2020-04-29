@@ -20,7 +20,7 @@ const FinancialHighlight = ({
   return (
     <div className="FinancialHighlight card-box">
       <div className="card-title">Annual Financial Highlight</div>
-      <Nav tabs>
+      <Nav tabs justified>
         <NavItem
           className={classnames({ active: activeTab === "1" })}
           onClick={() => {

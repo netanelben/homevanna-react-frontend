@@ -2,11 +2,11 @@
   width: 100%;
   border-radius: 6px;
   background-color: #fff;
-  padding: 14px 16px 25px;
+  padding: 14px 16px 21px;
 
   .list {
     padding: 0;
-    margin-bottom: 42px;
+    margin-bottom: 29px;
 
     li {
       justify-content: space-between;
@@ -24,14 +24,12 @@
     }
   }
 
+  .tab-content {
+    padding-top: 9px;
+  }
+
   .nav-tabs {
     display: flex;
     justify-content: space-around;
-
-    .nav-item {
-      width: 33.33%;
-      margin: 0 !important;
-      text-align: center;
-    }
   }
 }
