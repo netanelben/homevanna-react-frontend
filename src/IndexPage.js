@@ -11,6 +11,7 @@ const IndexPage = () => {
 
   return (
     <div className="page">
+      <i />
       <Nav tabs>
         <NavItem
           className={classnames({ active: activeTab === "1" })}

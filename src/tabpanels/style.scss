@@ -1,3 +1,18 @@
+.page > .nav-tabs {
+  margin: 0 24px 9px;
+
+  .nav-item {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &.active {
+      font-weight: 700;
+      border-bottom: 0;
+    }
+  }
+}
+
 .tab-pane > .row {
   padding: 0 24px;
   margin-bottom: 25px;
