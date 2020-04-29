@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import Header from "./components/header/header";
-import IndexPage from "./IndexPage";
+import HousePage from "./pages/HousePage";
 
 import "./css/index.css";
 import "./css/common.scss";
@@ -10,7 +10,7 @@ import "./css/common.scss";
 ReactDOM.render(
   <React.StrictMode>
     <Header />
-    <IndexPage />
+    <HousePage />
   </React.StrictMode>,
   document.getElementById("root")
 );

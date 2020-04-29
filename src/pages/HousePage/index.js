@@ -1,17 +1,29 @@
 import React, { useState } from "react";
 import classnames from "classnames";
 import { Row, Col, TabContent, TabPane, Nav, NavItem } from "reactstrap";
+import SellingCard from "../../components/SellingCard";
+import PurchaseControls from "../../components/PurchaseControls";
 import { Summary } from "./tabpanels";
 
-const IndexPage = () => {
+import "./style.scss";
+
+const HousePage = () => {
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
   return (
-    <div className="page">
-      <i />
+    <div className="page container">
+      <Row className="main-row" noGutters>
+        <Col sm="4">
+          <SellingCard />
+        </Col>
+        <Col sm="8">
+          <PurchaseControls />
+        </Col>
+      </Row>
+
       <Nav tabs>
         <NavItem
           className={classnames({ active: activeTab === "1" })}
@@ -67,4 +79,4 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default HousePage;

@@ -1,16 +1,16 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
-import FinancialHighlight from "../../components/FinancialHighlight";
-import Features from "../../components/Features";
-import PropertyCharacteristics from "../../components/PropertyCharacteristics";
+import FinancialHighlight from "../../../../components/FinancialHighlight";
+import Features from "../../../../components/Features";
+import PropertyCharacteristics from "../../../../components/PropertyCharacteristics";
 
 const Summary = () => (
   <>
-    <Row>
-      <Col sm="9">
+    <Row noGutters>
+      <Col sm="8">
         <Features />
       </Col>
-      <Col sm="3">
+      <Col sm="4">
         <FinancialHighlight />
       </Col>
     </Row>

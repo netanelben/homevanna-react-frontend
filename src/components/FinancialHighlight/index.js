@@ -18,7 +18,7 @@ const FinancialHighlight = ({
   };
 
   return (
-    <div className="FinancialHighlight">
+    <div className="FinancialHighlight card-box">
       <div className="card-title">Annual Financial Highlight</div>
       <Nav tabs>
         <NavItem

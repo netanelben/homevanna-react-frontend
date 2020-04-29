@@ -12,7 +12,7 @@ const PropertyCharacteristics = () => {
   };
 
   return (
-    <div className="PropertyCharacteristics">
+    <div className="PropertyCharacteristics card-box">
       <Row>
         <Col sm="8">
           <div className="card-title">Property Characteristics</div>

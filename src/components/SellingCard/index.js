@@ -3,7 +3,7 @@ import "./style.scss";
 
 const SellingCard = ({ price, listPrice }) => {
   return (
-    <div className="SellingCard">
+    <div className="SellingCard card-box">
       <div className="header flex">
         <span>• For Sale</span>
         <a href="#">Property Inquiry</a>
@@ -23,7 +23,7 @@ const SellingCard = ({ price, listPrice }) => {
       <div className="list-price">List Price: ${listPrice}</div>
 
       <div>
-        <input />
+        <input value="$260,200" />
       </div>
 
       <div className="controls">

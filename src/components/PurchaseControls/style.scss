@@ -1,0 +1,39 @@
+.PurchaseControls {
+  width: 100%;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 22px 16px 25px;
+
+  .title {
+    color: #656d72;
+    font-size: 18px;
+    line-height: 1;
+    justify-content: space-between;
+    padding-left: 7px;
+
+    > span {
+      font-size: 20px;
+    }
+  }
+
+  .section {
+    margin-bottom: 60px;
+  }
+
+  .rc-slider {
+    .rc-slider-rail {
+      height: 2px;
+      background-color: rgba(75, 145, 226, 0.5);
+    }
+
+    .rc-slider-track {
+      background-color: transparent;
+    }
+
+    .rc-slider-handle {
+      width: 16px;
+      height: 16px;
+      margin-top: -7px;
+    }
+  }
+}

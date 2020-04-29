@@ -16,7 +16,7 @@ const Features = ({
   schools,
 }) => {
   return (
-    <div className="Features">
+    <div className="Features card-box">
       <div className="card-title">Features</div>
       <Row>
         <Col sm="6">
