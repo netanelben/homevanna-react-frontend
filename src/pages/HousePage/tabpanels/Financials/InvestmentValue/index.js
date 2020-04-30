@@ -49,27 +49,50 @@ const InvestmentValue = () => {
           <Table borderless={true}>
             <thead>
               <tr>
-                <th>Net Cash Flow</th>
-                <th>Year 1</th>
-                <th>Year 3</th>
+                <th></th>
                 <th>Year 5</th>
                 <th>Year 10</th>
+                <th>Year 20</th>
+                <th>Year 30</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Annual</td>
+                <td>Cumulative Net Cash Flow</td>
+                <td>
+                  $34,974
+                  <div className="text-small">$1.709/mo</div>
+                </td>
+                <td>
+                  $76,048<div className="text-small">$1.709/mo</div>
+                </td>
+                <td>
+                  $45,093<div className="text-small">$1.709/mo</div>
+                </td>
+                <td>
+                  $39,962<div className="text-small">$1.709/mo</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Cumulative Appreciation Gain</td>
                 <td>$34,974</td>
                 <td>$76,048</td>
                 <td>$45,093</td>
                 <td>$39,962</td>
               </tr>
               <tr>
-                <td>Annual</td>
+                <td>Equity Build Up</td>
                 <td>$34,974</td>
                 <td>$76,048</td>
                 <td>$45,093</td>
                 <td>$39,962</td>
+              </tr>
+              <tr>
+                <td>Total Investment Value</td>
+                <td>$466,083</td>
+                <td>$763,048</td>
+                <td>$845,093</td>
+                <td>$2,539,962</td>
               </tr>
             </tbody>
           </Table>

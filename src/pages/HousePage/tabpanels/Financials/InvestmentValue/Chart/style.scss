@@ -1,8 +1,14 @@
 @import "chartist/dist/scss/chartist.scss";
 
 .InvestmentValue {
+  .ct-chart {
+    height: 575px;
+    margin-bottom: 28px;
+  }
+
   .ct-grid {
     stroke: rgba(74, 144, 226, 0.5);
+    stroke-dasharray: none;
   }
 
   .ct-series-a .ct-bar {
@@ -15,5 +21,11 @@
 
   .ct-series-c .ct-bar {
     stroke: rgba(0, 51, 153, 0.2);
+  }
+
+  .ct-label.ct-vertical.ct-start,
+  .ct-chart-bar .ct-label.ct-horizontal.ct-end {
+    font-size: 16px;
+    color: #656d72;
   }
 }

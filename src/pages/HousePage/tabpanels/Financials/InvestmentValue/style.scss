@@ -1,9 +1,8 @@
 .InvestmentValue {
   border-radius: 6px;
   background-color: #fff;
-  padding: 29px 0 21px;
+  padding: 29px 0 29px;
   margin-bottom: 16px;
-  min-height: 1080px;
 
   .nav-tabs {
     .nav-item {
@@ -49,10 +48,25 @@
 
   .table tbody tr {
     font-weight: 300;
+
+    &:last-of-type {
+      background-color: rgba(102, 204, 255, 0.1);
+    }
   }
 
   .table td,
   .table th {
     padding: 4px 6px;
+    text-align: right;
+  }
+
+  .table td:first-of-type {
+    text-align: left;
+  }
+
+  .table .text-small {
+    font-size: 12px;
+    margin: 3px 0 6px;
+    line-height: 1;
   }
 }
