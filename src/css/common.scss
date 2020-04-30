@@ -34,9 +34,15 @@ a {
     }
 
     &.active {
-      color: #000000;
+      color: #383f44;
       border: 0;
       border-bottom: 4px solid #66ccff;
+    }
+  }
+
+  &.upper-border {
+    .nav-item.active {
+      line-height: 150%;
     }
   }
 }

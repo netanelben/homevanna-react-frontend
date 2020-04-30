@@ -1,6 +1,58 @@
-.EstInvestmentValueOverTime {
+.InvestmentValue {
   border-radius: 6px;
   background-color: #fff;
-  padding: 27px 24px 21px;
+  padding: 29px 0 21px;
   margin-bottom: 16px;
+  min-height: 1080px;
+
+  .nav-tabs {
+    .nav-item {
+      font-size: 16px;
+      width: 124px;
+      text-align: center;
+      padding-bottom: 4px;
+
+      &:not(.active) {
+        line-height: 150%;
+      }
+
+      &.active {
+        color: #383f44;
+        line-height: 150%;
+      }
+    }
+  }
+
+  .tab-content {
+    padding: 24px 29px 0;
+  }
+
+  .title {
+    text-align: left;
+    font-size: 26px;
+    color: #656d72;
+  }
+
+  .table {
+    color: #656d72;
+    font-size: 18px;
+  }
+
+  .table thead th {
+    font-weight: 500;
+  }
+
+  .table thead th,
+  .table tbody tr {
+    border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+  }
+
+  .table tbody tr {
+    font-weight: 300;
+  }
+
+  .table td,
+  .table th {
+    padding: 4px 6px;
+  }
 }

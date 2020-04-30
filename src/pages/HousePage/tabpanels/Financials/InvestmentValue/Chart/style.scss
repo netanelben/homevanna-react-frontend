@@ -1,0 +1,19 @@
+@import "chartist/dist/scss/chartist.scss";
+
+.InvestmentValue {
+  .ct-grid {
+    stroke: rgba(74, 144, 226, 0.5);
+  }
+
+  .ct-series-a .ct-bar {
+    stroke: rgba(0, 51, 153, 0.5);
+  }
+
+  .ct-series-b .ct-bar {
+    stroke: rgba(0, 51, 153, 0.3);
+  }
+
+  .ct-series-c .ct-bar {
+    stroke: rgba(0, 51, 153, 0.2);
+  }
+}
