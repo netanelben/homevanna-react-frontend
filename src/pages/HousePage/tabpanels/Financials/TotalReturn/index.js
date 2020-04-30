@@ -11,7 +11,7 @@ const TotalReturn = ({ amount, appreciation }) => {
   };
 
   return (
-    <div className="TotalReturn">
+    <div className="TotalReturn card-box">
       <Row noGutters>
         <Col sm="6">
           <div className="title">TOTAL RETURN</div>

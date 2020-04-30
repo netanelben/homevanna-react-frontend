@@ -57,16 +57,19 @@ a {
   }
 }
 
-.card-title {
-  font-size: 24px;
-  font-weight: 300;
-  color: #656d72;
-  text-transform: uppercase;
-  text-align: left;
-}
-
 .card-box {
+  background-color: #fff;
   box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+
+  .card-title {
+    text-align: left;
+    color: #656d72;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 1;
+  }
 }
 
 .btn-blue {
@@ -98,4 +101,10 @@ a {
   color: #373a3c;
   font-size: 48px;
   line-height: 100%;
+}
+
+.list-with-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

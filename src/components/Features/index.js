@@ -55,7 +55,7 @@ const Features = ({
           </div>
         </Col>
 
-        <Col sm="6">
+        <Col sm="6" className="list-with-link">
           <ul className="list">
             <li className="flex">
               <span>Occupancy</span>

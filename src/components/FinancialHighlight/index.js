@@ -48,30 +48,32 @@ const FinancialHighlight = ({
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <ul className="list">
-            <li className="flex">
-              <span>Expected Rent</span>
-              <span>${expectedRent}</span>
-            </li>
-            <li className="flex">
-              <span>Expenses</span>
-              <span>-${expenses}</span>
-            </li>
-            <li className="flex">
-              <span>Property Taxes</span>
-              <span>-${propertyTaxes}</span>
-            </li>
-            <li className="flex">
-              <span>Loan Payments</span>
-              <span>-${loanPayments}</span>
-            </li>
-            <li className="flex">
-              <span>Net Cash Flow</span>
-              <span>${netCashFlow}</span>
-            </li>
-          </ul>
+          <div className="list-with-link">
+            <ul className="list">
+              <li className="flex">
+                <span>Expected Rent</span>
+                <span>${expectedRent}</span>
+              </li>
+              <li className="flex">
+                <span>Expenses</span>
+                <span>-${expenses}</span>
+              </li>
+              <li className="flex">
+                <span>Property Taxes</span>
+                <span>-${propertyTaxes}</span>
+              </li>
+              <li className="flex">
+                <span>Loan Payments</span>
+                <span>-${loanPayments}</span>
+              </li>
+              <li className="flex">
+                <span>Net Cash Flow</span>
+                <span>${netCashFlow}</span>
+              </li>
+            </ul>
 
-          <a href="#">> See more in Financials</a>
+            <a href="#">> See more in Financials</a>
+          </div>
         </TabPane>
         <TabPane tabId="2">2</TabPane>
         <TabPane tabId="3">3</TabPane>

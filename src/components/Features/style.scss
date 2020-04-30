@@ -1,12 +1,14 @@
 .Features {
-  width: 100%;
-  border-radius: 6px;
-  background-color: #fff;
-  padding: 14px 16px 21px;
+  padding: 18px 16px 17px;
+  min-height: 395px;
+
+  .card-title {
+    margin-bottom: 20px;
+  }
 
   .list {
     padding: 0;
-    margin-bottom: 72px;
+    margin-bottom: 0;
 
     li {
       justify-content: space-between;

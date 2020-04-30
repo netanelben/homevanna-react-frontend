@@ -1,0 +1,34 @@
+.Valuation {
+  padding: 17px 16px 21px;
+
+  .card-title {
+    margin-bottom: 25px;
+  }
+
+  .prop-value {
+    color: #373a3c;
+    margin-bottom: 6px;
+  }
+
+  .price-large {
+    margin-bottom: 11px;
+  }
+
+  .rental-value {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .value-date {
+    font-size: 16px;
+    margin-bottom: 17px;
+  }
+
+  .see-more {
+    color: #373a3c;
+
+    a {
+      margin-left: 9px;
+    }
+  }
+}

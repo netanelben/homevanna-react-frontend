@@ -1,8 +1,9 @@
 .PropertyCharacteristics {
-  width: 100%;
-  border-radius: 6px;
-  background-color: #fff;
-  padding: 14px 16px 20px;
+  padding: 18px 16px 20px;
+
+  .card-title:first-of-type {
+    margin-bottom: 29px;
+  }
 
   p {
     font-size: 16px;
@@ -18,11 +19,20 @@
     }
   }
 
+  .nav-tabs .nav-item {
+    padding: 0;
+    margin-right: 45px;
+  }
+
   .tab-content {
     padding-top: 15px;
   }
 
   .management {
+    .card-title {
+      margin-bottom: 20px;
+    }
+
     .why-choose-card {
       background-color: rgba(74, 144, 226, 0.1);
       font-size: 16px;

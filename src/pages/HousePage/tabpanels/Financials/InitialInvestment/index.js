@@ -14,7 +14,7 @@ const InitialInvestment = ({ amount }) => {
   const [estImmediateCosts, setEstImmediateCosts] = useState(784);
 
   return (
-    <div className="InitialInvestment">
+    <div className="InitialInvestment card-box">
       <div className="title">Initial Investment</div>
 
       <div className="price-large">${amount}</div>
