@@ -1,12 +1,13 @@
 .GrossYield {
   border-radius: 6px;
   background-color: #fff;
-  padding: 24px 24px 16px;
+  padding: 27px 24px 21px;
   margin-bottom: 16px;
 
   .flex {
     align-items: flex-start;
     justify-content: space-between;
+    padding-right: 64px;
   }
 
   .text-center {
@@ -36,7 +37,7 @@
   }
 
   button {
-    margin: 0 0 0 auto;
+    margin: -3px -1px 0 auto;
     display: block;
   }
 }

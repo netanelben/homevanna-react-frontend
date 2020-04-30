@@ -22,7 +22,7 @@ const GrossYield = () => (
           <div className="text-center">
             <div>ANN. RETURN</div>
             <span>
-              9.6%
+              8.1%
               <span className="lower-text">in 5 Years</span>
             </span>
           </div>

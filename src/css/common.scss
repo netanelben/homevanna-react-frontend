@@ -29,10 +29,6 @@ a {
     line-height: 2;
     cursor: pointer;
 
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
-
     &:hover {
       border: 0;
     }

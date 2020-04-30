@@ -1,7 +1,8 @@
 .TotalReturn {
   border-radius: 6px;
   background-color: #fff;
-  padding: 21px 24px 4px;
+  padding: 21px 16px 4px;
+  min-height: 468px;
 
   .title {
     text-transform: uppercase;
@@ -20,6 +21,12 @@
     margin-bottom: 5px;
   }
 
+  .tab-pane.active {
+    .title {
+      padding: 0 8px;
+    }
+  }
+
   .tab-content {
     .title {
       text-transform: none;
@@ -34,7 +41,7 @@
     font-size: 18px;
     color: #656d72;
     max-width: 80%;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 
     .text-large {
       font-size: 20px;
@@ -61,6 +68,6 @@
 
   .table td,
   .table th {
-    padding: 6px;
+    padding: 4px 6px;
   }
 }

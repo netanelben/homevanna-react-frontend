@@ -3,6 +3,7 @@ import { Row, Col } from "reactstrap";
 import GrossYield from "./GrossYield";
 import InitialInvestment from "./InitialInvestment";
 import TotalReturn from "./TotalReturn";
+import InvestmentValue from "./InvestmentValue";
 
 const Financials = () => (
   <>
@@ -16,6 +17,8 @@ const Financials = () => (
         <TotalReturn />
       </Col>
     </Row>
+
+    <InvestmentValue />
   </>
 );
 

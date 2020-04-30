@@ -12,8 +12,14 @@
   }
 }
 
-.main-page-tabs + .tab-content {
-  padding-top: 24px;
+.main-page-tabs {
+  .nav-item:not(:last-child) {
+    margin-right: 14px;
+  }
+
+  & + .tab-content {
+    padding-top: 24px;
+  }
 }
 
 .tab-pane > .row {
