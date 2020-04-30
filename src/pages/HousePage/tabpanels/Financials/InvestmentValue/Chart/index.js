@@ -12,7 +12,11 @@ const CHART_LABELS = [
   "Year 30",
 ];
 
-const ChartData = [[0, 1200000, 1400000, 1300000]];
+const ChartData = [
+  [0, 250000, 450000, 70000, 71000, 75000, 78000, 80000, 1000000],
+  [100, 250000, 450000, 70000, 71000, 75000, 78000, 80000, 1000000],
+  [200, 250000, 450000, 70000, 71000, 75000, 78000, 80000, 1000000],
+];
 
 const Chart = () => {
   useEffect(() => {
@@ -26,7 +30,7 @@ const Chart = () => {
         stackBars: true,
         axisY: {
           labelInterpolationFnc: (value) => {
-            return `$${value / 1000}m`;
+            return `$${value / 1000000}m`;
           },
         },
       }
