@@ -37,6 +37,12 @@ const InvestParams = ({
             <span>$468,760</span>
           </div>
         </TabPane>
+        <TabPane tabId="5">
+          <div className="title flex">
+            Total Return
+            <span>$568,760</span>
+          </div>
+        </TabPane>
       </TabContent>
 
       <Nav tabs justified className="upper-border">
