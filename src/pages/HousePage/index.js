@@ -9,7 +9,7 @@ import { Summary, Financials, Analysis } from "./tabpanels";
 import "./style.scss";
 
 const HousePage = () => {
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = useState("3");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };

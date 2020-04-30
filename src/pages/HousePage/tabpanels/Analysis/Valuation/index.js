@@ -3,7 +3,7 @@ import "./style.scss";
 
 const Valuation = ({ valuationData = null }) => (
   <div className="Valuation card-box">
-    <div className="title">Valuation</div>
+    <div className="card-title">Valuation</div>
     <div className="prop-value">Property Value</div>
     <div className="price-large">$318,710 - $420,000</div>
     <div className="rental-value">Rental Value</div>

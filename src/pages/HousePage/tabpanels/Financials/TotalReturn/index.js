@@ -103,7 +103,7 @@ const TotalReturn = ({ amount, appreciation }) => {
             <td>$39,962</td>
           </tr>
           <tr>
-            <td>Annual</td>
+            <td>Monthly</td>
             <td>$34,974</td>
             <td>$76,048</td>
             <td>$45,093</td>

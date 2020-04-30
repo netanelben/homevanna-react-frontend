@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
+import { TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
 import classnames from "classnames";
 import Chart from "./Chart";
 
