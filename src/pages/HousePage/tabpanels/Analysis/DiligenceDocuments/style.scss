@@ -25,6 +25,10 @@
     button {
       border: 0;
       background-color: transparent;
+
+      &:hover {
+        opacity: 0.6;
+      }
     }
 
     button:first-of-type {

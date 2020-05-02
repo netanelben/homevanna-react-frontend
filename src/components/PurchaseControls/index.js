@@ -3,7 +3,6 @@ import { Row, Col } from "reactstrap";
 import PriceParams from "./PriceParams";
 import InvestParams from "./InvestParams";
 
-import "rc-slider/assets/index.css";
 import "./style.scss";
 
 const PurchaseControls = () => (

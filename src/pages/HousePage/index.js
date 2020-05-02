@@ -9,7 +9,7 @@ import { Summary, Financials, Analysis } from "./tabpanels";
 import "./style.scss";
 
 const HousePage = () => {
-  const [activeTab, setActiveTab] = useState("3");
+  const [activeTab, setActiveTab] = useState("2");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
@@ -20,10 +20,10 @@ const HousePage = () => {
 
       <div className="page container">
         <Row className="main-row" noGutters>
-          <Col sm="4">
+          <Col sm="12" md="4">
             <SellingCard />
           </Col>
-          <Col sm="8">
+          <Col sm="12" md="8">
             <PurchaseControls />
           </Col>
         </Row>

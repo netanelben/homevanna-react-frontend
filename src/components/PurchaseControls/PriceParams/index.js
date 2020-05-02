@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
 import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 import "./style.scss";
 

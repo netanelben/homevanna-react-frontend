@@ -5,7 +5,7 @@ import "./style.scss";
 const GrossYield = () => (
   <div className="GrossYield card-box">
     <Row noGutters>
-      <Col sm="7">
+      <Col sm="12" md="7">
         <div className="flex">
           <div className="text-center">
             <div>Gross yield</div>
@@ -28,7 +28,7 @@ const GrossYield = () => (
           </div>
         </div>
       </Col>
-      <Col sm="5">
+      <Col sm="12" md="5">
         <button className="btn-blue">Restore to Default</button>
       </Col>
     </Row>

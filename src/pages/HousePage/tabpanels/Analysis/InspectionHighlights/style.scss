@@ -1,0 +1,58 @@
+.InspectionHighlights {
+  padding: 19px 16px 21px;
+  min-height: 866px;
+  position: relative;
+
+  .card-title {
+    margin-bottom: 24px;
+  }
+
+  .flex {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .inspection-item {
+    margin-bottom: 32px;
+    line-height: 1;
+
+    .name {
+      font-size: 20px;
+      color: #373a3c;
+      margin-bottom: 6px;
+    }
+
+    .status-label {
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .status-badge {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .status-0 {
+      background-color: #c0c8ce;
+    }
+
+    .status-1 {
+      background-color: #2ab15a;
+    }
+
+    .status-2 {
+      background-color: #fbc46b;
+    }
+  }
+
+  .bottom-link {
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    padding-bottom: 21px;
+  }
+}

@@ -4,6 +4,7 @@ import * as serviceWorker from "./serviceWorker";
 import Header from "./components/header/header";
 import HousePage from "./pages/HousePage";
 
+import "./css/layout.scss";
 import "./css/common.scss";
 import "./css/index.css";
 

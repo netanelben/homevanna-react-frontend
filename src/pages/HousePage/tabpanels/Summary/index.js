@@ -7,10 +7,10 @@ import PropertyCharacteristics from "../../../../components/PropertyCharacterist
 const Summary = () => (
   <>
     <Row noGutters>
-      <Col sm="8">
+      <Col sm="12" md="8">
         <Features />
       </Col>
-      <Col sm="4">
+      <Col sm="12" md="4">
         <FinancialHighlight />
       </Col>
     </Row>

@@ -14,7 +14,7 @@ const PropertyCharacteristics = () => {
   return (
     <div className="PropertyCharacteristics card-box">
       <Row>
-        <Col sm="8">
+        <Col sm="12" md="8">
           <div className="card-title">Property Characteristics</div>
           <Nav tabs>
             <NavItem
@@ -60,7 +60,7 @@ const PropertyCharacteristics = () => {
           </TabContent>
         </Col>
 
-        <Col sm="4" className="management">
+        <Col sm="12" md="4" className="management">
           <div className="card-title">Property Management</div>
           <div className="why-choose-card">
             Why choose?
