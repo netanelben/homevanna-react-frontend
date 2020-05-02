@@ -84,7 +84,7 @@ const TotalReturn = ({ amount, appreciation }) => {
         <span className="text-large">$539,857</span>
       </div>
 
-      <Table borderless={true}>
+      <Table borderless={true} responsive>
         <thead>
           <tr>
             <th>Net Cash Flow</th>

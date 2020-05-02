@@ -46,7 +46,7 @@ const InvestmentValue = () => {
 
           <Chart />
 
-          <Table borderless={true}>
+          <Table borderless={true} responsive>
             <thead>
               <tr>
                 <th></th>
