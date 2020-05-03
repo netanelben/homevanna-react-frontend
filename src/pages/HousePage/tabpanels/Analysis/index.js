@@ -4,10 +4,11 @@ import Valuation from "./Valuation";
 import DiligenceDocuments from "./DiligenceDocuments";
 import InspectionHighlights from "./InspectionHighlights";
 import LeaseAndTenant from "./LeaseAndTenant";
+import Location from "./Location";
 
 const Analysis = () => (
   <>
-    <Row noGutters>
+    <Row>
       <Col sm="12" md="5">
         <Valuation />
       </Col>
@@ -16,7 +17,7 @@ const Analysis = () => (
       </Col>
     </Row>
 
-    <Row noGutters>
+    <Row>
       <Col sm="12" md="6">
         <InspectionHighlights />
       </Col>
@@ -24,6 +25,8 @@ const Analysis = () => (
         <LeaseAndTenant />
       </Col>
     </Row>
+
+    <Location />
   </>
 );
 

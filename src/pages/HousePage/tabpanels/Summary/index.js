@@ -6,7 +6,7 @@ import PropertyCharacteristics from "../../../../components/PropertyCharacterist
 
 const Summary = () => (
   <>
-    <Row noGutters>
+    <Row>
       <Col sm="12" md="8">
         <Features />
       </Col>

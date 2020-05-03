@@ -1,0 +1,76 @@
+.Location {
+  padding: 20px 16px 21px;
+  min-height: 724px;
+  line-height: 1;
+  color: #373a3c;
+
+  .card-title {
+    margin-bottom: 29px;
+  }
+
+  .sub-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 38px;
+
+    a {
+      margin-left: 16px;
+      font-weight: 400;
+    }
+  }
+
+  .section-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 21px;
+  }
+
+  .rank-badge {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #66ccff;
+    font-size: 16px;
+    margin-right: 16px;
+
+    &.no-rank {
+      color: #4f565b;
+      border-color: #c0c8ce;
+      font-size: 12px;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    &:not(:last-of-type) {
+      margin-bottom: 48px;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+
+      &:not(:last-of-type) {
+        margin-bottom: 33px;
+      }
+    }
+
+    span {
+      display: block;
+
+      &:first-of-type {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+
+      &:last-of-type {
+        font-size: 16px;
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ import "./style.scss";
 
 const PurchaseControls = () => (
   <div className="PurchaseControls card-box">
-    <Row>
+    <Row noGutters>
       <Col sm="6">
         <PriceParams />
       </Col>

@@ -9,7 +9,7 @@ const Financials = () => (
   <>
     <GrossYield />
 
-    <Row noGutters>
+    <Row>
       <Col sm="12" md="4">
         <InitialInvestment />
       </Col>

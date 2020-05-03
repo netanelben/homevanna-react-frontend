@@ -39,7 +39,7 @@ const DiligenceDocuments = () => (
   <div className="DiligenceDocuments card-box">
     <div className="card-title">Diligence Documents</div>
 
-    <Row noGutters>
+    <Row>
       <Col sm="6">
         <ItemBox title="Property Valuation" downloadLink="1" />
       </Col>
@@ -48,7 +48,7 @@ const DiligenceDocuments = () => (
       </Col>
     </Row>
 
-    <Row noGutters>
+    <Row>
       <Col sm="6">
         <ItemBox title="Inspection Report 2" downloadLink="1" />
       </Col>
@@ -57,7 +57,7 @@ const DiligenceDocuments = () => (
       </Col>
     </Row>
 
-    <Row noGutters>
+    <Row>
       <Col sm="6">
         <ItemBox title="Ledger" downloadLink="1" />
       </Col>
@@ -66,7 +66,7 @@ const DiligenceDocuments = () => (
       </Col>
     </Row>
 
-    <Row noGutters>
+    <Row>
       <Col sm="6">
         <ItemBox title="Lease Abstract" />
       </Col>

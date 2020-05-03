@@ -18,32 +18,18 @@ const InspectionItem = ({ name, status = 0 }) => {
   );
 };
 
-const InspectionHighlights = () => (
+const InspectionHighlights = ({ inspectionList }) => (
   <div className="InspectionHighlights card-box">
     <div className="card-title">Inspection Highlights</div>
 
-    <Row noGutters>
-      <Col sm="4">
-        <InspectionItem name="Roof" status={1} />
-      </Col>
-      <Col sm="4">
-        <InspectionItem name="Attic" status={1} />
-      </Col>
-      <Col sm="4">
-        <InspectionItem name="Bedrooms" status={2} />
-      </Col>
-    </Row>
-
-    <Row noGutters>
-      <Col sm="4">
-        <InspectionItem name="Roof" status={0} />
-      </Col>
-      <Col sm="4">
-        <InspectionItem name="Attic" status={1} />
-      </Col>
-      <Col sm="4">
-        <InspectionItem name="Bedrooms" status={1} />
-      </Col>
+    <Row className="list">
+      {inspectionList.map(({ name, status = 0 }, key) => {
+        return (
+          <Col xs="6" sm="4" key={key}>
+            <InspectionItem name={name} status={status} />
+          </Col>
+        );
+      })}
     </Row>
 
     <div className="bottom-link">
@@ -51,5 +37,62 @@ const InspectionHighlights = () => (
     </div>
   </div>
 );
+
+InspectionHighlights.defaultProps = {
+  inspectionList: [
+    {
+      name: "Roof",
+      status: 0,
+    },
+    {
+      name: "Attic",
+      status: 0,
+    },
+    {
+      name: "Bedrooms",
+      status: 1,
+    },
+    {
+      name: "Basement/Crawl",
+      status: 0,
+    },
+    {
+      name: "HVAC",
+      status: 0,
+    },
+    {
+      name: "Bedrooms",
+      status: 1,
+    },
+    {
+      name: "Electrical",
+      status: 0,
+    },
+    {
+      name: "Exterior",
+      status: 2,
+    },
+    {
+      name: "Garage",
+      status: 0,
+    },
+    {
+      name: "Plumbing",
+      status: 0,
+    },
+    {
+      name: "Landscaping",
+      status: 0,
+    },
+    {
+      name: "Structural",
+      status: 1,
+    },
+    {
+      name: "Kitchen",
+      status: 1,
+    },
+  ],
+};
 
 export default InspectionHighlights;

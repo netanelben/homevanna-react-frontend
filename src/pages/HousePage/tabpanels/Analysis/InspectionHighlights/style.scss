@@ -1,7 +1,10 @@
 .InspectionHighlights {
   padding: 19px 16px 21px;
-  min-height: 866px;
   position: relative;
+
+  @media (min-width: 768px) {
+    min-height: 866px;
+  }
 
   .card-title {
     margin-bottom: 24px;
@@ -10,6 +13,14 @@
   .flex {
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  .list {
+    padding: 14px 16px;
+
+    [class*="col-"] {
+      padding: 0;
+    }
   }
 
   .inspection-item {
@@ -51,8 +62,8 @@
 
   .bottom-link {
     position: absolute;
+    bottom: 0;
     z-index: 1;
-    bottom: 0px;
-    padding-bottom: 21px;
+    padding-bottom: 22px;
   }
 }
