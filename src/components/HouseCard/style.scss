@@ -1,29 +1,39 @@
 .HouseCard {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   color: #fff;
+  line-height: 1;
 
   .header {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F259600%2Fpexels-photo-259600.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26dpr%3D1%26w%3D500&f=1&nofb=1");
     background-repeat: no-repeat;
     background-size: cover;
     height: 180px;
+    position: relative;
+
+    &:after {
+      content: "";
+      box-shadow: 1px 1px 1px #383f44;
+    }
 
     .details {
       padding: 12px 16px 10px;
+      background-color: rgba(0, 0, 0, 0.25);
 
       .btn-heart {
+        background-color: transparent;
         float: right;
         margin-bottom: -30px;
-        top: -20px;
+        top: -25px;
+        right: -8px;
         position: relative;
         color: #fff;
-        font-size: 16px;
+
+        svg {
+          font-size: 20px;
+        }
       }
 
       .price {
@@ -42,27 +52,34 @@
     background-color: #fff;
     color: #383f44;
     font-size: 12px;
-    padding: 14px 16px;
   }
 
   .address {
     max-width: 110px;
+    line-height: 110%;
   }
 
   .content {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    padding: 11px 0 14px;
+    border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+    align-items: center;
+
+    > [class*="col-"]:nth-child(1) {
+      padding-left: 28px;
+    }
+
+    > [class*="col-"]:nth-child(2) {
+      padding-right: 8px;
+    }
 
     div {
-      padding: 0 10px;
-
       &:not(:last-of-type) {
-        border-right: 1px solid #eee;
-        padding-right: 20px;
+        border-right: 1px solid rgba(74, 144, 226, 0.5);
       }
 
       span {
         display: block;
+        color: #383f44;
 
         &:first-child {
           font-size: 12px;
@@ -72,9 +89,12 @@
         &:last-child {
           font-size: 22px;
 
-          i,
           sup {
             font-size: 14px;
+          }
+
+          i {
+            font-size: 12px;
             font-style: normal;
           }
         }
@@ -83,6 +103,7 @@
   }
 
   .footer {
+    padding: 14px 16px;
     font-size: 14px;
     justify-content: space-between;
 
@@ -94,8 +115,8 @@
       }
 
       svg {
-        height: 12px !important;
-        width: 12px !important;
+        height: 11px !important;
+        width: 11px !important;
       }
     }
   }

@@ -1,5 +1,5 @@
 .DiligenceDocuments {
-  padding: 17px 16px 21px;
+  padding: 17px 16px 18px;
   min-height: 294px;
 
   .card-title {
@@ -15,6 +15,12 @@
     line-height: 1;
     font-size: 20px;
     margin-bottom: 8px;
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+      span {
+        max-width: 50%;
+      }
+    }
 
     &.no-document {
       color: rgba(55, 58, 60, 0.5);

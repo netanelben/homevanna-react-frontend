@@ -1,0 +1,15 @@
+.SimilarListing {
+  > .row {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+
+  > .row > [class*="col-"] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .HouseCard {
+    margin-bottom: 16px;
+  }
+}

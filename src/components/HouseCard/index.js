@@ -1,8 +1,13 @@
 import React from "react";
+import { Row, Col } from "reactstrap";
 import BeautyStars from "beauty-stars";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./style.scss";
 
 const HouseCard = ({
+  houseImageUrl,
   price,
   bedroomsCount,
   bathroomsCount,
@@ -16,7 +21,10 @@ const HouseCard = ({
 }) => {
   return (
     <div className="HouseCard">
-      <div className="header">
+      <div
+        className="header"
+        style={{ backgroundImage: `url(${houseImageUrl})` }}
+      >
         <div className="details">
           <div className="price">{price}</div>
           <div className="info">
@@ -24,33 +32,33 @@ const HouseCard = ({
           </div>
 
           <button className="btn-heart">
-            <i class="far fa-heart" />
+            <FontAwesomeIcon icon={faHeart} />
           </button>
         </div>
       </div>
 
-      <div className="content flex">
-        <div className="">
+      <Row className="content">
+        <Col xs="4">
           <span>Market Rent</span>
           <span>
             <sup>$</sup>
             {marketRent}
           </span>
-        </div>
-        <div className="">
+        </Col>
+        <Col xs="3">
           <span>Cap Rate</span>
           <span>
             {capRate} <sup>%</sup>
           </span>
-        </div>
-        <div className="">
+        </Col>
+        <Col xs="5">
           <span>Total Return</span>
           <span>
             <sup>$</sup>
             {totalReturn} <i>/ {returnYears} Yr</i>
           </span>
-        </div>
-      </div>
+        </Col>
+      </Row>
 
       <div className="footer flex">
         <div className="address">{address}</div>
@@ -60,6 +68,7 @@ const HouseCard = ({
             value={rating}
             editable={false}
             gap={5}
+            activeColor="FF9900"
             inactiveColor="eee"
           />
         </div>

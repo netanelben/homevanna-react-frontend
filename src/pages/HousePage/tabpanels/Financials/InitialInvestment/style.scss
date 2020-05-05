@@ -1,6 +1,10 @@
 .InitialInvestment {
   padding: 21px 24px 4px;
 
+  @media (max-width: 992px) {
+    margin-bottom: 16px;
+  }
+
   .title {
     text-transform: uppercase;
     text-align: left;

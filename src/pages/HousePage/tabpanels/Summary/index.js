@@ -6,19 +6,16 @@ import PropertyCharacteristics from "../../../../components/PropertyCharacterist
 
 const Summary = () => (
   <>
-    <Row>
-      <Col sm="12" md="8">
+    <Row className="narrow-gutter">
+      <Col md="12" lg="8">
         <Features />
       </Col>
-      <Col sm="12" md="4">
+      <Col md="12" lg="4">
         <FinancialHighlight />
       </Col>
     </Row>
-    <Row>
-      <Col sm="12">
-        <PropertyCharacteristics />
-      </Col>
-    </Row>
+
+    <PropertyCharacteristics />
   </>
 );
 

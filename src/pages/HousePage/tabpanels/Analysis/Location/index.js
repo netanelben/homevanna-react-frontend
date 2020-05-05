@@ -10,15 +10,15 @@ const Location = () => (
   <div className="Location card-box">
     <div className="card-title">Location</div>
     <Row>
-      <Col md="4">
+      <Col md="12" lg="4">
         <Houston />
       </Col>
 
-      <Col md="4">
+      <Col md="12" lg="4">
         <Neighborhood />
       </Col>
 
-      <Col md="4">
+      <Col md="12" lg="4">
         <Schools />
       </Col>
     </Row>

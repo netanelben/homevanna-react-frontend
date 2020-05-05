@@ -2,6 +2,10 @@
   padding: 18px 16px 17px;
   min-height: 395px;
 
+  @media (max-width: 992px) {
+    margin-bottom: 16px;
+  }
+
   .card-title {
     margin-bottom: 20px;
   }

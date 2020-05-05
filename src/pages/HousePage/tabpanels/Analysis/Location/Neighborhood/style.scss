@@ -6,7 +6,10 @@
   .meter-list {
     list-style-type: none;
     padding: 0;
-    max-width: 366px;
+
+    @media (min-width: 992px) {
+      max-width: 366px;
+    }
 
     li {
       &:not(:last-of-type) {
@@ -37,8 +40,6 @@
         border-radius: 8px;
         position: absolute;
         top: 0;
-        // right: calc(366px - 92px - 0%);
-        // margin-left: calc(100% - 92px);
         z-index: 1;
 
         &:after {

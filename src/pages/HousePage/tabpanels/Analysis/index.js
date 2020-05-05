@@ -8,20 +8,20 @@ import Location from "./Location";
 
 const Analysis = () => (
   <>
-    <Row>
-      <Col sm="12" md="5">
+    <Row className="narrow-gutter">
+      <Col sm="12" md="12" lg="5">
         <Valuation />
       </Col>
-      <Col sm="12" md="7">
+      <Col sm="12" md="12" lg="7">
         <DiligenceDocuments />
       </Col>
     </Row>
 
-    <Row>
-      <Col sm="12" md="6">
+    <Row className="narrow-gutter">
+      <Col md="12" lg="6">
         <InspectionHighlights />
       </Col>
-      <Col sm="12" md="6">
+      <Col md="12" lg="6">
         <LeaseAndTenant />
       </Col>
     </Row>

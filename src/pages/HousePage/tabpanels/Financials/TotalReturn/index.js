@@ -77,12 +77,16 @@ const TotalReturn = ({ amount, appreciation }) => {
         </Col>
       </Row>
 
-      <div className="cash-info flex">
-        <span>Cum Net Cash Flow</span>
-        <span className="text-large">$320,531</span>
-        <span>Sales Proceed</span>
-        <span className="text-large">$539,857</span>
-      </div>
+      <Row className="cash-info">
+        <Col sm="12" md="6">
+          <span>Cum Net Cash Flow</span>
+          <span className="text-large">$320,531</span>
+        </Col>
+        <Col sm="12" md="6">
+          <span>Sales Proceed</span>
+          <span className="text-large">$539,857</span>
+        </Col>
+      </Row>
 
       <Table borderless={true} responsive>
         <thead>

@@ -25,7 +25,7 @@ const InspectionHighlights = ({ inspectionList }) => (
     <Row className="list">
       {inspectionList.map(({ name, status = 0 }, key) => {
         return (
-          <Col xs="6" sm="4" key={key}>
+          <Col xs="6" sm="6" md="4" key={key}>
             <InspectionItem name={name} status={status} />
           </Col>
         );

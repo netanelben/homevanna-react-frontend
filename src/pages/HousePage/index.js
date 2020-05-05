@@ -4,12 +4,18 @@ import { Row, Col, TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import PageHeader from "./PageHeader";
 import SellingCard from "../../components/SellingCard";
 import PurchaseControls from "../../components/PurchaseControls";
-import { Summary, Financials, Analysis, BuyProcess } from "./tabpanels";
+import {
+  Summary,
+  Financials,
+  Analysis,
+  BuyProcess,
+  SimilarListing,
+} from "./tabpanels";
 
 import "./style.scss";
 
 const HousePage = () => {
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = useState("5");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
@@ -18,12 +24,12 @@ const HousePage = () => {
     <>
       <PageHeader />
 
-      <div className="page container">
-        <Row className="main-row">
-          <Col sm="12" md="4">
+      <div className="house-page container">
+        <Row className="main-row narrow-gutter">
+          <Col sm="12" md="12" lg="4">
             <SellingCard />
           </Col>
-          <Col sm="12" md="8">
+          <Col sm="12" md="12" lg="8">
             <PurchaseControls />
           </Col>
         </Row>
@@ -70,6 +76,7 @@ const HousePage = () => {
             Similar Listings
           </NavItem>
         </Nav>
+
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <Summary />
@@ -83,7 +90,9 @@ const HousePage = () => {
           <TabPane tabId="4">
             <BuyProcess />
           </TabPane>
-          <TabPane tabId="5">5</TabPane>
+          <TabPane tabId="5">
+            <SimilarListing />
+          </TabPane>
         </TabContent>
       </div>
     </>

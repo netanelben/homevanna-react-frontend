@@ -1,9 +1,9 @@
-@media (min-width: 768px) {
-  .row:not(.no-gutters) > [class*="col-"]:first-of-type {
+@media (min-width: 992px) {
+  .row.narrow-gutter > [class*="col-"]:first-of-type {
     padding-right: 8px;
   }
 
-  .row:not(.no-gutters) > [class*="col-"]:last-of-type {
+  .row.narrow-gutter > [class*="col-"]:last-of-type {
     padding-left: 8px;
   }
 }

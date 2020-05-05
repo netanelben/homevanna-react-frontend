@@ -39,38 +39,38 @@ const DiligenceDocuments = () => (
   <div className="DiligenceDocuments card-box">
     <div className="card-title">Diligence Documents</div>
 
-    <Row>
-      <Col sm="6">
+    <Row className="narrow-gutter">
+      <Col md="6">
         <ItemBox title="Property Valuation" downloadLink="1" />
       </Col>
-      <Col sm="6">
+      <Col md="6">
         <ItemBox title="Inspection Report" downloadLink="1" />
       </Col>
     </Row>
 
-    <Row>
-      <Col sm="6">
+    <Row className="narrow-gutter">
+      <Col md="6">
         <ItemBox title="Inspection Report 2" downloadLink="1" />
       </Col>
-      <Col sm="6">
+      <Col md="6">
         <ItemBox title="Title Report" downloadLink="1" />
       </Col>
     </Row>
 
-    <Row>
-      <Col sm="6">
+    <Row className="narrow-gutter">
+      <Col md="6">
         <ItemBox title="Ledger" downloadLink="1" />
       </Col>
-      <Col sm="6">
+      <Col md="6">
         <ItemBox title="Prelim Insurance" downloadLink="1" />
       </Col>
     </Row>
 
-    <Row>
-      <Col sm="6">
+    <Row className="narrow-gutter">
+      <Col md="6">
         <ItemBox title="Lease Abstract" />
       </Col>
-      <Col sm="6">
+      <Col md="6">
         <ItemBox title="HOA - CC&R" />
       </Col>
     </Row>

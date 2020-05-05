@@ -1,18 +1,22 @@
-.page {
+.house-page {
   margin-top: -120px;
   padding-bottom: 108px;
-}
 
-.page > .nav-tabs {
-  .nav-item {
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding-bottom: 3px;
+  .main-row {
+    margin-bottom: 44px;
+  }
 
-    &.active {
-      font-weight: 700;
-      border-bottom: 0;
+  & > .nav-tabs {
+    .nav-item {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-bottom: 3px;
+
+      &.active {
+        font-weight: 700;
+        border-bottom: 0;
+      }
     }
   }
 }
@@ -42,10 +46,8 @@
   }
 }
 
-.tab-pane > .row {
-  margin-bottom: 25px;
-}
-
-.main-row {
-  margin-bottom: 44px;
+@media (min-width: 768px) {
+  .tab-pane > .row {
+    margin-bottom: 16px;
+  }
 }

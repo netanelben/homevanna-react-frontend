@@ -9,11 +9,11 @@ const Financials = () => (
   <>
     <GrossYield />
 
-    <Row>
-      <Col sm="12" md="4">
+    <Row className="narrow-gutter">
+      <Col md="12" lg="4">
         <InitialInvestment />
       </Col>
-      <Col sm="12" md="8">
+      <Col md="12" lg="8">
         <TotalReturn />
       </Col>
     </Row>
