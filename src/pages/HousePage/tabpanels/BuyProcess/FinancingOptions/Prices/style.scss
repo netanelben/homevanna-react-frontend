@@ -1,0 +1,20 @@
+.FinancingOptions .Prices {
+  line-height: 1;
+  padding-right: 7px;
+
+  .section {
+    display: flex;
+    flex-direction: column;
+
+    &:not(:last-of-type) {
+      margin-bottom: 28px;
+    }
+  }
+
+  .bottom-statement {
+    color: #373a3c;
+    font-size: 16px;
+    line-height: 140%;
+    padding: 47px 0 0 8px;
+  }
+}

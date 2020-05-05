@@ -1,6 +1,6 @@
 .PurchaseControls {
   min-height: 304px;
-  padding: 31px 16px 25px;
+  padding: 30px 16px 16px;
 
   .title {
     color: #656d72;
@@ -16,8 +16,12 @@
   }
 
   .section {
-    &:not(:last-of-type) {
-      margin-bottom: 55px;
+    &:first-of-type {
+      margin-bottom: 56px;
+    }
+
+    &:nth-child(2) {
+      margin-bottom: 52px;
     }
   }
 

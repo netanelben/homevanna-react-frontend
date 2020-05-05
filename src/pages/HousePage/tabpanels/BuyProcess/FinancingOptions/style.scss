@@ -1,0 +1,32 @@
+.FinancingOptions {
+  padding: 20px 16px 21px;
+  line-height: 1;
+  margin-bottom: 16px;
+
+  .card-title {
+    margin-bottom: 30px;
+  }
+
+  .sub-title {
+    font-size: 20px;
+    color: #373a3c;
+    padding: 0 0 9px 8px;
+  }
+
+  .row > div {
+    padding-bottom: 50px;
+
+    @media (min-width: 768px) {
+      &:not(:last-of-type) {
+        border-right: 1px solid rgba(74, 144, 226, 0.5);
+      }
+    }
+
+    @media (max-width: 768px) {
+      &:not(:last-of-type) {
+        border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

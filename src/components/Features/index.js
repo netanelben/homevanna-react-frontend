@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col } from "reactstrap";
 import BeautyStars from "beauty-stars";
 import EmbeddedMap from "./EmbeddedMap";

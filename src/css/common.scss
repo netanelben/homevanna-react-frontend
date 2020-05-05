@@ -10,6 +10,11 @@ a {
   color: #3a9fd1;
 }
 
+input,
+.dropdown button {
+  border-color: #cccccc;
+}
+
 .flex {
   display: flex;
   justify-content: space-around;
@@ -107,4 +112,24 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.dropdown {
+  font-size: 16px;
+
+  .dropdown-toggle:after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 17px 14px;
+    z-index: 1;
+  }
+
+  button {
+    background-color: transparent;
+    border-radius: 4px;
+    width: 100%;
+    color: #383f44;
+    text-align: left;
+  }
 }
