@@ -25,11 +25,23 @@
     }
   }
 
-  .row > div:first-of-type {
-    padding-right: 24px;
+  @media (min-width: 576px) {
+    .row > div:first-of-type {
+      padding-right: 24px !important;
+    }
+
+    .row > div:last-of-type {
+      padding-left: 24px !important;
+    }
   }
 
-  .row > div:last-of-type {
-    padding-left: 24px;
+  @media (max-width: 576px) {
+    .row {
+      padding-bottom: 20px;
+
+      & > div:not(:last-of-type) {
+        margin-bottom: 50px;
+      }
+    }
   }
 }

@@ -30,6 +30,16 @@
   & + .tab-content {
     padding-top: 24px;
   }
+
+  @media (max-width: 768px) {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    .nav-item {
+      line-height: 1;
+    }
+  }
 }
 
 .tab-pane > .row {

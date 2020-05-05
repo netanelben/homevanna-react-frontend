@@ -96,8 +96,11 @@
       display: none;
     }
 
-    .links {
+    .price-and-links .links {
       flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      min-width: 180px;
     }
 
     .price-and-controls-mobile {

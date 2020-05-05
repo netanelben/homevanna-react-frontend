@@ -12,7 +12,7 @@ const PropertyCharacteristics = () => {
   };
 
   return (
-    <div className="PropertyCharacteristics card-box">
+    <div className="PropertyCharacteristics-section card-box">
       <Row>
         <Col sm="12" md="8">
           <div className="card-title">Property Characteristics</div>
@@ -35,7 +35,27 @@ const PropertyCharacteristics = () => {
             </NavItem>
           </Nav>
           <TabContent activeTab={activeTab}>
-            <TabPane tabId="1">1</TabPane>
+            <TabPane tabId="1">
+              <p>
+                Our industry-leading guarantee allows you to invest with total
+                confidence, regardless of whether the home is leased or vacant.
+              </p>
+              <ul className="list">
+                <li>
+                  All properties come with our 30-day money back guarantee
+                </li>
+                <li>
+                  Enjoy guaranteed rent on vacant properties starting 45 days
+                  after the home is rent-ready. Plus you will also pay no
+                  monthly management fees until your property is leased.
+                </li>
+                <li>
+                  This offer applies to all single-family properties and
+                  excludes properties with more than 2 units (duplex, triplex,
+                  fourplexes), commercial properties and Roofstock portfolios.
+                </li>
+              </ul>
+            </TabPane>
             <TabPane tabId="2">
               <p>
                 Our industry-leading guarantee allows you to invest with total

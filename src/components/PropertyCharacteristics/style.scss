@@ -1,4 +1,4 @@
-.PropertyCharacteristics {
+.PropertyCharacteristics-section {
   padding: 18px 16px 20px;
 
   .card-title:first-of-type {
@@ -40,6 +40,23 @@
       padding: 15px 16px 25px;
       border-radius: 2px;
       margin-bottom: 16px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .row > div {
+      padding-bottom: 30px;
+    }
+
+    .nav-tabs {
+      flex-wrap: nowrap;
+
+      .nav-item {
+        font-size: 18px;
+        line-height: 120%;
+        padding-left: 8px;
+        padding-bottom: 10px;
+      }
     }
   }
 }
