@@ -36,24 +36,26 @@ const PropertyManagementOptions = ({ companies }) => (
             </ul>
           </Col>
           <Col sm="12" md="9">
-            <div className="company-name">{name}</div>
+            <div className="table-wrapper">
+              <div className="company-name">{name}</div>
 
-            <Table borderless={true} responsive>
-              <tbody>
-                <tr>
-                  <td>Property Management Fee:</td>
-                  <td>{managementFee}% of Monthly Rent Collected</td>
-                </tr>
-                <tr>
-                  <td>Leasing Fee:</td>
-                  <td>{leasingFee}% of First Month’s Ren</td>
-                </tr>
-                <tr>
-                  <td>Renewal Leasing Fee:</td>
-                  <td>{renewalFee}% of First Month’s Rent</td>
-                </tr>
-              </tbody>
-            </Table>
+              <Table borderless={true} responsive>
+                <tbody>
+                  <tr>
+                    <td>Property Management Fee:</td>
+                    <td>{managementFee}% of Monthly Rent Collected</td>
+                  </tr>
+                  <tr>
+                    <td>Leasing Fee:</td>
+                    <td>{leasingFee}% of First Month’s Ren</td>
+                  </tr>
+                  <tr>
+                    <td>Renewal Leasing Fee:</td>
+                    <td>{renewalFee}% of First Month’s Rent</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
           </Col>
         </Row>
       )

@@ -52,7 +52,7 @@ const LoanTerms = ({ loadCompanyList }) => {
                 </div>
               </td>
               <td align="right">${payment}</td>
-              <td>
+              <td align="right">
                 <Button>Get Pre-Approved</Button>
               </td>
               <td>

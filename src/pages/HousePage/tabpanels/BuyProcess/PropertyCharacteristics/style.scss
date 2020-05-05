@@ -1,0 +1,45 @@
+.BuyProcess-PropertyCharacteristics {
+  padding: 20px 17px 61px;
+  line-height: 1;
+  margin-bottom: 16px;
+
+  .card-title {
+    margin-bottom: 28px;
+  }
+
+  .sub-title {
+    font-size: 20px;
+    color: #373a3c;
+    margin-bottom: 11px;
+  }
+
+  ul,
+  p {
+    color: #656d72;
+    font-size: 18px;
+    line-height: 130%;
+  }
+
+  ul {
+    padding-left: 30px;
+    padding-right: 15px;
+  }
+
+  .row {
+    > div {
+      padding: 38px 22px;
+    }
+
+    @media (min-width: 768px) {
+      &:not(:last-of-type) {
+        border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+      }
+    }
+
+    @media (max-width: 768px) {
+      &:not(:last-of-type) {
+        border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+      }
+    }
+  }
+}
