@@ -59,29 +59,60 @@
     padding-left: 16px;
   }
 
-  .controls {
-    padding-top: 16px;
-
-    button {
-      color: #fff;
-      font-size: 16px;
-      width: 151px;
-      height: 32px;
-      border-radius: 3px;
-    }
-  }
-
-  .controls button:first-of-type {
-    background-color: #ff9900;
+  .btn-review {
     text-transform: uppercase;
+    box-shadow: none;
   }
 
-  .controls button:last-of-type {
+  .btn-buy-now {
     color: #3a9fd1;
     background-color: transparent;
   }
 
-  .btn-primary {
-    box-shadow: none;
+  .controls-desktop {
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+
+    button {
+      font-size: 16px;
+      width: 151px;
+      border-radius: 3px;
+    }
+
+    .btn-review {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+  }
+
+  .price-and-controls-mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .price-desktop,
+    .controls-desktop {
+      display: none;
+    }
+
+    .links {
+      flex-direction: row;
+    }
+
+    .price-and-controls-mobile {
+      display: flex;
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+
+        .btn-review {
+          width: 100%;
+          height: 56px;
+          margin-bottom: 12px;
+        }
+      }
+    }
   }
 }
