@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
-import { displayNumber } from "../../../utils";
+import { displayNumber } from "../../../../utils";
 
 import "./style.scss";
 

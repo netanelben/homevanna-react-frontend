@@ -3,6 +3,7 @@ import { Row, Col } from "reactstrap";
 import BeautyStars from "beauty-stars";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
@@ -26,7 +27,7 @@ const HouseCard = ({
         style={{ backgroundImage: `url(${houseImageUrl})` }}
       >
         <div className="details">
-          <div className="price">{price}</div>
+          <div className="price">${displayNumber(price)}</div>
           <div className="info">
             {bedroomsCount}bds | {bathroomsCount}ba | {size} Sq Ft
           </div>
@@ -42,7 +43,7 @@ const HouseCard = ({
           <span>Market Rent</span>
           <span>
             <sup>$</sup>
-            {marketRent}
+            {displayNumber(marketRent)}
           </span>
         </Col>
         <Col xs="3">
@@ -55,7 +56,7 @@ const HouseCard = ({
           <span>Total Return</span>
           <span>
             <sup>$</sup>
-            {totalReturn} <i>/ {returnYears} Yr</i>
+            {displayNumber(totalReturn)} <i>/ {returnYears} Yr</i>
           </span>
         </Col>
       </Row>
@@ -78,10 +79,10 @@ const HouseCard = ({
 };
 
 HouseCard.defaultProps = {
-  price: "$2,889,000",
-  marketRent: "4,302",
+  price: 2889000,
+  marketRent: 4302,
   capRate: "8.23",
-  totalReturn: "58,874",
+  totalReturn: 58874,
   returnYears: "5",
   address: "123 Fale St. Venice, CA, 90210",
   bedroomsCount: 2,

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import { Row, Col, TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import PageHeader from "./PageHeader";
-import SellingCard from "../../components/SellingCard";
-import PurchaseControls from "../../components/PurchaseControls";
+import SellingCard from "./SellingCard";
+import PurchaseControls from "./PurchaseControls";
 import {
   Summary,
   Financials,

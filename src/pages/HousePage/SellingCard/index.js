@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Input, Button } from "reactstrap";
-import { displayNumber } from "../../utils";
+import { displayNumber } from "../../../utils";
 import "./style.scss";
 
 const SellingCard = ({ price, listPrice }) => {
