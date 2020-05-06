@@ -1,8 +1,8 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
-import FinancialHighlight from "../../../../components/FinancialHighlight";
-import Features from "../../../../components/Features";
-import PropertyCharacteristics from "../../../../components/PropertyCharacteristics";
+import FinancialHighlight from "./FinancialHighlight";
+import Features from "./Features";
+import PropertyCharacteristics from "./PropertyCharacteristics";
 
 const Summary = () => (
   <>
