@@ -6,6 +6,8 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import { displayNumber } from "../../../../../../utils";
+
 import "./style.scss";
 
 const Prices = () => {
@@ -19,7 +21,7 @@ const Prices = () => {
     <div className="Prices">
       <div className="section">
         <div className="sub-title">Property Price</div>
-        <Input placeholder="$395,000" />
+        <Input placeholder={`$${displayNumber(395000)}`} />
       </div>
 
       <div className="section">

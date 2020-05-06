@@ -104,7 +104,8 @@
       flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
-      min-width: 180px;
+      width: 100%;
+      max-width: 170px;
     }
 
     .price-and-controls-mobile {
@@ -120,6 +121,13 @@
           margin-bottom: 12px;
         }
       }
+    }
+  }
+
+  @media (max-width: 400px) {
+    .price-and-links .links {
+      flex-direction: column;
+      align-items: flex-end;
     }
   }
 }

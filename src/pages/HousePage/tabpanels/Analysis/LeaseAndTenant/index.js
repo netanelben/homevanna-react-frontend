@@ -1,5 +1,7 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
+import { displayNumber } from "../../../../../utils";
+
 import "./style.scss";
 
 const LeaseAndTenant = ({
@@ -29,7 +31,7 @@ const LeaseAndTenant = ({
         <div className="value">{rentPaymentStatus}</div>
 
         <div className="sub-title">Security Deposit</div>
-        <div className="value">${securityDeposit}</div>
+        <div className="value">${displayNumber(securityDeposit)}</div>
 
         <div className="sub-title">Original Lease Start Date</div>
         <div className="value">{originalLeaseStartDate}</div>
@@ -50,7 +52,7 @@ const LeaseAndTenant = ({
         <div className="value">{sectionEight}</div>
 
         <div className="sub-title">Pet Fee Amount</div>
-        <div className="value">${petFeeAmount}</div>
+        <div className="value">${displayNumber(petFeeAmount)}</div>
 
         <div className="sub-title">Pet Deposits</div>
         <div className="value">{petDeposits}</div>
@@ -80,13 +82,13 @@ const LeaseAndTenant = ({
 LeaseAndTenant.defaultProps = {
   occupied: true,
   rentPaymentStatus: "Current",
-  securityDeposit: "3,000",
+  securityDeposit: 3000,
   originalLeaseStartDate: "07/25/2017",
   leaseEndDate: "05/31/2022",
   leaseConcessions: "No",
   tenantPurchaseOption: "Not Applicable",
   sectionEight: "Not Applicable",
-  petFeeAmount: "250",
+  petFeeAmount: 250,
   petDeposits: "Not Applicable",
   ownerResponsible: "None",
   tenantResponsible: "Gas, Water, Electric, Garbage, Lawn, Pest Ctrl",

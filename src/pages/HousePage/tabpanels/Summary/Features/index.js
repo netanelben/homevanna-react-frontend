@@ -8,6 +8,7 @@ import {
   faGraduationCap,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
@@ -63,7 +64,7 @@ const Features = ({
             </li>
             <li className="flex">
               <span>Lot Size</span>
-              <span>{lotSize}</span>
+              <span>{displayNumber(lotSize)}</span>
             </li>
             <li className="flex">
               <span>Least Start</span>
@@ -92,7 +93,7 @@ const Features = ({
 
 Features.defaultProps = {
   occupancy: "Occupied",
-  lotSize: "6,200",
+  lotSize: 6200,
   leastStart: "12/25/2019",
   leastEnd: "12/25/2019",
   HOA: "None",

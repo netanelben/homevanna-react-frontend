@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Row, Col, TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
 import classnames from "classnames";
+import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
-const TotalReturn = ({ amount, appreciation }) => {
+const TotalReturn = ({
+  amount,
+  appreciation,
+  cumNetCashFlow,
+  salesProceed,
+}) => {
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -15,27 +21,15 @@ const TotalReturn = ({ amount, appreciation }) => {
       <Row noGutters>
         <Col sm="6">
           <div className="title">TOTAL RETURN</div>
-          <div className="price-large">${amount}</div>
+          <div className="price-large">${displayNumber(amount)}</div>
         </Col>
 
         <Col sm="6">
-          <TabContent activeTab={activeTab}>
-            <TabPane tabId="1">
+          <TabContent>
+            <TabPane>
               <div className="title flex">
                 Appreciation
                 <span>{appreciation}%</span>
-              </div>
-            </TabPane>
-            <TabPane tabId="2">
-              <div className="title flex">
-                Appreciation
-                <span>$368,760</span>
-              </div>
-            </TabPane>
-            <TabPane tabId="3">
-              <div className="title flex">
-                Appreciation
-                <span>$468,760</span>
               </div>
             </TabPane>
           </TabContent>
@@ -80,11 +74,11 @@ const TotalReturn = ({ amount, appreciation }) => {
       <Row className="cash-info">
         <Col sm="12" md="6">
           <span>Cum Net Cash Flow</span>
-          <span className="text-large">$320,531</span>
+          <span className="text-large">${displayNumber(cumNetCashFlow)}</span>
         </Col>
         <Col sm="12" md="6">
           <span>Sales Proceed</span>
-          <span className="text-large">$539,857</span>
+          <span className="text-large">${displayNumber(salesProceed)}</span>
         </Col>
       </Row>
 
@@ -120,8 +114,10 @@ const TotalReturn = ({ amount, appreciation }) => {
 };
 
 TotalReturn.defaultProps = {
-  amount: "318,710",
-  appreciation: "4.4",
+  amount: 318710,
+  appreciation: 4.4,
+  cumNetCashFlow: 320531,
+  salesProceed: 539857,
 };
 
 export default TotalReturn;

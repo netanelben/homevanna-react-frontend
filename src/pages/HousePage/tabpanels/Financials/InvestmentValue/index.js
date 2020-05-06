@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
 import classnames from "classnames";
 import Chart from "./Chart";
+import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
@@ -60,7 +61,7 @@ const InvestmentValue = () => {
               <tr>
                 <td>Cumulative Net Cash Flow</td>
                 <td>
-                  $34,974
+                  ${displayNumber(34974)}
                   <div className="text-small">$1.709/mo</div>
                 </td>
                 <td>

@@ -25,8 +25,8 @@ input,
 
   .nav-item {
     color: #3a9fd1;
-    padding: 0 8px;
     font-size: 16px;
+    padding: 0 8px 4px 8px;
     cursor: pointer;
 
     &:hover {
@@ -37,12 +37,18 @@ input,
       color: #383f44;
       border: 0;
       border-bottom: 4px solid #66ccff;
+      padding: 0 8px 3px 8px;
     }
   }
 
   &.upper-border {
-    .nav-item.active {
-      line-height: 150%;
+    .nav-item {
+      padding: 7px 8px;
+
+      &.active {
+        line-height: 150%;
+        padding-top: 3px;
+      }
     }
   }
 }

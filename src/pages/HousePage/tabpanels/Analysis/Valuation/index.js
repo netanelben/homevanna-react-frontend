@@ -1,11 +1,15 @@
 import React from "react";
+import { displayNumber } from "../../../../../utils";
+
 import "./style.scss";
 
 const Valuation = ({ valuationData = null }) => (
   <div className="Valuation card-box">
     <div className="card-title">Valuation</div>
     <div className="prop-value">Property Value</div>
-    <div className="price-large">$318,710 - $420,000</div>
+    <div className="price-large">
+      ${displayNumber(318710)} - ${displayNumber(420000)}
+    </div>
     <div className="rental-value">Rental Value</div>
 
     <div className="value-date">

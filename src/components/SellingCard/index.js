@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Input, Button } from "reactstrap";
+import { displayNumber } from "../../utils";
 import "./style.scss";
 
 const SellingCard = ({ price, listPrice }) => {
@@ -13,7 +14,7 @@ const SellingCard = ({ price, listPrice }) => {
       <span className="type">Initial Investment</span>
 
       <div className="price-and-links flex">
-        <span className="price-large">${price}</span>
+        <span className="price-large">${displayNumber(price)}</span>
         <div className="links">
           <a href="#">Share</a>
           <a href="#">Add to Cart</a>
@@ -21,7 +22,7 @@ const SellingCard = ({ price, listPrice }) => {
         </div>
       </div>
 
-      <div className="list-price">List Price: ${listPrice}</div>
+      <div className="list-price">List Price: ${displayNumber(listPrice)}</div>
 
       <Input value="$260,200" className="price-desktop" />
 
@@ -47,8 +48,8 @@ const SellingCard = ({ price, listPrice }) => {
 };
 
 SellingCard.defaultProps = {
-  price: "318,710",
-  listPrice: "314,000",
+  price: 318710,
+  listPrice: 314000,
 };
 
 export default SellingCard;

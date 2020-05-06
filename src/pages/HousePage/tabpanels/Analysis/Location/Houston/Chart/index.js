@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import Chartist from "chartist";
+import { displayNumber } from "../../../../../../../utils";
+
 import "./style.scss";
 
 const CHART_LABELS = ["2012", "2014", "2016", "2018"];
@@ -22,7 +24,7 @@ const Chart = () => {
         height: 460,
         axisY: {
           labelInterpolationFnc: (value) => {
-            return `$${value}`;
+            return `$${displayNumber(value)}`;
           },
         },
       }

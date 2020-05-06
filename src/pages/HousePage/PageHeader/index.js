@@ -26,9 +26,11 @@ const PageHeader = ({ coverImageUrl, images }) => {
       />
 
       <Slider {...settings}>
-        <div>
-          <img src="" />
-        </div>
+        {images.map((imageUrl, key) => (
+          <div key={key}>
+            <img src={imageUrl} />
+          </div>
+        ))}
       </Slider>
 
       <div className="container flex">
@@ -40,8 +42,8 @@ const PageHeader = ({ coverImageUrl, images }) => {
         <div className="gallery">
           Gallery ({images.length})
           <ul>
-            {chunkedImageList.map((imageUrl) => (
-              <li style={{ backgroundImage: `url(${imageUrl})` }} />
+            {chunkedImageList.map((imageUrl, key) => (
+              <li key={key} style={{ backgroundImage: `url(${imageUrl})` }} />
             ))}
           </ul>
         </div>

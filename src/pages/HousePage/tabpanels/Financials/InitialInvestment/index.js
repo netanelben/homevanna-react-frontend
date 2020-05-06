@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
+import { displayNumber } from "../../../../../utils";
 
+import "rc-slider/assets/index.css";
 import "./style.scss";
 
 const MIN_PURCHASE_PRICE = 100000;
@@ -18,12 +19,12 @@ const InitialInvestment = ({ amount }) => {
     <div className="InitialInvestment card-box">
       <div className="title">Initial Investment</div>
 
-      <div className="price-large">${amount}</div>
+      <div className="price-large">${displayNumber(amount)}</div>
 
       <div className="section">
         <div className="flex">
           Purchase Price
-          <span>${purchasePrice}</span>
+          <span>${displayNumber(purchasePrice)}</span>
         </div>
         <Slider
           value={purchasePrice}
@@ -75,7 +76,7 @@ const InitialInvestment = ({ amount }) => {
       <div className="section">
         <div className="flex">
           Est. Immediate Costs
-          <span>${estImmediateCosts}</span>
+          <span>${displayNumber(estImmediateCosts)}</span>
         </div>
         <Slider
           value={estImmediateCosts}
@@ -89,7 +90,7 @@ const InitialInvestment = ({ amount }) => {
 };
 
 InitialInvestment.defaultProps = {
-  amount: "643,082",
+  amount: 643082,
 };
 
 export default InitialInvestment;

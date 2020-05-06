@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
+import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
@@ -46,21 +47,21 @@ const FinancialHighlight = ({
           Year 5
         </NavItem>
       </Nav>
-      <TabContent activeTab={activeTab}>
-        <TabPane tabId="1">
+      <TabContent>
+        <TabPane>
           <div className="list-with-link">
             <ul className="list">
               <li className="flex">
                 <span>Expected Rent</span>
-                <span>${expectedRent}</span>
+                <span>${displayNumber(expectedRent)}</span>
               </li>
               <li className="flex">
                 <span>Expenses</span>
-                <span>-${expenses}</span>
+                <span>-${displayNumber(expenses)}</span>
               </li>
               <li className="flex">
                 <span>Property Taxes</span>
-                <span>-${propertyTaxes}</span>
+                <span>-${displayNumber(propertyTaxes)}</span>
               </li>
               <li className="flex">
                 <span>Loan Payments</span>
@@ -68,26 +69,24 @@ const FinancialHighlight = ({
               </li>
               <li className="flex">
                 <span>Net Cash Flow</span>
-                <span>${netCashFlow}</span>
+                <span>${displayNumber(netCashFlow)}</span>
               </li>
             </ul>
 
             <a href="#">> See more in Financials</a>
           </div>
         </TabPane>
-        <TabPane tabId="2">2</TabPane>
-        <TabPane tabId="3">3</TabPane>
       </TabContent>
     </div>
   );
 };
 
 FinancialHighlight.defaultProps = {
-  expectedRent: "9,405",
-  expenses: "3,130",
-  propertyTaxes: "2,100",
+  expectedRent: 9405,
+  expenses: 3130,
+  propertyTaxes: 2100,
   loanPayments: 0,
-  netCashFlow: "4,175",
+  netCashFlow: 4175,
 };
 
 export default FinancialHighlight;

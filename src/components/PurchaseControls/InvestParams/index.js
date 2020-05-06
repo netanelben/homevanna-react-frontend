@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
+import { displayNumber } from "../../../utils";
 
 import "./style.scss";
 
@@ -18,29 +19,11 @@ const InvestParams = ({
 
   return (
     <div className="InvestParams">
-      <TabContent activeTab={activeTab}>
-        <TabPane tabId="1">
+      <TabContent>
+        <TabPane>
           <div className="title flex">
             Total Return
-            <span>$268,760</span>
-          </div>
-        </TabPane>
-        <TabPane tabId="2">
-          <div className="title flex">
-            Total Return
-            <span>$368,760</span>
-          </div>
-        </TabPane>
-        <TabPane tabId="3">
-          <div className="title flex">
-            Total Return
-            <span>$468,760</span>
-          </div>
-        </TabPane>
-        <TabPane tabId="5">
-          <div className="title flex">
-            Total Return
-            <span>$568,760</span>
+            <span>${displayNumber(268760)}</span>
           </div>
         </TabPane>
       </TabContent>
@@ -95,7 +78,7 @@ const InvestParams = ({
         </li>
         <li className="flex">
           <span>Cash Flow</span>
-          <span>${cashFlow}</span>
+          <span>${displayNumber(cashFlow)}</span>
         </li>
         <li className="flex">
           <span>Appreciation</span>
@@ -110,7 +93,7 @@ InvestParams.defaultProps = {
   annualizedReturn: "7.7",
   capRate: "8.2",
   grossYield: "17.1",
-  cashFlow: "4,175",
+  cashFlow: 4175,
   appreciation: "3.0",
 };
 

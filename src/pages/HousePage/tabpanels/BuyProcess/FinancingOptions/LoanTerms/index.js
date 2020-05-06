@@ -7,6 +7,7 @@ import {
   DropdownItem,
   Button,
 } from "reactstrap";
+import { displayNumber } from "../../../../../../utils";
 
 import "./style.scss";
 
@@ -46,12 +47,12 @@ const LoanTerms = ({ loadCompanyList }) => {
               <td align="right">
                 {rate}%
                 <div className="text-small">
-                  Fees: ${fees}
+                  Fees: ${displayNumber(fees)}
                   <br />
                   APR: {apr}%
                 </div>
               </td>
-              <td align="right">${payment}</td>
+              <td align="right">${displayNumber(payment)}</td>
               <td align="right">
                 <Button>Get Pre-Approved</Button>
               </td>
@@ -76,14 +77,14 @@ LoanTerms.defaultProps = {
     {
       logoUrl: "",
       rate: 4.25,
-      payment: "1,457",
-      fees: "1,795",
+      payment: 1457,
+      fees: 1795,
       apr: 4.28,
     },
     {
       logoUrl: "",
       rate: 4.875,
-      payment: "1,568",
+      payment: 1568,
       fees: "0",
       apr: 4.875,
     },
