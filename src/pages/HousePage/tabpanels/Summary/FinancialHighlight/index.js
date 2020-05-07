@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
+import Tooltip from "../../../../../components/Tooltip";
 import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
@@ -53,22 +54,27 @@ const FinancialHighlight = ({
             <ul className="list">
               <li className="flex">
                 <span>Expected Rent</span>
+                <Tooltip context="ExpectedRent" />
                 <span>${displayNumber(expectedRent)}</span>
               </li>
               <li className="flex">
                 <span>Expenses</span>
+                <Tooltip context="Expenses" />
                 <span>-${displayNumber(expenses)}</span>
               </li>
               <li className="flex">
                 <span>Property Taxes</span>
+                <Tooltip context="PropertyTaxes" />
                 <span>-${displayNumber(propertyTaxes)}</span>
               </li>
               <li className="flex">
                 <span>Loan Payments</span>
+                <Tooltip context="LoanPayments" />
                 <span>-${loanPayments}</span>
               </li>
               <li className="flex">
                 <span>Net Cash Flow</span>
+                <Tooltip context="NetCashFlow" />
                 <span>${displayNumber(netCashFlow)}</span>
               </li>
             </ul>

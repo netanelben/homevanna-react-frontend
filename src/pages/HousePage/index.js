@@ -11,6 +11,7 @@ import {
   BuyProcess,
   SimilarListing,
 } from "./tabpanels";
+import ContextWrapper from "../../utils/Context";
 
 import "./style.scss";
 
@@ -21,7 +22,7 @@ const HousePage = () => {
   };
 
   return (
-    <>
+    <ContextWrapper>
       <PageHeader />
 
       <div className="house-page container">
@@ -95,7 +96,7 @@ const HousePage = () => {
           </TabPane>
         </TabContent>
       </div>
-    </>
+    </ContextWrapper>
   );
 };
 

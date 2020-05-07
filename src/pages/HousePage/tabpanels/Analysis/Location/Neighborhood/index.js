@@ -21,8 +21,8 @@ const Meter = ({ value = 0, name, legend = [] }) => {
         <span style={style} />
       </div>
       <div className="legend">
-        {legend.map((l) => (
-          <span>{l}</span>
+        {legend.map((label, key) => (
+          <span key={key}>{label}</span>
         ))}
       </div>
     </li>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Table } from "reactstrap";
+import Tooltip from "../../../../../components/Tooltip";
 
 import "./style.scss";
 
@@ -42,15 +43,24 @@ const PropertyManagementOptions = ({ companies }) => (
               <Table borderless={true} responsive>
                 <tbody>
                   <tr>
-                    <td>Property Management Fee:</td>
+                    <td>
+                      Property Management Fee:
+                      <Tooltip context="PropertyManagementFee" />
+                    </td>
                     <td>{managementFee}% of Monthly Rent Collected</td>
                   </tr>
                   <tr>
-                    <td>Leasing Fee:</td>
+                    <td>
+                      Leasing Fee:
+                      <Tooltip context="LeasingFee" />
+                    </td>
                     <td>{leasingFee}% of First Month’s Ren</td>
                   </tr>
                   <tr>
-                    <td>Renewal Leasing Fee:</td>
+                    <td>
+                      Renewal Leasing Fee:
+                      <Tooltip context="RenewalLeasingFee" />
+                    </td>
                     <td>{renewalFee}% of First Month’s Rent</td>
                   </tr>
                 </tbody>

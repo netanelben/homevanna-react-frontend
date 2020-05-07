@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
 import _ from "lodash";
+import { PageContext } from "../../../utils";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.scss";
@@ -15,8 +17,10 @@ const settings = {
   slidesToScroll: 1,
 };
 
-const PageHeader = ({ coverImageUrl, images }) => {
-  const chunkedImageList = _.chunk(images, 5)[0];
+const PageHeader = ({ coverImageUrl }) => {
+  const { address, images } = useContext(PageContext)[0];
+
+  const chunkedImageList = images.slice(0, 5);
 
   return (
     <div className="PageHeader">
@@ -35,8 +39,11 @@ const PageHeader = ({ coverImageUrl, images }) => {
 
       <div className="container flex">
         <div>
-          <div className="address-line-1">3132 Abbey Dr Sw</div>
-          <div className="address-line-2">Atlanta, GA 30311</div>
+          <div className="address-line-1">{address.split(",")[0]}</div>
+          <div className="address-line-2">
+            {address.split(",")[1]} {address.split(",")[2]}{" "}
+            {address.split(",")[3]}
+          </div>
         </div>
 
         <div className="gallery">
@@ -55,15 +62,6 @@ const PageHeader = ({ coverImageUrl, images }) => {
 PageHeader.defaultProps = {
   coverImageUrl:
     "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
-  images: [
-    "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
-    "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
-    "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
-    "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
-    "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
-    "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
-    "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
-  ],
 };
 
 export default PageHeader;

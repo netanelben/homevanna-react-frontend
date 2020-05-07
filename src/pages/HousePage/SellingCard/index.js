@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col, Input, Button } from "reactstrap";
-import { displayNumber } from "../../../utils";
+import {
+  PageContext,
+  calcInvestmentPrice,
+  displayNumber,
+} from "../../../utils";
+
 import "./style.scss";
 
-const SellingCard = ({ price, listPrice }) => {
+const SellingCard = () => {
+  const { price } = useContext(PageContext)[0];
+
+  const totalInitialInvestment = calcInvestmentPrice(price);
+
   return (
     <div className="SellingCard card-box">
       <div className="header flex">
@@ -14,7 +23,9 @@ const SellingCard = ({ price, listPrice }) => {
       <span className="type">Initial Investment</span>
 
       <div className="price-and-links flex">
-        <span className="price-large">${displayNumber(price)}</span>
+        <span className="price-large">
+          ${displayNumber(totalInitialInvestment)}
+        </span>
         <div className="links">
           <a href="#">Share</a>
           <a href="#">Add to Cart</a>
@@ -22,7 +33,7 @@ const SellingCard = ({ price, listPrice }) => {
         </div>
       </div>
 
-      <div className="list-price">List Price: ${displayNumber(listPrice)}</div>
+      <div className="list-price">List Price: ${displayNumber(price)}</div>
 
       <Input value="$260,200" className="price-desktop" />
 
@@ -45,11 +56,6 @@ const SellingCard = ({ price, listPrice }) => {
       </Row>
     </div>
   );
-};
-
-SellingCard.defaultProps = {
-  price: 318710,
-  listPrice: 314000,
 };
 
 export default SellingCard;

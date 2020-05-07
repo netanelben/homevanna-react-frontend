@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
 import classnames from "classnames";
+import Tooltip from "../../../../../components/Tooltip";
 import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
@@ -20,7 +21,10 @@ const TotalReturn = ({
     <div className="TotalReturn card-box">
       <Row noGutters>
         <Col sm="6">
-          <div className="title">TOTAL RETURN</div>
+          <div className="title">
+            TOTAL RETURN
+            <Tooltip context="TotalReturn" />
+          </div>
           <div className="price-large">${displayNumber(amount)}</div>
         </Col>
 
@@ -29,6 +33,7 @@ const TotalReturn = ({
             <TabPane>
               <div className="title flex">
                 Appreciation
+                <Tooltip context="Appreciation" />
                 <span>{appreciation}%</span>
               </div>
             </TabPane>
@@ -73,11 +78,17 @@ const TotalReturn = ({
 
       <Row className="cash-info">
         <Col sm="12" md="6">
-          <span>Cum Net Cash Flow</span>
+          <span>
+            Cum Net Cash Flow
+            <Tooltip context="CumNetCashFlow" />
+          </span>
           <span className="text-large">${displayNumber(cumNetCashFlow)}</span>
         </Col>
         <Col sm="12" md="6">
-          <span>Sales Proceed</span>
+          <span>
+            Sales Proceed
+            <Tooltip context="SalesProceed" />
+          </span>
           <span className="text-large">${displayNumber(salesProceed)}</span>
         </Col>
       </Row>

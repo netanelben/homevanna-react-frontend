@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
 import classnames from "classnames";
 import Chart from "./Chart";
+import Tooltip from "../../../../../components/Tooltip";
 import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
@@ -43,7 +44,10 @@ const InvestmentValue = () => {
 
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          <div className="title">Est. Investment Value Over Time</div>
+          <div className="title">
+            Est. Investment Value Over Time
+            <Tooltip context="EstInvestmentValueOverTime" />
+          </div>
 
           <Chart />
 
@@ -59,7 +63,10 @@ const InvestmentValue = () => {
             </thead>
             <tbody>
               <tr>
-                <td>Cumulative Net Cash Flow</td>
+                <td>
+                  Cumulative Net Cash Flow
+                  <Tooltip context="CumulativeNetCashFlow" />
+                </td>
                 <td>
                   ${displayNumber(34974)}
                   <div className="text-small">$1.709/mo</div>
@@ -75,21 +82,30 @@ const InvestmentValue = () => {
                 </td>
               </tr>
               <tr>
-                <td>Cumulative Appreciation Gain</td>
+                <td>
+                  Cumulative Appreciation Gain
+                  <Tooltip context="CumulativeAppreciationGain" />
+                </td>
                 <td>$34,974</td>
                 <td>$76,048</td>
                 <td>$45,093</td>
                 <td>$39,962</td>
               </tr>
               <tr>
-                <td>Equity Build Up</td>
+                <td>
+                  Equity Build Up
+                  <Tooltip context="EquityBuildUp" />
+                </td>
                 <td>$34,974</td>
                 <td>$76,048</td>
                 <td>$45,093</td>
                 <td>$39,962</td>
               </tr>
               <tr>
-                <td>Total Investment Value</td>
+                <td>
+                  Total Investment Value
+                  <Tooltip context="TotalInvestmentValue" />
+                </td>
                 <td>$466,083</td>
                 <td>$763,048</td>
                 <td>$845,093</td>

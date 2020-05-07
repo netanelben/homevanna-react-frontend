@@ -8,6 +8,7 @@ import {
   faGraduationCap,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Tooltip from "../../../../../components/Tooltip";
 import { displayNumber } from "../../../../../utils";
 
 import "./style.scss";
@@ -80,6 +81,7 @@ const Features = ({
             </li>
             <li className="flex">
               <span>Flood Risk</span>
+              <Tooltip context="FloodRisk" />
               <span>{floodRisk}</span>
             </li>
           </ul>

@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
 import Slider from "rc-slider";
-import { displayNumber } from "../../../../utils";
+import Tooltip from "../../../../components/Tooltip";
+import { PageContext, displayNumber } from "../../../../utils";
 
 import "rc-slider/assets/index.css";
 import "./style.scss";
 
-const MIN_PURCHASE_PRICE = 100000;
-const MAX_PURCHASE_PRICE = 500000;
-
 const PriceParams = () => {
-  const [purchasePrice, setPurchasePrice] = useState(314000);
+  const { price } = useContext(PageContext)[0];
+
+  const MIN_PURCHASE_PRICE = price * 0.5;
+  const MAX_PURCHASE_PRICE = price * 1.5;
+
+  const [purchasePrice, setPurchasePrice] = useState(MIN_PURCHASE_PRICE);
   const [downPayment, setDownPayment] = useState(80);
 
   const [activeTab, setActiveTab] = useState("1");
@@ -24,6 +27,7 @@ const PriceParams = () => {
       <div className="section">
         <div className="title flex">
           Purchase Price
+          <Tooltip context="PurchasePrice" />
           <span>${displayNumber(purchasePrice)}</span>
         </div>
         <Slider
@@ -37,6 +41,7 @@ const PriceParams = () => {
       <div className="section">
         <div className="title flex">
           Down Payment
+          <Tooltip context="DownPayment" />
           <span>{downPayment}%</span>
         </div>
         <Slider
@@ -52,6 +57,7 @@ const PriceParams = () => {
           <TabPane>
             <div className="title flex">
               Rent
+              <Tooltip context="Rent" />
               <span>${displayNumber(2400)}</span>
             </div>
           </TabPane>

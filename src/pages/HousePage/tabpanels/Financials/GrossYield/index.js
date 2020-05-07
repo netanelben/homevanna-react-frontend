@@ -1,5 +1,7 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
+import Tooltip from "../../../../../components/Tooltip";
+
 import "./style.scss";
 
 const GrossYield = () => (
@@ -7,28 +9,40 @@ const GrossYield = () => (
     <Row>
       <Col xs="6" sm="4" md="3" lg="2">
         <div className="section">
-          <div>Gross yield</div>
+          <div>
+            Gross yield
+            <Tooltip context="GrossYield" />
+          </div>
           <span>9.6%</span>
         </div>
       </Col>
 
       <Col xs="6" sm="4" md="3" lg="2">
         <div className="section">
-          <div>Gross yield</div>
+          <div>
+            Gross yield
+            <Tooltip context="GrossYield" />
+          </div>
           <span>9.6%</span>
         </div>
       </Col>
 
       <Col xs="6" sm="4" md="3" lg="2">
         <div className="section">
-          <div>CASH ON CASH</div>
+          <div>
+            CASH ON CASH
+            <Tooltip context="CashOnCash" />
+          </div>
           <span>9.6%</span>
         </div>
       </Col>
 
       <Col xs="6" sm="4" md="3" lg="2">
         <div className="section">
-          <div>ANN. RETURN</div>
+          <div>
+            ANN. RETURN
+            <Tooltip context="AnnReturn" />
+          </div>
           <span>
             8.1%
             <span className="lower-text">in 5 Years</span>

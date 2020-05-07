@@ -7,8 +7,8 @@ import "./style.scss";
 const SimilarListing = ({ houseList }) => (
   <div className="SimilarListing">
     <Row className="narrow-gutter">
-      {houseList.map((house) => (
-        <Col xs="12" sm="6" md="4" lg="3">
+      {houseList.map((house, key) => (
+        <Col xs="12" sm="6" md="4" lg="3" key={key}>
           <HouseCard {...house} />
         </Col>
       ))}

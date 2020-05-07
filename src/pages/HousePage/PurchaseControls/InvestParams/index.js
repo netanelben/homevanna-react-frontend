@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
+import Tooltip from "../../../../components/Tooltip";
 import { displayNumber } from "../../../../utils";
 
 import "./style.scss";
@@ -23,6 +24,7 @@ const InvestParams = ({
         <TabPane>
           <div className="title flex">
             Total Return
+            <Tooltip context="TotalReturn" />
             <span>${displayNumber(268760)}</span>
           </div>
         </TabPane>
@@ -66,22 +68,27 @@ const InvestParams = ({
       <ul className="list">
         <li className="flex">
           <span>Annualized Return</span>
+          <Tooltip context="AnnualizedReturn" />
           <span>{annualizedReturn}%</span>
         </li>
         <li className="flex">
           <span>Cap Rate</span>
+          <Tooltip context="CapRate" />
           <span>{capRate}%</span>
         </li>
         <li className="flex">
           <span>Gross Yield</span>
+          <Tooltip context="GrossYield" />
           <span>{grossYield}%</span>
         </li>
         <li className="flex">
           <span>Cash Flow</span>
+          <Tooltip context="CashFlow" />
           <span>${displayNumber(cashFlow)}</span>
         </li>
         <li className="flex">
           <span>Appreciation</span>
+          <Tooltip context="Appreciation" />
           <span>{appreciation}%</span>
         </li>
       </ul>

@@ -1,5 +1,7 @@
 import React from "react";
 import Chart from "./Chart";
+import Tooltip from "../../../../../../components/Tooltip";
+
 import "./style.scss";
 
 const Houston = () => (
@@ -9,7 +11,10 @@ const Houston = () => (
       <a href="#">See more data</a>
     </div>
 
-    <div className="chart-title">Rent Change</div>
+    <div className="chart-title">
+      Rent Change
+      <Tooltip context="RentChange" />
+    </div>
 
     <Chart />
   </div>
