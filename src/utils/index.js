@@ -1,7 +1,7 @@
 import tooltips from "./tooltips.json";
 import { PageContext } from "./Context";
 
-export const displayNumber = (number) => number.toLocaleString("en-US");
+export const displayNumber = (number) => number.toLocaleString("en-US") || 0;
 
 export const displayTooltip = (context) => tooltips[context] || "n/a";
 

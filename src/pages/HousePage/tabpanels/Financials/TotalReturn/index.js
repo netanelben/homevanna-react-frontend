@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Row, Col, TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
+import Slider from "rc-slider";
 import classnames from "classnames";
 import Tooltip from "../../../../../components/Tooltip";
-import { displayNumber } from "../../../../../utils";
+import { PageContext, displayNumber } from "../../../../../utils";
+import {
+  MIN_APPRECIATION_RATE,
+  MAX_APPRECIATION_RATE,
+} from "../../../../../utils/config";
 
+import "rc-slider/assets/index.css";
 import "./style.scss";
 
-const TotalReturn = ({
-  amount,
-  appreciation,
-  cumNetCashFlow,
-  salesProceed,
-}) => {
+const TotalReturn = ({ amount, cumNetCashFlow, salesProceed }) => {
+  const { appreciation } = useContext(PageContext)[0];
+  const dispatch = useContext(PageContext)[1];
+
+  const handleAppreciationChange = (value) => {
+    dispatch({ type: "APPRECIATION_RATE_CHANGE", payload: value });
+  };
+
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -36,6 +44,17 @@ const TotalReturn = ({
                 <Tooltip context="Appreciation" />
                 <span>{appreciation}%</span>
               </div>
+
+              {activeTab === "custom" && (
+                <Slider
+                  className="appreciation-slider"
+                  value={appreciation}
+                  onChange={handleAppreciationChange}
+                  step={0.5}
+                  min={MIN_APPRECIATION_RATE}
+                  max={MAX_APPRECIATION_RATE}
+                />
+              )}
             </TabPane>
           </TabContent>
 
@@ -65,9 +84,9 @@ const TotalReturn = ({
               Proj. 5 Yr.
             </NavItem>
             <NavItem
-              className={classnames({ active: activeTab === "4" })}
+              className={classnames({ active: activeTab === "custom" })}
               onClick={() => {
-                toggle("4");
+                toggle("custom");
               }}
             >
               Custom
@@ -126,7 +145,6 @@ const TotalReturn = ({
 
 TotalReturn.defaultProps = {
   amount: 318710,
-  appreciation: 4.4,
   cumNetCashFlow: 320531,
   salesProceed: 539857,
 };

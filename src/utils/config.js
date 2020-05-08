@@ -9,3 +9,7 @@ export const MIN_DOWNPAYMENT_VALUE = 20;
 export const MAX_DOWNPAYMENT_VALUE = 100;
 
 export const DEFAULT_CLOSING_COST_RATE = 1.5;
+
+export const DEFAULT_APPRECIATION_RATE = 3;
+export const MIN_APPRECIATION_RATE = -0.5;
+export const MAX_APPRECIATION_RATE = 15;

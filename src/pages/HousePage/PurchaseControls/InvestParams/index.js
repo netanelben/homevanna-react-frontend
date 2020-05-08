@@ -1,22 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
 import Tooltip from "../../../../components/Tooltip";
-import { displayNumber } from "../../../../utils";
+import { PageContext, displayNumber } from "../../../../utils";
+import {
+  calcNetOperatingIncome,
+  calcGrossYield,
+} from "../../../../utils/formulas";
 
 import "./style.scss";
 
-const InvestParams = ({
-  annualizedReturn,
-  capRate,
-  grossYield,
-  cashFlow,
-  appreciation,
-}) => {
+const InvestParams = ({ annualizedReturn, cashFlow }) => {
+  const {
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    appreciation,
+    purchasePrice,
+  } = useContext(PageContext)[0];
+
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  const capRate = calcNetOperatingIncome({
+    expectedRent,
+    expenses,
+    propertyTaxes,
+  });
+  const grossYield = calcGrossYield({ expectedRent, purchasePrice });
 
   return (
     <div className="InvestParams">
@@ -98,10 +111,7 @@ const InvestParams = ({
 
 InvestParams.defaultProps = {
   annualizedReturn: "7.7",
-  capRate: "8.2",
-  grossYield: "17.1",
   cashFlow: 4175,
-  appreciation: "3.0",
 };
 
 export default InvestParams;

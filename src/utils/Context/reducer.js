@@ -38,6 +38,24 @@ const reducer = (state, action) => {
         closingCosts: payload,
       };
 
+    case "APPRECIATION_RATE_CHANGE":
+      return {
+        ...state,
+        appreciation: payload,
+      };
+
+    case "EXPECTED_RENT_CHANGE":
+      return {
+        ...state,
+        expectedRent: payload,
+      };
+
+    case "EXPENSES_CHANGE":
+      return {
+        ...state,
+        expenses: payload,
+      };
+
     default:
       return {
         ...state,

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Slider from "rc-slider";
 import Tooltip from "../../../../../components/Tooltip";
 import {

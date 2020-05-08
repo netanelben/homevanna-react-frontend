@@ -23,6 +23,25 @@
       span:last-of-type {
         font-size: 18px;
       }
+
+      .input-wrapper {
+        max-width: 40%;
+        margin: 2px 0;
+        position: relative;
+
+        input {
+          padding-left: 20px;
+        }
+
+        &:before {
+          content: "$";
+          font-size: 18px;
+          position: absolute;
+          top: 5px;
+          left: 7px;
+          z-index: 1;
+        }
+      }
     }
   }
 

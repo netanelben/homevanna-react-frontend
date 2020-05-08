@@ -1,26 +1,49 @@
 import React, { useContext, useState } from "react";
-import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
+import { Input, TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
 import Tooltip from "../../../../../components/Tooltip";
 import { PageContext, displayNumber } from "../../../../../utils";
-import { calcLoanPaymentsValue } from "../../../../../utils/formulas";
+import {
+  calcLoanPaymentsValue,
+  calcNetCashFlow,
+} from "../../../../../utils/formulas";
 
 import "./style.scss";
 
-const FinancialHighlight = ({
-  expectedRent,
-  expenses,
-  propertyTaxes,
-  netCashFlow,
-}) => {
-  const { purchasePrice, downPayment, loanInterestRate } = useContext(
-    PageContext
-  )[0];
+const FinancialHighlight = () => {
+  const {
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    purchasePrice,
+    downPayment,
+    loanInterestRate,
+  } = useContext(PageContext)[0];
+  const dispatch = useContext(PageContext)[1];
+
+  const [isFieldEdit, setIsFieldEdit] = useState(false);
+
+  const handleExpectedRentChange = ({ target }) => {
+    setIsFieldEdit(true);
+    dispatch({ type: "EXPECTED_RENT_CHANGE", payload: target.value });
+  };
+
+  const handleExpensesChange = ({ target }) => {
+    setIsFieldEdit(true);
+    dispatch({ type: "EXPENSES_CHANGE", payload: target.value });
+  };
 
   const loanPayments =
     downPayment === 100
       ? 0
       : calcLoanPaymentsValue({ purchasePrice, downPayment, loanInterestRate });
+
+  const netCashFlow = calcNetCashFlow({
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    loanPayments,
+  });
 
   const [activeTab, setActiveTab] = useState("1");
 
@@ -64,23 +87,49 @@ const FinancialHighlight = ({
               <li className="flex">
                 <span>Expected Rent</span>
                 <Tooltip context="ExpectedRent" />
-                <span>${displayNumber(expectedRent)}</span>
+                {expectedRent !== null && !isFieldEdit ? (
+                  <span>${displayNumber(expectedRent)}</span>
+                ) : (
+                  <span className="input-wrapper">
+                    <Input
+                      placeholder="0"
+                      defaultValue={expectedRent}
+                      type="number"
+                      onChange={handleExpectedRentChange}
+                    />
+                  </span>
+                )}
               </li>
+
               <li className="flex">
                 <span>Expenses</span>
                 <Tooltip context="Expenses" />
-                <span>-${displayNumber(expenses)}</span>
+                {expenses !== null && !isFieldEdit ? (
+                  <span>-${displayNumber(expenses)}</span>
+                ) : (
+                  <span className="input-wrapper">
+                    <Input
+                      placeholder="0"
+                      defaultValue={expenses}
+                      type="number"
+                      onChange={handleExpensesChange}
+                    />
+                  </span>
+                )}
               </li>
+
               <li className="flex">
                 <span>Property Taxes</span>
                 <Tooltip context="PropertyTaxes" />
                 <span>-${displayNumber(propertyTaxes)}</span>
               </li>
+
               <li className="flex">
                 <span>Loan Payments</span>
                 <Tooltip context="LoanPayments" />
                 <span>-${loanPayments}</span>
               </li>
+
               <li className="flex">
                 <span>Net Cash Flow</span>
                 <Tooltip context="NetCashFlow" />
@@ -94,13 +143,6 @@ const FinancialHighlight = ({
       </TabContent>
     </div>
   );
-};
-
-FinancialHighlight.defaultProps = {
-  expectedRent: 9405,
-  expenses: 3130,
-  propertyTaxes: 2100,
-  netCashFlow: 4175,
 };
 
 export default FinancialHighlight;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import BeautyStars from "beauty-stars";
 import EmbeddedMap from "./EmbeddedMap";
@@ -9,20 +9,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tooltip from "../../../../../components/Tooltip";
-import { displayNumber } from "../../../../../utils";
+import { PageContext, displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
 const Features = ({
   occupancy,
-  lotSize,
   leastStart,
   leastEnd,
-  HOA,
   floodRisk,
   rating,
   schools,
 }) => {
+  const { size, hoaFee } = useContext(PageContext)[0];
+
   return (
     <div className="Features card-box">
       <div className="card-title">Features</div>
@@ -65,7 +65,7 @@ const Features = ({
             </li>
             <li className="flex">
               <span>Lot Size</span>
-              <span>{displayNumber(lotSize)}</span>
+              <span>{displayNumber(size)}</span>
             </li>
             <li className="flex">
               <span>Least Start</span>
@@ -77,7 +77,7 @@ const Features = ({
             </li>
             <li className="flex">
               <span>HOA</span>
-              <span>{HOA}</span>
+              <span>{hoaFee ? hoaFee : "None"}</span>
             </li>
             <li className="flex">
               <span>Flood Risk</span>
@@ -95,10 +95,8 @@ const Features = ({
 
 Features.defaultProps = {
   occupancy: "Occupied",
-  lotSize: 6200,
   leastStart: "12/25/2019",
   leastEnd: "12/25/2019",
-  HOA: "None",
   floodRisk: "Not Required",
   rating: 3,
   schools: "1 / 3 / 1",
