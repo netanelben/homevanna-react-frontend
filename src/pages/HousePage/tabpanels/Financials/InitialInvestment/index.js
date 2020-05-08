@@ -1,27 +1,64 @@
 import React, { useContext, useState } from "react";
 import Slider from "rc-slider";
 import Tooltip from "../../../../../components/Tooltip";
+import {
+  getMinPurchasePrice,
+  getMaxPurchasePrice,
+  calcInvestmentPrice,
+} from "../../../../../utils/formulas";
 import { PageContext, displayNumber } from "../../../../../utils";
+import {
+  MIN_DOWNPAYMENT_VALUE,
+  MAX_DOWNPAYMENT_VALUE,
+  MIN_LOAN_INTEREST_RATE,
+  MAX_LOAN_INTEREST_RATE,
+} from "../../../../../utils/config";
 
 import "rc-slider/assets/index.css";
 import "./style.scss";
 
-const MIN_PURCHASE_PRICE = 100000;
-const MAX_PURCHASE_PRICE = 500000;
+const MIN_CLOSING_COST_RATE = 0;
+const MAX_CLOSING_COST_RATE = 6;
 
-const InitialInvestment = ({ amount }) => {
-  const { estImmediateCosts } = useContext(PageContext)[0];
+const MIN_EST_IMMEDIATE_COSTS_VALUE = 0;
+const MAX_EST_IMMEDIATE_COSTS_VALUE = 50000;
+
+const InitialInvestment = () => {
+  const {
+    price,
+    estImmediateCosts,
+    downPayment,
+    purchasePrice,
+    closingCosts,
+    loanInterestRate,
+  } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
-  const [purchasePrice, setPurchasePrice] = useState(314000);
-  const [downPayment, setDownPayment] = useState(100);
-  const [loanInterestRate, setLoanInterestRate] = useState(4.75);
-  const [closingCosts, setClosingCosts] = useState(1.5);
-  // const [estImmediateCosts, setEstImmediateCosts] = useState(784);
+  const totalInitialInvestment = calcInvestmentPrice({
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+  });
+
+  const handlePurchasePriceChange = (value) => {
+    dispatch({ type: "PURCHASE_PRICE_CHANGE", payload: value });
+  };
 
   const handleImmediateCostChange = (value) => {
-    // setEstImmediateCosts(value);
     dispatch({ type: "IMMEDIATE_COST_CHANGE", payload: value });
+  };
+
+  const handleDownPaymentChange = (value) => {
+    dispatch({ type: "DOWNPAYMENT_CHANGE", payload: value });
+  };
+
+  const handleLoanInterestRateChange = (value) => {
+    dispatch({ type: "LOAN_INTEREST_RATE_CHANGE", payload: value });
+  };
+
+  const handleClosingCostChange = (value) => {
+    dispatch({ type: "CLOSING_COST_RATE_CHANGE", payload: value });
   };
 
   return (
@@ -31,7 +68,9 @@ const InitialInvestment = ({ amount }) => {
         <Tooltip context="InitialInvestment" />
       </div>
 
-      <div className="price-large">${displayNumber(amount)}</div>
+      <div className="price-large">
+        ${displayNumber(totalInitialInvestment)}
+      </div>
 
       <div className="section">
         <div className="flex">
@@ -41,9 +80,9 @@ const InitialInvestment = ({ amount }) => {
         </div>
         <Slider
           value={purchasePrice}
-          onChange={setPurchasePrice}
-          min={MIN_PURCHASE_PRICE}
-          max={MAX_PURCHASE_PRICE}
+          onChange={handlePurchasePriceChange}
+          min={getMinPurchasePrice(price)}
+          max={getMaxPurchasePrice(price)}
         />
       </div>
 
@@ -55,9 +94,9 @@ const InitialInvestment = ({ amount }) => {
         </div>
         <Slider
           value={downPayment}
-          onChange={setDownPayment}
-          min={0}
-          max={100}
+          onChange={handleDownPaymentChange}
+          min={MIN_DOWNPAYMENT_VALUE}
+          max={MAX_DOWNPAYMENT_VALUE}
         />
       </div>
 
@@ -69,9 +108,9 @@ const InitialInvestment = ({ amount }) => {
         </div>
         <Slider
           value={loanInterestRate}
-          onChange={setLoanInterestRate}
-          min={0}
-          max={10}
+          onChange={handleLoanInterestRateChange}
+          min={MIN_LOAN_INTEREST_RATE}
+          max={MAX_LOAN_INTEREST_RATE}
         />
       </div>
 
@@ -83,9 +122,9 @@ const InitialInvestment = ({ amount }) => {
         </div>
         <Slider
           value={closingCosts}
-          onChange={setClosingCosts}
-          min={0}
-          max={10}
+          onChange={handleClosingCostChange}
+          min={MIN_CLOSING_COST_RATE}
+          max={MAX_CLOSING_COST_RATE}
         />
       </div>
 
@@ -98,16 +137,12 @@ const InitialInvestment = ({ amount }) => {
         <Slider
           value={estImmediateCosts}
           onChange={handleImmediateCostChange}
-          min={0}
-          max={10000}
+          min={MIN_EST_IMMEDIATE_COSTS_VALUE}
+          max={MAX_EST_IMMEDIATE_COSTS_VALUE}
         />
       </div>
     </div>
   );
-};
-
-InitialInvestment.defaultProps = {
-  amount: 643082,
 };
 
 export default InitialInvestment;

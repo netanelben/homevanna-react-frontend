@@ -1,26 +1,41 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
 import Slider from "rc-slider";
 import Tooltip from "../../../../components/Tooltip";
+import {
+  getMinPurchasePrice,
+  getMaxPurchasePrice,
+} from "../../../../utils/formulas";
 import { PageContext, displayNumber } from "../../../../utils";
+import {
+  MIN_DOWNPAYMENT_VALUE,
+  MAX_DOWNPAYMENT_VALUE,
+} from "../../../../utils/config";
 
 import "rc-slider/assets/index.css";
 import "./style.scss";
 
 const PriceParams = () => {
-  const { price } = useContext(PageContext)[0];
+  const { price, downPayment, purchasePrice } = useContext(PageContext)[0];
+  const dispatch = useContext(PageContext)[1];
 
-  const MIN_PURCHASE_PRICE = price * 0.5;
-  const MAX_PURCHASE_PRICE = price * 1.5;
+  const handlePurchasePriceChange = (value) => {
+    dispatch({ type: "PURCHASE_PRICE_CHANGE", payload: value });
+  };
 
-  const [purchasePrice, setPurchasePrice] = useState(MIN_PURCHASE_PRICE);
-  const [downPayment, setDownPayment] = useState(80);
+  const handleDownPaymentChange = (value) => {
+    dispatch({ type: "DOWNPAYMENT_CHANGE", payload: value });
+  };
 
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  useEffect(() => {
+    handlePurchasePriceChange(price);
+  }, [price]);
 
   return (
     <div className="PriceParams">
@@ -32,9 +47,9 @@ const PriceParams = () => {
         </div>
         <Slider
           value={purchasePrice}
-          onChange={setPurchasePrice}
-          min={MIN_PURCHASE_PRICE}
-          max={MAX_PURCHASE_PRICE}
+          onChange={handlePurchasePriceChange}
+          min={getMinPurchasePrice(price)}
+          max={getMaxPurchasePrice(price)}
         />
       </div>
 
@@ -46,9 +61,9 @@ const PriceParams = () => {
         </div>
         <Slider
           value={downPayment}
-          onChange={setDownPayment}
-          min={0}
-          max={100}
+          onChange={handleDownPaymentChange}
+          min={MIN_DOWNPAYMENT_VALUE}
+          max={MAX_DOWNPAYMENT_VALUE}
         />
       </div>
 

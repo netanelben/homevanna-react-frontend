@@ -1,17 +1,25 @@
 import React, { useContext } from "react";
 import { Row, Col, Input, Button } from "reactstrap";
-import {
-  PageContext,
-  calcInvestmentPrice,
-  displayNumber,
-} from "../../../utils";
+import { PageContext, displayNumber } from "../../../utils";
+import { calcInvestmentPrice } from "../../../utils/formulas";
 
 import "./style.scss";
 
 const SellingCard = () => {
-  const { price } = useContext(PageContext)[0];
+  const {
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+    price,
+  } = useContext(PageContext)[0];
 
-  const totalInitialInvestment = calcInvestmentPrice(price);
+  const totalInitialInvestment = calcInvestmentPrice({
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+  });
 
   return (
     <div className="SellingCard card-box">
@@ -35,7 +43,7 @@ const SellingCard = () => {
 
       <div className="list-price">List Price: ${displayNumber(price)}</div>
 
-      <Input value="$260,200" className="price-desktop" />
+      <Input defaultValue="$260,200" className="price-desktop" />
 
       <div className="controls-desktop">
         <Button className="btn-review btn-primary">Review Bid</Button>
@@ -44,7 +52,7 @@ const SellingCard = () => {
 
       <Row className="price-and-controls-mobile">
         <Col xs="6">
-          <Input value="$260,200" />
+          <Input defaultValue="$260,200" />
         </Col>
 
         <Col xs="6">

@@ -1,6 +1,5 @@
 import tooltips from "./tooltips.json";
 import { PageContext } from "./Context";
-import { calcInvestmentPrice } from "./formulas";
 
 export const displayNumber = (number) => number.toLocaleString("en-US");
 
@@ -12,4 +11,4 @@ export const fetchAPIData = () => {
   return fetch(URL).then((data) => data.json());
 };
 
-export { PageContext, calcInvestmentPrice };
+export { PageContext };

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
 import Tooltip from "../../../../../components/Tooltip";
-import { displayNumber } from "../../../../../utils";
+import { PageContext, displayNumber } from "../../../../../utils";
+import { calcLoanPaymentsValue } from "../../../../../utils/formulas";
 
 import "./style.scss";
 
@@ -10,9 +11,17 @@ const FinancialHighlight = ({
   expectedRent,
   expenses,
   propertyTaxes,
-  loanPayments,
   netCashFlow,
 }) => {
+  const { purchasePrice, downPayment, loanInterestRate } = useContext(
+    PageContext
+  )[0];
+
+  const loanPayments =
+    downPayment === 100
+      ? 0
+      : calcLoanPaymentsValue({ purchasePrice, downPayment, loanInterestRate });
+
   const [activeTab, setActiveTab] = useState("1");
 
   const toggle = (tab) => {
@@ -91,7 +100,6 @@ FinancialHighlight.defaultProps = {
   expectedRent: 9405,
   expenses: 3130,
   propertyTaxes: 2100,
-  loanPayments: 0,
   netCashFlow: 4175,
 };
 
