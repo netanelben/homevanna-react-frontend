@@ -25,15 +25,14 @@ export const calcLoanPaymentsValue = ({
   downPayment,
   loanInterestRate,
 }) => {
-  const n = 360;
+  const numOfMonths = 360;
   const downPaymentCost = purchasePrice * (downPayment / 100);
   const principalAmount = purchasePrice - downPaymentCost;
-  const monthlyInterestRate = loanInterestRate / 12;
+  const i = loanInterestRate / 12;
 
   return (
-    (principalAmount *
-      Math.pow(monthlyInterestRate * (1 + monthlyInterestRate), n)) /
-    (Math.pow(1 + monthlyInterestRate, n) - 1)
+    (principalAmount * (i / 12) * Math.pow(1 + i / 12, numOfMonths)) /
+    (Math.pow(1 + i / 12, numOfMonths) - 1)
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Input, TabContent, TabPane, Nav, NavItem } from "reactstrap";
+import _ from "lodash";
 import classnames from "classnames";
 import Tooltip from "../../../../../components/Tooltip";
 import { PageContext, displayNumber } from "../../../../../utils";
@@ -33,10 +34,9 @@ const FinancialHighlight = () => {
     dispatch({ type: "EXPENSES_CHANGE", payload: target.value });
   };
 
-  const loanPayments =
-    downPayment === 100
-      ? 0
-      : calcLoanPaymentsValue({ purchasePrice, downPayment, loanInterestRate });
+  const loanPayments = _.round(
+    calcLoanPaymentsValue({ purchasePrice, downPayment, loanInterestRate })
+  );
 
   const netCashFlow = calcNetCashFlow({
     expectedRent,

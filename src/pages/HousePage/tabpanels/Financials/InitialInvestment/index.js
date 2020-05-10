@@ -107,6 +107,7 @@ const InitialInvestment = () => {
           <span>{loanInterestRate}%</span>
         </div>
         <Slider
+          step={0.25}
           value={loanInterestRate}
           onChange={handleLoanInterestRateChange}
           min={MIN_LOAN_INTEREST_RATE}
