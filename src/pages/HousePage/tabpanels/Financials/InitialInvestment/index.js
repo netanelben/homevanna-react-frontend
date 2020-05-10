@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import _ from "lodash";
 import Slider from "rc-slider";
 import Tooltip from "../../../../../components/Tooltip";
 import {
@@ -34,12 +35,14 @@ const InitialInvestment = () => {
   } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
-  const totalInitialInvestment = calcInvestmentPrice({
-    purchasePrice,
-    downPayment,
-    closingCosts,
-    estImmediateCosts,
-  });
+  const totalInitialInvestment = _.round(
+    calcInvestmentPrice({
+      purchasePrice,
+      downPayment,
+      closingCosts,
+      estImmediateCosts,
+    })
+  );
 
   const handlePurchasePriceChange = (value) => {
     dispatch({ type: "PURCHASE_PRICE_CHANGE", payload: value });

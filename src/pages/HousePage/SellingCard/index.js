@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import _ from "lodash";
 import { Row, Col, Input, Button } from "reactstrap";
 import { PageContext, displayNumber } from "../../../utils";
 import { calcInvestmentPrice } from "../../../utils/formulas";
@@ -14,12 +15,14 @@ const SellingCard = () => {
     price,
   } = useContext(PageContext)[0];
 
-  const totalInitialInvestment = calcInvestmentPrice({
-    purchasePrice,
-    downPayment,
-    closingCosts,
-    estImmediateCosts,
-  });
+  const totalInitialInvestment = _.round(
+    calcInvestmentPrice({
+      purchasePrice,
+      downPayment,
+      closingCosts,
+      estImmediateCosts,
+    })
+  );
 
   return (
     <div className="SellingCard card-box">
