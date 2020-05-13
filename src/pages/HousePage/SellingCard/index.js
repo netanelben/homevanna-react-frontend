@@ -54,11 +54,11 @@ const SellingCard = () => {
       </div>
 
       <Row className="price-and-controls-mobile">
-        <Col xs="6">
+        <Col xs="12" sm="6">
           <Input defaultValue="$260,200" />
         </Col>
 
-        <Col xs="6">
+        <Col xs="12" sm="6">
           <div className="controls">
             <Button className="btn-review btn-primary">Review Bid</Button>
             <button className="btn-buy-now">Buy It Now</button>

@@ -124,10 +124,21 @@
     }
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 576px) {
+    input {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
     .price-and-links .links {
       flex-direction: column;
       align-items: flex-end;
+      text-align: right;
+      line-height: 1;
+
+      a {
+        margin-bottom: 10px;
+      }
     }
   }
 }
