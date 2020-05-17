@@ -1,0 +1,18 @@
+header {
+  &.is-scrolled {
+    background-color: #fff;
+
+    .navbar-brand span,
+    li:not(:last-of-type) .nav-link {
+      color: #000;
+    }
+
+    .nav-link:hover {
+      color: #f29c1a;
+    }
+
+    .nav-border-left {
+      border-left-color: rgba(0, 0, 0, 0.11);
+    }
+  }
+}
