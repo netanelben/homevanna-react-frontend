@@ -13,7 +13,9 @@ export const calcInvestmentPrice = ({
 
   if (downPayment === 100) {
     return (
-      purchasePrice + purchasePrice * (closingCosts / 100) + estImmediateCosts
+      Number(purchasePrice) +
+      purchasePrice * (closingCosts / 100) +
+      estImmediateCosts
     );
   }
 

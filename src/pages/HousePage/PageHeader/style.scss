@@ -9,6 +9,12 @@
     margin-left: -50px;
   }
 
+  @media (max-width: 576px) {
+    .container {
+      margin-top: -35px;
+    }
+  }
+
   @media (min-width: 992px) {
     .container {
       margin-top: -230px;
@@ -42,7 +48,6 @@
 
   @media (max-width: 992px) {
     color: #383f44;
-    padding-top: 50px;
   }
 
   .container {

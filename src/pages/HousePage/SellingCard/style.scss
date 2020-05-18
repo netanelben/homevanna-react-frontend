@@ -52,6 +52,21 @@
     margin-bottom: 20px;
   }
 
+  .price-input-wrapper {
+    position: relative;
+
+    &:before {
+      content: "$";
+      color: #373a3c;
+      font-size: 36px;
+      padding-left: 10px;
+      position: absolute;
+      top: 2px;
+      left: 0;
+      z-index: 1;
+    }
+  }
+
   input {
     font-size: 40px;
     font-weight: 200;
@@ -60,7 +75,7 @@
     height: 56px;
     border: 1px solid #c0c8ce;
     border-radius: 4px;
-    padding-left: 16px;
+    padding-left: 30px;
   }
 
   .btn-review {
@@ -121,6 +136,10 @@
           margin-bottom: 12px;
         }
       }
+    }
+
+    .price-input-wrapper::before {
+      padding-left: 24px;
     }
   }
 

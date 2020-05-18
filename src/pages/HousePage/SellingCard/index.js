@@ -2,7 +2,11 @@ import React, { useContext } from "react";
 import _ from "lodash";
 import { Row, Col, Input, Button } from "reactstrap";
 import { PageContext, displayNumber } from "../../../utils";
-import { calcInvestmentPrice } from "../../../utils/formulas";
+import {
+  getMinPurchasePrice,
+  getMaxPurchasePrice,
+  calcInvestmentPrice,
+} from "../../../utils/formulas";
 
 import "./style.scss";
 
@@ -14,6 +18,7 @@ const SellingCard = () => {
     estImmediateCosts,
     price,
   } = useContext(PageContext)[0];
+  const dispatch = useContext(PageContext)[1];
 
   const totalInitialInvestment = _.round(
     calcInvestmentPrice({
@@ -23,6 +28,10 @@ const SellingCard = () => {
       estImmediateCosts,
     })
   );
+
+  const handlePurchasePriceChange = ({ target }) => {
+    dispatch({ type: "PURCHASE_PRICE_CHANGE", payload: target.value });
+  };
 
   return (
     <div className="SellingCard card-box">
@@ -46,7 +55,15 @@ const SellingCard = () => {
 
       <div className="list-price">List Price: ${displayNumber(price)}</div>
 
-      <Input defaultValue="$260,200" className="price-desktop" />
+      <div className="price-input-wrapper price-desktop">
+        <Input
+          type="number"
+          value={purchasePrice}
+          onChange={handlePurchasePriceChange}
+          min={getMinPurchasePrice(price)}
+          max={getMaxPurchasePrice(price)}
+        />
+      </div>
 
       <div className="controls-desktop">
         <Button className="btn-review btn-primary">Review Bid</Button>
@@ -54,8 +71,14 @@ const SellingCard = () => {
       </div>
 
       <Row className="price-and-controls-mobile">
-        <Col xs="12" sm="6">
-          <Input defaultValue="$260,200" />
+        <Col xs="12" sm="6" className="price-input-wrapper">
+          <Input
+            type="number"
+            value={purchasePrice}
+            onChange={handlePurchasePriceChange}
+            min={getMinPurchasePrice(price)}
+            max={getMaxPurchasePrice(price)}
+          />
         </Col>
 
         <Col xs="12" sm="6">
