@@ -30,7 +30,9 @@ const SellingCard = () => {
   );
 
   const handlePurchasePriceChange = ({ target }) => {
-    dispatch({ type: "PURCHASE_PRICE_CHANGE", payload: target.value });
+    const payload = target.value.replace(/,/g, "");
+
+    dispatch({ type: "PURCHASE_PRICE_CHANGE", payload });
   };
 
   return (
@@ -57,8 +59,7 @@ const SellingCard = () => {
 
       <div className="price-input-wrapper price-desktop">
         <Input
-          type="number"
-          value={purchasePrice}
+          value={displayNumber(purchasePrice)}
           onChange={handlePurchasePriceChange}
           min={getMinPurchasePrice(price)}
           max={getMaxPurchasePrice(price)}
@@ -73,8 +74,7 @@ const SellingCard = () => {
       <Row className="price-and-controls-mobile">
         <Col xs="12" sm="6" className="price-input-wrapper">
           <Input
-            type="number"
-            value={purchasePrice}
+            value={displayNumber(purchasePrice)}
             onChange={handlePurchasePriceChange}
             min={getMinPurchasePrice(price)}
             max={getMaxPurchasePrice(price)}

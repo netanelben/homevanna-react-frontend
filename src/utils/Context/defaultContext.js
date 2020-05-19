@@ -13,6 +13,7 @@ export const defaultContext = {
   hoaFee: 0,
   size: 0,
   purchasePrice: 0,
+  initialPurchasePrice: 0,
   propertyTaxes: 0,
   expectedRent: null,
   expenses: null,

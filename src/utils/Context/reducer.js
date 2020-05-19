@@ -1,3 +1,10 @@
+import {
+  DEFAULT_DOWNPAYMENT_VALUE,
+  DEFAULT_LOAN_INTEREST_RATE,
+  DEFAULT_CLOSING_COST_RATE,
+  DEFAULT_EST_IMMEDIATE_COSTS_RATE,
+} from "../config";
+
 const reducer = (state, action) => {
   const { type, payload } = action;
 
@@ -54,6 +61,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         expenses: payload,
+      };
+
+    case "RESTORE_DEFAULT":
+      const { price } = state;
+
+      return {
+        ...state,
+        purchasePrice: price,
+        downPayment: DEFAULT_DOWNPAYMENT_VALUE,
+        loanInterestRate: DEFAULT_LOAN_INTEREST_RATE,
+        closingCosts: DEFAULT_CLOSING_COST_RATE,
+        estImmediateCosts: DEFAULT_EST_IMMEDIATE_COSTS_RATE,
       };
 
     default:
