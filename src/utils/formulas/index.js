@@ -66,10 +66,11 @@ export const calcCapRate = ({
   purchasePrice,
 }) =>
   _.round(
-    (Number(expectedRent) - Number(expenses) - Number(propertyTaxes)) /
-      purchasePrice,
-    6
+    ((Number(expectedRent) - Number(expenses) - Number(propertyTaxes)) /
+      purchasePrice) *
+      100,
+    2
   );
 
 export const calcGrossYield = ({ expectedRent = 0, purchasePrice }) =>
-  _.round((Number(expectedRent) * 12) / purchasePrice, 6);
+  _.round(((Number(expectedRent) * 12) / purchasePrice) * 100, 2);
