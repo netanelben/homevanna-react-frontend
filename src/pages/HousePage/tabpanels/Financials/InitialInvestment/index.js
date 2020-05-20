@@ -110,7 +110,7 @@ const InitialInvestment = () => {
           <span>{loanInterestRate}%</span>
         </div>
         <Slider
-          step={0.25}
+          step={0.01}
           value={loanInterestRate}
           onChange={handleLoanInterestRateChange}
           min={MIN_LOAN_INTEREST_RATE}
@@ -125,6 +125,7 @@ const InitialInvestment = () => {
           <span>${closingCosts}%</span>
         </div>
         <Slider
+          step={0.5}
           value={closingCosts}
           onChange={handleClosingCostChange}
           min={MIN_CLOSING_COST_RATE}
@@ -139,6 +140,7 @@ const InitialInvestment = () => {
           <span>${displayNumber(estImmediateCosts)}</span>
         </div>
         <Slider
+          step={100}
           value={estImmediateCosts}
           onChange={handleImmediateCostChange}
           min={MIN_EST_IMMEDIATE_COSTS_VALUE}

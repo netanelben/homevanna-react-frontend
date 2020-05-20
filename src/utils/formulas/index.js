@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export const getMinPurchasePrice = (price) => price * 0.5;
 export const getMaxPurchasePrice = (price) => price * 1.5;
 
@@ -49,16 +51,25 @@ export const calcNetCashFlow = ({
   propertyTaxes,
   loanPayments,
 }) => {
-  return expectedRent - expenses - propertyTaxes - loanPayments;
+  return (
+    Number(expectedRent) * 12 -
+    Number(expenses) -
+    Number(propertyTaxes) -
+    Number(loanPayments)
+  );
 };
 
-export const calcNetOperatingIncome = ({
+export const calcCapRate = ({
   expectedRent = 0,
   expenses = 0,
   propertyTaxes,
-}) => {
-  return expectedRent - expenses - propertyTaxes;
-};
+  purchasePrice,
+}) =>
+  _.round(
+    (Number(expectedRent) - Number(expenses) - Number(propertyTaxes)) /
+      purchasePrice,
+    6
+  );
 
 export const calcGrossYield = ({ expectedRent = 0, purchasePrice }) =>
-  expectedRent * purchasePrice;
+  _.round((Number(expectedRent) * 12) / purchasePrice, 6);

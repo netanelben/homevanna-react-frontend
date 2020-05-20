@@ -5,7 +5,7 @@ import classnames from "classnames";
 import Tooltip from "../../../../components/Tooltip";
 import { PageContext, displayNumber } from "../../../../utils";
 import {
-  calcNetOperatingIncome,
+  calcCapRate,
   calcGrossYield,
   calcLoanPaymentsValue,
   calcNetCashFlow,
@@ -29,11 +29,13 @@ const InvestParams = ({ annualizedReturn }) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  const capRate = calcNetOperatingIncome({
+  const capRate = calcCapRate({
     expectedRent,
     expenses,
     propertyTaxes,
+    purchasePrice,
   });
+
   const grossYield = calcGrossYield({ expectedRent, purchasePrice });
   const loanPayments =
     downPayment === 100
