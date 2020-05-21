@@ -15,8 +15,8 @@ import "./style.scss";
 
 const Features = ({
   occupancy,
-  leastStart,
-  leastEnd,
+  leaseStart,
+  leaseEnd,
   floodRisk,
   rating,
   schools,
@@ -68,12 +68,12 @@ const Features = ({
               <span>{displayNumber(size)}</span>
             </li>
             <li className="flex">
-              <span>Least Start</span>
-              <span>{leastStart}</span>
+              <span>Lease Start</span>
+              <span>{leaseStart}</span>
             </li>
             <li className="flex">
-              <span>Least End</span>
-              <span>{leastEnd}</span>
+              <span>Lease End</span>
+              <span>{leaseEnd}</span>
             </li>
             <li className="flex">
               <span>HOA</span>
@@ -95,8 +95,8 @@ const Features = ({
 
 Features.defaultProps = {
   occupancy: "Occupied",
-  leastStart: "12/25/2019",
-  leastEnd: "12/25/2019",
+  leaseStart: "12/25/2019",
+  leaseEnd: "12/25/2019",
   floodRisk: "Not Required",
   rating: 3,
   schools: "1 / 3 / 1",

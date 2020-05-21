@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Input,
   Dropdown,
@@ -6,11 +6,13 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import { displayNumber } from "../../../../../../utils";
+import { PageContext, displayNumber } from "../../../../../../utils";
 
 import "./style.scss";
 
 const Prices = () => {
+  const { price } = useContext(PageContext)[0];
+
   const [dropdownPaymentOpen, setDropdownPaymentOpen] = useState(false);
   const [dropdownScoreOpen, setDropdownScoreOpen] = useState(false);
 
@@ -21,7 +23,7 @@ const Prices = () => {
     <div className="Prices">
       <div className="section">
         <div className="sub-title">Property Price</div>
-        <Input placeholder={`$${displayNumber(395000)}`} />
+        <Input placeholder={`$${displayNumber(price)}`} />
       </div>
 
       <div className="section">

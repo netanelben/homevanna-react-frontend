@@ -127,7 +127,7 @@ const FinancialHighlight = () => {
               <li className="flex">
                 <span>Loan Payments</span>
                 <Tooltip context="LoanPayments" />
-                <span>${loanPayments}</span>
+                <span>${displayNumber(loanPayments)}</span>
               </li>
 
               <li className="flex">
