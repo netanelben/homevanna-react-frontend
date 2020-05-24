@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Slider from "react-slick";
 import _ from "lodash";
 import { PageContext } from "../../../utils";
@@ -15,18 +15,23 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  adaptiveHeight: true,
+  centerPadding: 15,
 };
 
 const PageHeader = ({ coverImageUrl }) => {
   const { address, images } = useContext(PageContext)[0];
+  const [currentImage, setCurrentImage] = useState(coverImageUrl);
 
   const chunkedImageList = images.slice(0, 5);
+
+  const handleGalleryImgClick = (imageUrl) => setCurrentImage(imageUrl);
 
   return (
     <div className="PageHeader">
       <div
         className="cover-image"
-        style={{ backgroundImage: `url(${coverImageUrl})` }}
+        style={{ backgroundImage: `url(${currentImage})` }}
       />
 
       <Slider {...settings}>
@@ -50,7 +55,11 @@ const PageHeader = ({ coverImageUrl }) => {
           Gallery ({images.length})
           <ul>
             {chunkedImageList.map((imageUrl, key) => (
-              <li key={key} style={{ backgroundImage: `url(${imageUrl})` }} />
+              <li
+                key={key}
+                style={{ backgroundImage: `url(${imageUrl})` }}
+                onClick={() => handleGalleryImgClick(imageUrl)}
+              />
             ))}
           </ul>
         </div>

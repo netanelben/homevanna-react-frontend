@@ -10,8 +10,13 @@
   }
 
   @media (max-width: 576px) {
+    .slick-slide {
+      border-right: 8px solid transparent !important;
+      overflow: hidden;
+    }
+
     .container {
-      margin-top: -35px;
+      font-weight: 300;
     }
   }
 
@@ -85,6 +90,7 @@
         display: inline-block;
         width: 60px;
         height: 40px;
+        cursor: pointer;
 
         &:not(:last-of-type) {
           margin-right: 8px;
