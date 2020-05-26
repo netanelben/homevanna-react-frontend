@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect, createContext } from "react";
 import reducer from "./reducer";
 import { defaultContext } from "./defaultContext";
-import { fetchAPIData } from "../index";
+import { fetchListingsData } from "../index";
 
 export const PageContext = createContext();
 
@@ -10,8 +10,8 @@ const ContextWrapper = ({ children }) => {
   const dispatch = contextValue[1];
 
   useEffect(() => {
-    fetchAPIData().then((data) =>
-      dispatch({ type: "HYDRATE_DATA", payload: data })
+    fetchListingsData("OC18244338").then((data) =>
+      dispatch({ type: "HYDRATE_LISTINGS_DATA", payload: data })
     );
   }, []);
 

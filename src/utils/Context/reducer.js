@@ -9,7 +9,13 @@ const reducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "HYDRATE_DATA":
+    case "HYDRATE_LISTINGS_DATA":
+      return {
+        ...state,
+        ...payload,
+      };
+
+    case "HYDRATE_TRANSACTIONS_DATA":
       return {
         ...state,
         ...payload,

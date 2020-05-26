@@ -13,15 +13,12 @@ import { PageContext, displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
-const Features = ({
-  occupancy,
-  leaseStart,
-  leaseEnd,
-  floodRisk,
-  rating,
-  schools,
-}) => {
-  const { size, hoaFee } = useContext(PageContext)[0];
+const Features = ({ rating, schools }) => {
+  const { size, hoaFee, occupancy, leaseTerm, floodRisk } = useContext(
+    PageContext
+  )[0];
+  const leaseStart = leaseTerm || "---";
+  const leaseEnd = leaseTerm || "---";
 
   return (
     <div className="Features card-box">
@@ -94,10 +91,6 @@ const Features = ({
 };
 
 Features.defaultProps = {
-  occupancy: "Occupied",
-  leaseStart: "12/25/2019",
-  leaseEnd: "12/25/2019",
-  floodRisk: "Not Required",
   rating: 3,
   schools: "1 / 3 / 1",
 };
