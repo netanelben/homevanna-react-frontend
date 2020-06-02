@@ -1,15 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
-import { displayNumber } from "../../../../../utils";
+import { PageContext, displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
 const LeaseAndTenant = ({
-  occupied,
   rentPaymentStatus,
   securityDeposit,
-  originalLeaseStartDate,
-  leaseEndDate,
   leaseConcessions,
   tenantPurchaseOption,
   sectionEight,
@@ -17,74 +14,79 @@ const LeaseAndTenant = ({
   petDeposits,
   ownerResponsible,
   tenantResponsible,
-}) => (
-  <div className="LeaseAndTenant card-box">
-    <div className="card-title">Lease and Tenant</div>
+}) => {
+  const { occupancy, leaseTerm } = useContext(PageContext)[0];
 
-    <Row noGutters>
-      <Col sm="6">
-        <div className="title">Lease Summary</div>
-        <div className="sub-title">Occupancy</div>
-        <div className="value">{occupied}</div>
+  const leaseStart = leaseTerm || "---";
+  const leaseEnd = leaseTerm || "---";
 
-        <div className="sub-title">Rent Payment Status</div>
-        <div className="value">{rentPaymentStatus}</div>
+  return (
+    <div className="LeaseAndTenant card-box">
+      <div className="card-title">Lease and Tenant</div>
 
-        <div className="sub-title">Security Deposit</div>
-        <div className="value">${displayNumber(securityDeposit)}</div>
+      <Row noGutters>
+        <Col sm="6">
+          <div className="title">Lease Summary</div>
+          <div className="sub-title">Occupancy</div>
+          <div className="value">{occupancy}</div>
 
-        <div className="sub-title">Original Lease Start Date</div>
-        <div className="value">{originalLeaseStartDate}</div>
+          <div className="sub-title">Rent Payment Status</div>
+          <div className="value">{rentPaymentStatus}</div>
 
-        <div className="sub-title">Lease End Date</div>
-        <div className="value">{leaseEndDate}</div>
+          <div className="sub-title">Security Deposit</div>
+          <div className="value">${displayNumber(securityDeposit)}</div>
 
-        <div className="sub-title">Lease Concessions</div>
-        <div className="value">{leaseConcessions}</div>
-      </Col>
-      <Col sm="6">
-        <div className="title">Tenant Profile</div>
+          <div className="sub-title">Original Lease Start Date</div>
+          <div className="value">{leaseStart}</div>
 
-        <div className="sub-title">Tenant Purchase Option</div>
-        <div className="value">{tenantPurchaseOption}</div>
+          <div className="sub-title">Lease End Date</div>
+          <div className="value">{leaseEnd}</div>
 
-        <div className="sub-title">Section 8</div>
-        <div className="value">{sectionEight}</div>
+          <div className="sub-title">Lease Concessions</div>
+          <div className="value">{leaseConcessions}</div>
+        </Col>
+        <Col sm="6">
+          <div className="title">Tenant Profile</div>
 
-        <div className="sub-title">Pet Fee Amount</div>
-        <div className="value">${displayNumber(petFeeAmount)}</div>
+          <div className="sub-title">Tenant Purchase Option</div>
+          <div className="value">{tenantPurchaseOption}</div>
 
-        <div className="sub-title">Pet Deposits</div>
-        <div className="value">{petDeposits}</div>
-      </Col>
-    </Row>
+          <div className="sub-title">Section 8</div>
+          <div className="value">{sectionEight}</div>
 
-    <div className="sep-line" />
+          <div className="sub-title">Pet Fee Amount</div>
+          <div className="value">${displayNumber(petFeeAmount)}</div>
 
-    <Row noGutters>
-      <Col sm="12">
-        <div className="title">Expense Split</div>
+          <div className="sub-title">Pet Deposits</div>
+          <div className="value">{petDeposits}</div>
+        </Col>
+      </Row>
 
-        <div className="sub-title">Owner is responsible for</div>
-        <div className="value">{ownerResponsible}</div>
+      <div className="sep-line" />
 
-        <div className="sub-title">Tenant is responsible for</div>
-        <div className="value">{tenantResponsible}</div>
-      </Col>
-    </Row>
+      <Row noGutters>
+        <Col sm="12">
+          <div className="title">Expense Split</div>
 
-    <div className="bottom-link">
-      View <a href="#">Tenant Ledger</a>
+          <div className="sub-title">Owner is responsible for</div>
+          <div className="value">{ownerResponsible}</div>
+
+          <div className="sub-title">Tenant is responsible for</div>
+          <div className="value">{tenantResponsible}</div>
+        </Col>
+      </Row>
+
+      <div className="bottom-link">
+        View <a href="#">Tenant Ledger</a>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 LeaseAndTenant.defaultProps = {
   occupied: true,
   rentPaymentStatus: "Current",
   securityDeposit: 3000,
-  originalLeaseStartDate: "07/25/2017",
-  leaseEndDate: "05/31/2022",
   leaseConcessions: "No",
   tenantPurchaseOption: "Not Applicable",
   sectionEight: "Not Applicable",

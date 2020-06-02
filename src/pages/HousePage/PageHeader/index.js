@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.scss";
 
-const settings = {
+const mobileSliderSettings = {
   dots: false,
   arrows: false,
   infinite: false,
@@ -15,15 +15,20 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  adaptiveHeight: true,
   centerPadding: 15,
+};
+
+const desktopSliderSettings = {
+  dots: false,
+  arrows: false,
+  speed: 500,
+  slidesToShow: 5,
+  slidesToScroll: 1,
 };
 
 const PageHeader = ({ coverImageUrl }) => {
   const { address, images } = useContext(PageContext)[0];
   const [currentImage, setCurrentImage] = useState(coverImageUrl);
-
-  const chunkedImageList = images.slice(0, 5);
 
   const handleGalleryImgClick = (imageUrl) => setCurrentImage(imageUrl);
 
@@ -34,7 +39,7 @@ const PageHeader = ({ coverImageUrl }) => {
         style={{ backgroundImage: `url(${currentImage})` }}
       />
 
-      <Slider {...settings}>
+      <Slider settings={mobileSliderSettings} className="mobile-slider">
         {images.map((imageUrl, key) => (
           <div key={key}>
             <img src={imageUrl} />
@@ -51,17 +56,16 @@ const PageHeader = ({ coverImageUrl }) => {
           </div>
         </div>
 
-        <div className="gallery">
-          Gallery ({images.length})
-          <ul>
-            {chunkedImageList.map((imageUrl, key) => (
-              <li
-                key={key}
-                style={{ backgroundImage: `url(${imageUrl})` }}
-                onClick={() => handleGalleryImgClick(imageUrl)}
-              />
+        <div className="desktop-gallery">
+          <div>Gallery ({images.length})</div>
+
+          <Slider settings={desktopSliderSettings} className="desktop-slider">
+            {images.map((imageUrl, key) => (
+              <div key={key} onClick={() => handleGalleryImgClick(imageUrl)}>
+                <img src={imageUrl} />
+              </div>
             ))}
-          </ul>
+          </Slider>
         </div>
       </div>
     </div>

@@ -1,20 +1,19 @@
 import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import Tooltip from "../../../../../components/Tooltip";
-import {
-  calcCapRate,
-  calcGrossYield,
-  calcLoanPaymentsValue,
-  calcNetCashFlow,
-} from "../../../../../utils/formulas";
+import { calcCapRate, calcGrossYield } from "../../../../../utils/formulas";
 import { PageContext } from "../../../../../utils";
 
 import "./style.scss";
 
 const GrossYield = () => {
-  const { expectedRent, expenses, propertyTaxes, purchasePrice } = useContext(
-    PageContext
-  )[0];
+  const {
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    purchasePrice,
+    annualizedReturn,
+  } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
   const capRate = calcCapRate({
@@ -70,8 +69,7 @@ const GrossYield = () => {
               <Tooltip context="AnnReturn" />
             </div>
             <span>
-              8.1%
-              <span className="lower-text">in 5 Years</span>
+              {annualizedReturn}%<span className="lower-text">in 5 Years</span>
             </span>
           </div>
         </Col>

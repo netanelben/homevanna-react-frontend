@@ -13,7 +13,7 @@ import {
 
 import "./style.scss";
 
-const InvestParams = ({ annualizedReturn }) => {
+const InvestParams = () => {
   const {
     expectedRent,
     expenses,
@@ -22,6 +22,7 @@ const InvestParams = ({ annualizedReturn }) => {
     purchasePrice,
     downPayment,
     loanInterestRate,
+    annualizedReturn,
   } = useContext(PageContext)[0];
 
   const [activeTab, setActiveTab] = useState("1");
@@ -121,10 +122,6 @@ const InvestParams = ({ annualizedReturn }) => {
       </ul>
     </div>
   );
-};
-
-InvestParams.defaultProps = {
-  annualizedReturn: "7.7",
 };
 
 export default InvestParams;

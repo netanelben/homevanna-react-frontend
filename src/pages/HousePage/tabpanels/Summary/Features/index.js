@@ -13,8 +13,8 @@ import { PageContext, displayNumber } from "../../../../../utils";
 
 import "./style.scss";
 
-const Features = ({ rating, schools }) => {
-  const { size, hoaFee, occupancy, leaseTerm, floodRisk } = useContext(
+const Features = ({ rating }) => {
+  const { size, hoaFee, occupancy, leaseTerm, floodRisk, schools } = useContext(
     PageContext
   )[0];
   const leaseStart = leaseTerm || "---";
@@ -49,7 +49,7 @@ const Features = ({ rating, schools }) => {
             <div>
               <FontAwesomeIcon icon={faGraduationCap} />
               <span>Schools</span>
-              <div>{schools}</div>
+              {/* <div>{schools}</div> */}
             </div>
           </div>
         </Col>
@@ -83,7 +83,7 @@ const Features = ({ rating, schools }) => {
             </li>
           </ul>
 
-          <a href="#">> See more in Analysis</a>
+          <a href="/analysis"> &#62; See more in Analysis</a>
         </Col>
       </Row>
     </div>

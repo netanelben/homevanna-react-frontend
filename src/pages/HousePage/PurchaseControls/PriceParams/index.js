@@ -17,7 +17,9 @@ import "rc-slider/assets/index.css";
 import "./style.scss";
 
 const PriceParams = () => {
-  const { price, downPayment, purchasePrice } = useContext(PageContext)[0];
+  const { price, downPayment, purchasePrice, expectedRent } = useContext(
+    PageContext
+  )[0];
   const dispatch = useContext(PageContext)[1];
 
   const handlePurchasePriceChange = (value) => {
@@ -73,7 +75,7 @@ const PriceParams = () => {
             <div className="title flex">
               Rent
               <Tooltip context="Rent" />
-              <span>${displayNumber(2400)}</span>
+              <span>${displayNumber(expectedRent)}</span>
             </div>
           </TabPane>
         </TabContent>

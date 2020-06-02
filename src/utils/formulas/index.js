@@ -45,6 +45,7 @@ export const calcLoanPaymentsValue = ({
   return (p * i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
 };
 
+// Net Operating Income ($) = Est. Expected Annual Rent – Est. Annual Expenses – Est. Annual Property Taxes - (Loan Payments x 12)
 export const calcNetCashFlow = ({
   expectedRent = 0,
   expenses = 0,
@@ -53,9 +54,9 @@ export const calcNetCashFlow = ({
 }) => {
   return (
     Number(expectedRent) * 12 -
-    Number(expenses) -
-    Number(propertyTaxes) -
-    Number(loanPayments)
+    Number(expenses) * 12 -
+    Number(propertyTaxes) * 12 -
+    Number(loanPayments) * 12
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 import { Row, Col, TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import PageHeader from "./PageHeader";
@@ -16,7 +16,7 @@ import ContextWrapper from "../../utils/Context";
 import "./style.scss";
 
 const HousePage = () => {
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = useState(null);
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };

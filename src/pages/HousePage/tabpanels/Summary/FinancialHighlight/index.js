@@ -137,7 +137,7 @@ const FinancialHighlight = () => {
               </li>
             </ul>
 
-            <a href="#">> See more in Financials</a>
+            <a href="/financials"> &#62; See more in Financials</a>
           </div>
         </TabPane>
       </TabContent>
