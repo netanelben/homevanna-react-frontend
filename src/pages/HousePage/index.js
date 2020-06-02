@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from "react";
-import classnames from "classnames";
-import { Row, Col, TabContent, TabPane, Nav, NavItem } from "reactstrap";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  NavLink,
+} from "react-router-dom";
+import { Row, Col } from "reactstrap";
 import PageHeader from "./PageHeader";
 import SellingCard from "./SellingCard";
 import PurchaseControls from "./PurchaseControls";
@@ -15,13 +20,8 @@ import ContextWrapper from "../../utils/Context";
 
 import "./style.scss";
 
-const HousePage = () => {
-  const [activeTab, setActiveTab] = useState(null);
-  const toggle = (tab) => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
-
-  return (
+const HousePage = () => (
+  <Router>
     <ContextWrapper>
       <PageHeader />
 
@@ -35,69 +35,37 @@ const HousePage = () => {
           </Col>
         </Row>
 
-        <Nav tabs className="main-page-tabs">
-          <NavItem
-            className={classnames({ active: activeTab === "1" })}
-            onClick={() => {
-              toggle("1");
-            }}
-          >
-            Summary
-          </NavItem>
-          <NavItem
-            className={classnames({ active: activeTab === "2" })}
-            onClick={() => {
-              toggle("2");
-            }}
-          >
-            Financials
-          </NavItem>
-          <NavItem
-            className={classnames({ active: activeTab === "3" })}
-            onClick={() => {
-              toggle("3");
-            }}
-          >
-            Analysis
-          </NavItem>
-          <NavItem
-            className={classnames({ active: activeTab === "4" })}
-            onClick={() => {
-              toggle("4");
-            }}
-          >
-            Buy Process
-          </NavItem>
-          <NavItem
-            className={classnames({ active: activeTab === "5" })}
-            onClick={() => {
-              toggle("5");
-            }}
-          >
-            Similar Listings
-          </NavItem>
-        </Nav>
+        <div className="page-nav">
+          <NavLink to="/summary">Summary</NavLink>
+          <NavLink to="/financials">Financials</NavLink>
+          <NavLink to="/analysis">Analysis</NavLink>
+          <NavLink to="/buy-process">Buy Process</NavLink>
+          <NavLink to="/similar-listings">Similar Listings</NavLink>
+        </div>
 
-        <TabContent activeTab={activeTab}>
-          <TabPane tabId="1">
+        <Switch>
+          <Route path="/summary">
             <Summary />
-          </TabPane>
-          <TabPane tabId="2">
+          </Route>
+          <Route path="/financials">
             <Financials />
-          </TabPane>
-          <TabPane tabId="3">
+          </Route>
+          <Route path="/analysis">
             <Analysis />
-          </TabPane>
-          <TabPane tabId="4">
+          </Route>
+          <Route path="/buy-process">
             <BuyProcess />
-          </TabPane>
-          <TabPane tabId="5">
+          </Route>
+          <Route path="/similar-listings">
             <SimilarListing />
-          </TabPane>
-        </TabContent>
+          </Route>
+          <Route path="/">
+            <Summary />
+          </Route>
+        </Switch>
       </div>
     </ContextWrapper>
-  );
-};
+  </Router>
+);
 
 export default HousePage;

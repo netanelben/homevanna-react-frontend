@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 import BeautyStars from "beauty-stars";
 import EmbeddedMap from "./EmbeddedMap";
@@ -83,7 +84,7 @@ const Features = ({ rating }) => {
             </li>
           </ul>
 
-          <a href="/analysis"> &#62; See more in Analysis</a>
+          <Link to="/analysis"> &#62; See more in Analysis</Link>
         </Col>
       </Row>
     </div>

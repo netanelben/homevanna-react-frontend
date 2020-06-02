@@ -25,33 +25,35 @@
   }
 }
 
-.main-page-tabs {
-  .nav-item {
-    color: #000;
+.page-nav {
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgb(102, 204, 255);
+
+  a {
+    color: rgb(58, 159, 209);
     font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &.active {
+      color: #000;
+    }
 
     &:not(:last-child) {
-      margin-right: 14px;
+      margin-right: 26px;
     }
-  }
-
-  & + .tab-content {
-    padding-top: 24px;
   }
 
   @media (max-width: 768px) {
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
+    white-space: pre;
 
-    .nav-item {
+    a {
       line-height: 1;
     }
-  }
-}
-
-@media (min-width: 768px) {
-  .tab-pane > .row {
-    margin-bottom: 16px;
   }
 }

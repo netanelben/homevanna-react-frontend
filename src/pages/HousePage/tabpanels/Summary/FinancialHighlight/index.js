@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { Input, TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import _ from "lodash";
 import classnames from "classnames";
@@ -137,7 +138,7 @@ const FinancialHighlight = () => {
               </li>
             </ul>
 
-            <a href="/financials"> &#62; See more in Financials</a>
+            <Link to="/financials"> &#62; See more in Financials</Link>
           </div>
         </TabPane>
       </TabContent>

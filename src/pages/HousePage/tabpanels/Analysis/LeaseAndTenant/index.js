@@ -84,7 +84,6 @@ const LeaseAndTenant = ({
 };
 
 LeaseAndTenant.defaultProps = {
-  occupied: true,
   rentPaymentStatus: "Current",
   securityDeposit: 3000,
   leaseConcessions: "No",
