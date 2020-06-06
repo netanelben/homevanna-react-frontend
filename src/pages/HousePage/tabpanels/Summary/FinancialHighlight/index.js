@@ -35,22 +35,59 @@ const FinancialHighlight = () => {
     dispatch({ type: "EXPENSES_CHANGE", payload: target.value });
   };
 
+  const [activeTab, setActiveTab] = useState("1");
+
+  const setYear = (tab) => {
+    if (activeTab !== tab) setActiveTab(tab);
+
+    if (tab === "3" || tab === "5") {
+      setIsFieldEdit(false);
+    } else {
+      setIsFieldEdit(true);
+    }
+  };
+
   const loanPayments = _.round(
     calcLoanPaymentsValue({ purchasePrice, downPayment, loanInterestRate })
   );
 
+  const getYearlyValues = (year) => {
+    switch (year) {
+      case "3":
+        return {
+          yearlyPropertyTaxes: _.round(propertyTaxes * 1.044),
+          yearlyExpectedRent: _.round(expectedRent * 1.06),
+          yearlyExpenses: _.round(expenses * 1.05),
+        };
+
+      case "5":
+        return {
+          yearlyPropertyTaxes: _.round(propertyTaxes * 1.044 * 1.044),
+          yearlyExpectedRent: _.round(expectedRent * 1.06 * 1.06),
+          yearlyExpenses: _.round(expenses * 1.05 * 1.05),
+        };
+
+      default:
+        return {
+          yearlyPropertyTaxes: propertyTaxes,
+          yearlyExpectedRent: expectedRent,
+          yearlyExpenses: expenses,
+        };
+    }
+  };
+
+  const {
+    yearlyPropertyTaxes,
+    yearlyExpectedRent,
+    yearlyExpenses,
+  } = getYearlyValues(activeTab);
+
   const netCashFlow = calcNetCashFlow({
-    expectedRent,
-    expenses,
-    propertyTaxes,
+    expectedRent: yearlyExpectedRent,
+    expenses: yearlyExpenses,
+    propertyTaxes: yearlyPropertyTaxes,
     loanPayments,
   });
-
-  const [activeTab, setActiveTab] = useState("1");
-
-  const toggle = (tab) => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
 
   return (
     <div className="FinancialHighlight card-box">
@@ -59,23 +96,23 @@ const FinancialHighlight = () => {
         <NavItem
           className={classnames({ active: activeTab === "1" })}
           onClick={() => {
-            toggle("1");
+            setYear("1");
           }}
         >
           Year 1
         </NavItem>
         <NavItem
-          className={classnames({ active: activeTab === "2" })}
+          className={classnames({ active: activeTab === "3" })}
           onClick={() => {
-            toggle("2");
+            setYear("3");
           }}
         >
           Year 3
         </NavItem>
         <NavItem
-          className={classnames({ active: activeTab === "3" })}
+          className={classnames({ active: activeTab === "5" })}
           onClick={() => {
-            toggle("3");
+            setYear("5");
           }}
         >
           Year 5
@@ -88,13 +125,14 @@ const FinancialHighlight = () => {
               <li className="flex">
                 <span>Expected Rent</span>
                 <Tooltip context="ExpectedRent" />
-                {expectedRent !== null && !isFieldEdit ? (
-                  <span>${displayNumber(expectedRent)}</span>
+                {yearlyExpectedRent !== null && !isFieldEdit ? (
+                  <span>${displayNumber(yearlyExpectedRent)}</span>
                 ) : (
                   <span className="input-wrapper">
                     <Input
+                      min="0"
                       placeholder="0"
-                      defaultValue={expectedRent}
+                      defaultValue={yearlyExpectedRent}
                       type="number"
                       onChange={handleExpectedRentChange}
                     />
@@ -105,13 +143,14 @@ const FinancialHighlight = () => {
               <li className="flex">
                 <span>Expenses</span>
                 <Tooltip context="Expenses" />
-                {expenses !== null && !isFieldEdit ? (
-                  <span>-${displayNumber(expenses)}</span>
+                {yearlyExpenses !== null && !isFieldEdit ? (
+                  <span>-${displayNumber(yearlyExpenses)}</span>
                 ) : (
                   <span className="input-wrapper">
                     <Input
+                      min="0"
                       placeholder="0"
-                      defaultValue={expenses}
+                      defaultValue={yearlyExpenses}
                       type="number"
                       onChange={handleExpensesChange}
                     />
@@ -122,7 +161,7 @@ const FinancialHighlight = () => {
               <li className="flex">
                 <span>Property Taxes</span>
                 <Tooltip context="PropertyTaxes" />
-                <span>${displayNumber(propertyTaxes)}</span>
+                <span>${displayNumber(yearlyPropertyTaxes)}</span>
               </li>
 
               <li className="flex">

@@ -4,6 +4,7 @@ import {
   Route,
   Switch,
   NavLink,
+  Redirect,
 } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 import PageHeader from "./PageHeader";
@@ -62,6 +63,7 @@ const HousePage = () => (
           <Route path="/">
             <Summary />
           </Route>
+          <Redirect exact from="/" to="/summary" />
         </Switch>
       </div>
     </ContextWrapper>

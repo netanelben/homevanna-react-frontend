@@ -54,8 +54,8 @@ export const calcNetCashFlow = ({
 }) => {
   return (
     Number(expectedRent) * 12 -
-    Number(expenses) * 12 -
-    Number(propertyTaxes) * 12 -
+    Number(expenses) -
+    Number(propertyTaxes) -
     Number(loanPayments) * 12
   );
 };

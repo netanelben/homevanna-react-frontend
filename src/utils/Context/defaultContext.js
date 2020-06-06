@@ -16,6 +16,7 @@ export const defaultContext = {
   initialPurchasePrice: 0,
   propertyTaxes: 0,
   annualizedReturn: 0,
+  totalReturn: 0,
   expectedRent: null,
   expenses: null,
   leaseTerm: null,

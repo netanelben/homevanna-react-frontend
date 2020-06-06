@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import BeautyStars from "beauty-stars";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { displayNumber } from "../../../../../utils";
+import { PageContext, displayNumber } from "../../../../../utils";
+import { calcCapRate } from "../../../../../utils/formulas";
 
 import "./style.scss";
 
@@ -14,12 +15,25 @@ const HouseCard = ({
   bathroomsCount,
   size,
   marketRent,
-  capRate,
-  totalReturn,
   returnYears,
   address,
   rating,
 }) => {
+  const {
+    totalReturn,
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    purchasePrice,
+  } = useContext(PageContext)[0];
+
+  const capRate = calcCapRate({
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    purchasePrice,
+  });
+
   return (
     <div className="HouseCard">
       <div

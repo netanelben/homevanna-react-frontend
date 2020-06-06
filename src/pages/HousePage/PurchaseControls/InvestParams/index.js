@@ -15,6 +15,7 @@ import "./style.scss";
 
 const InvestParams = () => {
   const {
+    totalReturn,
     expectedRent,
     expenses,
     propertyTaxes,
@@ -53,7 +54,7 @@ const InvestParams = () => {
           <div className="title flex">
             Total Return
             <Tooltip context="TotalReturn" />
-            <span>${displayNumber(268760)}</span>
+            <span>${displayNumber(totalReturn)}</span>
           </div>
         </TabPane>
       </TabContent>

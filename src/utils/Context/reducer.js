@@ -22,9 +22,12 @@ const reducer = (state, action) => {
       };
 
     case "PURCHASE_PRICE_CHANGE":
+      const propertyTaxes = payload * 0.012;
+
       return {
         ...state,
         purchasePrice: payload,
+        propertyTaxes,
       };
 
     case "IMMEDIATE_COST_CHANGE":

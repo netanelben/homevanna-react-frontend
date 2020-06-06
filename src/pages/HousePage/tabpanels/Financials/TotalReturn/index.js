@@ -8,12 +8,20 @@ import {
   MIN_APPRECIATION_RATE,
   MAX_APPRECIATION_RATE,
 } from "../../../../../utils/config";
+import { calcNetCashFlow } from "../../../../../utils/formulas";
 
 import "rc-slider/assets/index.css";
 import "./style.scss";
 
-const TotalReturn = ({ amount, cumNetCashFlow, salesProceed }) => {
-  const { appreciation } = useContext(PageContext)[0];
+const TotalReturn = ({ cumNetCashFlow, salesProceed }) => {
+  const {
+    appreciation,
+    totalReturn,
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    loanPayments,
+  } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
   const handleAppreciationChange = (value) => {
@@ -25,6 +33,13 @@ const TotalReturn = ({ amount, cumNetCashFlow, salesProceed }) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
+  const netCashFlow = calcNetCashFlow({
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    loanPayments,
+  });
+
   return (
     <div className="TotalReturn card-box">
       <Row noGutters>
@@ -33,7 +48,7 @@ const TotalReturn = ({ amount, cumNetCashFlow, salesProceed }) => {
             TOTAL RETURN
             <Tooltip context="TotalReturn" />
           </div>
-          <div className="price-large">${displayNumber(amount)}</div>
+          <div className="price-large">${displayNumber(totalReturn)}</div>
         </Col>
 
         <Col sm="6">
@@ -125,7 +140,7 @@ const TotalReturn = ({ amount, cumNetCashFlow, salesProceed }) => {
         <tbody>
           <tr>
             <td>Annual</td>
-            <td>$34,974</td>
+            <td>${displayNumber(netCashFlow)}</td>
             <td>$76,048</td>
             <td>$45,093</td>
             <td>$39,962</td>
@@ -144,7 +159,6 @@ const TotalReturn = ({ amount, cumNetCashFlow, salesProceed }) => {
 };
 
 TotalReturn.defaultProps = {
-  amount: 318710,
   cumNetCashFlow: 320531,
   salesProceed: 539857,
 };
