@@ -8,6 +8,7 @@ import { PageContext, displayNumber } from "../../../../../utils";
 import {
   calcLoanPaymentsValue,
   calcNetCashFlow,
+  getYearlyValues,
 } from "../../../../../utils/formulas";
 
 import "./style.scss";
@@ -51,36 +52,11 @@ const FinancialHighlight = () => {
     calcLoanPaymentsValue({ purchasePrice, downPayment, loanInterestRate })
   );
 
-  const getYearlyValues = (year) => {
-    switch (year) {
-      case "3":
-        return {
-          yearlyPropertyTaxes: _.round(propertyTaxes * 1.044),
-          yearlyExpectedRent: _.round(expectedRent * 1.06),
-          yearlyExpenses: _.round(expenses * 1.05),
-        };
-
-      case "5":
-        return {
-          yearlyPropertyTaxes: _.round(propertyTaxes * 1.044 * 1.044),
-          yearlyExpectedRent: _.round(expectedRent * 1.06 * 1.06),
-          yearlyExpenses: _.round(expenses * 1.05 * 1.05),
-        };
-
-      default:
-        return {
-          yearlyPropertyTaxes: propertyTaxes,
-          yearlyExpectedRent: expectedRent,
-          yearlyExpenses: expenses,
-        };
-    }
-  };
-
   const {
     yearlyPropertyTaxes,
     yearlyExpectedRent,
     yearlyExpenses,
-  } = getYearlyValues(activeTab);
+  } = getYearlyValues(activeTab, { propertyTaxes, expectedRent, expenses });
 
   const netCashFlow = calcNetCashFlow({
     expectedRent: yearlyExpectedRent,

@@ -48,10 +48,14 @@ export const calcLoanPaymentsValue = ({
 // Net Operating Income ($) = Est. Expected Annual Rent – Est. Annual Expenses – Est. Annual Property Taxes - (Loan Payments x 12)
 export const calcNetCashFlow = ({
   expectedRent = 0,
-  expenses = 0,
-  propertyTaxes,
-  loanPayments,
+  expenses,
+  propertyTaxes = 0,
+  loanPayments = 0,
 }) => {
+  if (!expenses) {
+    return 0;
+  }
+
   return (
     Number(expectedRent) * 12 -
     Number(expenses) -
@@ -75,3 +79,56 @@ export const calcCapRate = ({
 
 export const calcGrossYield = ({ expectedRent = 0, purchasePrice }) =>
   _.round(((Number(expectedRent) * 12) / purchasePrice) * 100, 2);
+
+// Sales Proceed = (Purchase Price * 1.157) - (Purchase Price *1.157 * 0.05) - Loan Balance
+export const calcSalesProceed = ({
+  purchasePrice,
+  downPayment = 0,
+  loanInterestRate = 0,
+}) =>
+  _.round(
+    purchasePrice * 1.157 -
+      purchasePrice * 1.157 * 0.05 -
+      calcLoanBalance({ downPayment, loanInterestRate })
+  );
+
+// LoanBalance = B = L[(1 + c)^n - (1 + c)^p]/[(1 + c)^n - 1]
+const calcLoanBalance = ({ downPayment, loanInterestRate }) => {
+  const p = 60;
+  const n = 360;
+
+  return (
+    downPayment *
+    ((Math.pow(1 + loanInterestRate, n) - Math.pow(1 + loanInterestRate, p)) /
+      Math.pow(1 + loanInterestRate, n) -
+      1)
+  );
+};
+
+export const getYearlyValues = (
+  year,
+  { propertyTaxes, expectedRent, expenses }
+) => {
+  switch (year) {
+    case "3":
+      return {
+        yearlyPropertyTaxes: _.round(propertyTaxes * 1.044),
+        yearlyExpectedRent: _.round(expectedRent * 1.06),
+        yearlyExpenses: _.round(expenses * 1.05),
+      };
+
+    case "5":
+      return {
+        yearlyPropertyTaxes: _.round(propertyTaxes * 1.044 * 1.044),
+        yearlyExpectedRent: _.round(expectedRent * 1.06 * 1.06),
+        yearlyExpenses: _.round(expenses * 1.05 * 1.05),
+      };
+
+    default:
+      return {
+        yearlyPropertyTaxes: propertyTaxes,
+        yearlyExpectedRent: expectedRent,
+        yearlyExpenses: expenses,
+      };
+  }
+};

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import _ from "lodash";
 import { Row, Col, TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
 import Slider from "rc-slider";
 import classnames from "classnames";
@@ -8,19 +9,28 @@ import {
   MIN_APPRECIATION_RATE,
   MAX_APPRECIATION_RATE,
 } from "../../../../../utils/config";
-import { calcNetCashFlow } from "../../../../../utils/formulas";
+import {
+  calcLoanPaymentsValue,
+  calcNetCashFlow,
+  calcSalesProceed,
+  getYearlyValues,
+  calcInvestmentPrice,
+} from "../../../../../utils/formulas";
 
 import "rc-slider/assets/index.css";
 import "./style.scss";
 
-const TotalReturn = ({ cumNetCashFlow, salesProceed }) => {
+const TotalReturn = () => {
   const {
+    purchasePrice,
+    downPayment,
+    loanInterestRate,
     appreciation,
-    totalReturn,
     expectedRent,
     expenses,
     propertyTaxes,
-    loanPayments,
+    closingCosts,
+    estImmediateCosts,
   } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
@@ -33,12 +43,78 @@ const TotalReturn = ({ cumNetCashFlow, salesProceed }) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  const netCashFlow = calcNetCashFlow({
-    expectedRent,
-    expenses,
-    propertyTaxes,
-    loanPayments,
+  const loanPayments = calcLoanPaymentsValue({
+    purchasePrice,
+    downPayment,
+    loanInterestRate,
   });
+
+  const {
+    yearlyPropertyTaxes: yearOnePropertyTaxes,
+    yearlyExpectedRent: yearOneExpectedRent,
+    yearlyExpenses: yearOneExpenses,
+  } = getYearlyValues("1", { propertyTaxes, expectedRent, expenses });
+
+  const {
+    yearlyPropertyTaxes: yearThreePropertyTaxes,
+    yearlyExpectedRent: yearThreeExpectedRent,
+    yearlyExpenses: yearThreeExpenses,
+  } = getYearlyValues("3", { propertyTaxes, expectedRent, expenses });
+
+  const {
+    yearlyPropertyTaxes: yearFivePropertyTaxes,
+    yearlyExpectedRent: yearFiveExpectedRent,
+    yearlyExpenses: yearFiveExpenses,
+  } = getYearlyValues("5", { propertyTaxes, expectedRent, expenses });
+
+  const yearOneNetCashFlow = _.round(
+    calcNetCashFlow({
+      expectedRent: yearOneExpectedRent,
+      expenses: yearOneExpenses,
+      propertyTaxes: yearOnePropertyTaxes,
+      loanPayments,
+    })
+  );
+
+  const yearThreeNetCashFlow = _.round(
+    calcNetCashFlow({
+      expectedRent: yearThreeExpectedRent,
+      expenses: yearThreeExpenses,
+      propertyTaxes: yearThreePropertyTaxes,
+      loanPayments,
+    })
+  );
+
+  const yearFiveNetCashFlow = _.round(
+    calcNetCashFlow({
+      expectedRent: yearFiveExpectedRent,
+      expenses: yearFiveExpenses,
+      propertyTaxes: yearFivePropertyTaxes,
+      loanPayments,
+    })
+  );
+
+  const yearTenNetCashFlow = yearFiveNetCashFlow * 1.159;
+
+  const cumNetCashFlow =
+    yearOneNetCashFlow +
+    yearThreeNetCashFlow +
+    yearFiveNetCashFlow +
+    yearTenNetCashFlow;
+  const salesProceed = calcSalesProceed({
+    purchasePrice,
+    downPayment,
+    loanInterestRate,
+  });
+  const totalInitialInvestment = _.round(
+    calcInvestmentPrice({
+      purchasePrice,
+      downPayment,
+      closingCosts,
+      estImmediateCosts,
+    })
+  );
+  const totalReturn = cumNetCashFlow + salesProceed - totalInitialInvestment;
 
   return (
     <div className="TotalReturn card-box">
@@ -140,27 +216,22 @@ const TotalReturn = ({ cumNetCashFlow, salesProceed }) => {
         <tbody>
           <tr>
             <td>Annual</td>
-            <td>${displayNumber(netCashFlow)}</td>
-            <td>$76,048</td>
-            <td>$45,093</td>
-            <td>$39,962</td>
+            <td>${displayNumber(yearOneNetCashFlow)}</td>
+            <td>${displayNumber(yearThreeNetCashFlow)}</td>
+            <td>${displayNumber(yearFiveNetCashFlow)}</td>
+            <td>${displayNumber(yearTenNetCashFlow)}</td>
           </tr>
           <tr>
             <td>Monthly</td>
-            <td>$34,974</td>
-            <td>$76,048</td>
-            <td>$45,093</td>
-            <td>$39,962</td>
+            <td>${displayNumber(yearOneNetCashFlow / 12)}</td>
+            <td>${displayNumber(yearThreeNetCashFlow / 12)}</td>
+            <td>${displayNumber(yearFiveNetCashFlow / 12)}</td>
+            <td>${displayNumber(yearTenNetCashFlow / 12)}</td>
           </tr>
         </tbody>
       </Table>
     </div>
   );
-};
-
-TotalReturn.defaultProps = {
-  cumNetCashFlow: 320531,
-  salesProceed: 539857,
 };
 
 export default TotalReturn;
