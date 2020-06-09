@@ -105,7 +105,7 @@ const calcLoanBalance = ({ downPayment, loanInterestRate }) => {
   );
 };
 
-export const getYearlyValues = (
+export const getYearlyFinancialValues = (
   year,
   { propertyTaxes, expectedRent, expenses }
 ) => {
@@ -131,4 +131,70 @@ export const getYearlyValues = (
         yearlyExpenses: expenses,
       };
   }
+};
+
+export const getYearlyNetCashFlow = ({
+  purchasePrice,
+  downPayment,
+  loanInterestRate,
+  propertyTaxes,
+  expectedRent,
+  expenses,
+}) => {
+  const loanPayments = calcLoanPaymentsValue({
+    purchasePrice,
+    downPayment,
+    loanInterestRate,
+  });
+
+  const {
+    yearlyPropertyTaxes: yearOnePropertyTaxes,
+    yearlyExpectedRent: yearOneExpectedRent,
+    yearlyExpenses: yearOneExpenses,
+  } = getYearlyFinancialValues("1", { propertyTaxes, expectedRent, expenses });
+
+  const {
+    yearlyPropertyTaxes: yearThreePropertyTaxes,
+    yearlyExpectedRent: yearThreeExpectedRent,
+    yearlyExpenses: yearThreeExpenses,
+  } = getYearlyFinancialValues("3", { propertyTaxes, expectedRent, expenses });
+
+  const {
+    yearlyPropertyTaxes: yearFivePropertyTaxes,
+    yearlyExpectedRent: yearFiveExpectedRent,
+    yearlyExpenses: yearFiveExpenses,
+  } = getYearlyFinancialValues("5", { propertyTaxes, expectedRent, expenses });
+
+  const yearOneNetCashFlow = _.round(
+    calcNetCashFlow({
+      expectedRent: yearOneExpectedRent,
+      expenses: yearOneExpenses,
+      propertyTaxes: yearOnePropertyTaxes,
+      loanPayments,
+    })
+  );
+
+  const yearThreeNetCashFlow = _.round(
+    calcNetCashFlow({
+      expectedRent: yearThreeExpectedRent,
+      expenses: yearThreeExpenses,
+      propertyTaxes: yearThreePropertyTaxes,
+      loanPayments,
+    })
+  );
+
+  const yearFiveNetCashFlow = _.round(
+    calcNetCashFlow({
+      expectedRent: yearFiveExpectedRent,
+      expenses: yearFiveExpenses,
+      propertyTaxes: yearFivePropertyTaxes,
+      loanPayments,
+    })
+  );
+
+  return {
+    yearOne: yearOneNetCashFlow,
+    yearThree: yearThreeNetCashFlow,
+    yearFive: yearFiveNetCashFlow,
+  };
 };

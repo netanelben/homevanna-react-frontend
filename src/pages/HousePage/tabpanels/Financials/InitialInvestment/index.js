@@ -46,6 +46,7 @@ const InitialInvestment = () => {
 
   const handlePurchasePriceChange = (value) => {
     dispatch({ type: "PURCHASE_PRICE_CHANGE", payload: value });
+    dispatch({ type: "SET_NET_CASH_FLOW" });
   };
 
   const handleImmediateCostChange = (value) => {
@@ -54,6 +55,7 @@ const InitialInvestment = () => {
 
   const handleDownPaymentChange = (value) => {
     dispatch({ type: "DOWNPAYMENT_CHANGE", payload: value });
+    dispatch({ type: "SET_NET_CASH_FLOW" });
   };
 
   const handleLoanInterestRateChange = (value) => {

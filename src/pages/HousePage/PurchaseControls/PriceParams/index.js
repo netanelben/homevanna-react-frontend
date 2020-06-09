@@ -24,10 +24,12 @@ const PriceParams = () => {
 
   const handlePurchasePriceChange = (value) => {
     dispatch({ type: "PURCHASE_PRICE_CHANGE", payload: value });
+    dispatch({ type: "SET_NET_CASH_FLOW" });
   };
 
   const handleDownPaymentChange = (value) => {
     dispatch({ type: "DOWNPAYMENT_CHANGE", payload: value });
+    dispatch({ type: "SET_NET_CASH_FLOW" });
   };
 
   const [activeTab, setActiveTab] = useState("1");

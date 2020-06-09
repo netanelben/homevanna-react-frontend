@@ -7,8 +7,7 @@ import Tooltip from "../../../../../components/Tooltip";
 import { PageContext, displayNumber } from "../../../../../utils";
 import {
   calcLoanPaymentsValue,
-  calcNetCashFlow,
-  getYearlyValues,
+  getYearlyFinancialValues,
 } from "../../../../../utils/formulas";
 
 import "./style.scss";
@@ -21,6 +20,7 @@ const FinancialHighlight = () => {
     purchasePrice,
     downPayment,
     loanInterestRate,
+    netCashFlow,
   } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
@@ -29,12 +29,16 @@ const FinancialHighlight = () => {
   const handleExpectedRentChange = ({ target }) => {
     setIsFieldEdit(true);
     dispatch({ type: "EXPECTED_RENT_CHANGE", payload: target.value });
+    setNetCashFlow();
   };
 
   const handleExpensesChange = ({ target }) => {
     setIsFieldEdit(true);
     dispatch({ type: "EXPENSES_CHANGE", payload: target.value });
+    setNetCashFlow();
   };
+
+  const setNetCashFlow = () => dispatch({ type: "SET_NET_CASH_FLOW" });
 
   const [activeTab, setActiveTab] = useState("1");
 
@@ -56,14 +60,19 @@ const FinancialHighlight = () => {
     yearlyPropertyTaxes,
     yearlyExpectedRent,
     yearlyExpenses,
-  } = getYearlyValues(activeTab, { propertyTaxes, expectedRent, expenses });
-
-  const netCashFlow = calcNetCashFlow({
-    expectedRent: yearlyExpectedRent,
-    expenses: yearlyExpenses,
-    propertyTaxes: yearlyPropertyTaxes,
-    loanPayments,
+  } = getYearlyFinancialValues(activeTab, {
+    propertyTaxes,
+    expectedRent,
+    expenses,
   });
+
+  const { yearOne, yearThree, yearFive } = netCashFlow;
+  const netCashFlowObj = {
+    1: yearOne,
+    3: yearThree,
+    5: yearFive,
+  };
+  const yearlyNetCashFlow = netCashFlowObj[activeTab];
 
   return (
     <div className="FinancialHighlight card-box">
@@ -149,7 +158,7 @@ const FinancialHighlight = () => {
               <li className="flex">
                 <span>Net Cash Flow</span>
                 <Tooltip context="NetCashFlow" />
-                <span>${displayNumber(netCashFlow)}</span>
+                <span>${displayNumber(yearlyNetCashFlow)}</span>
               </li>
             </ul>
 

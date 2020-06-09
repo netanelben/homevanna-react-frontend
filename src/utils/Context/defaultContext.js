@@ -22,6 +22,11 @@ export const defaultContext = {
   leaseTerm: null,
   floodRisk: null,
   parcelId: null,
+  netCashFlow: {
+    yearOne: 0,
+    yearThree: 0,
+    yearFive: 0,
+  },
   appreciation: DEFAULT_APPRECIATION_RATE,
   closingCosts: DEFAULT_CLOSING_COST_RATE,
   loanInterestRate: DEFAULT_LOAN_INTEREST_RATE,

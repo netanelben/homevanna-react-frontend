@@ -33,6 +33,7 @@ const SellingCard = () => {
     const payload = target.value.replace(/,/g, "");
 
     dispatch({ type: "PURCHASE_PRICE_CHANGE", payload });
+    dispatch({ type: "SET_NET_CASH_FLOW" });
   };
 
   return (

@@ -4,6 +4,7 @@ import {
   DEFAULT_CLOSING_COST_RATE,
   DEFAULT_EST_IMMEDIATE_COSTS_RATE,
 } from "../config";
+import { getYearlyNetCashFlow } from "../../utils/formulas";
 
 const reducer = (state, action) => {
   const { type, payload } = action;
@@ -71,6 +72,35 @@ const reducer = (state, action) => {
         ...state,
         expenses: payload,
       };
+
+    case "SET_NET_CASH_FLOW": {
+      const {
+        purchasePrice,
+        downPayment,
+        loanInterestRate,
+        propertyTaxes,
+        expectedRent,
+        expenses,
+      } = state;
+
+      const { yearOne, yearThree, yearFive } = getYearlyNetCashFlow({
+        purchasePrice,
+        downPayment,
+        loanInterestRate,
+        propertyTaxes,
+        expectedRent,
+        expenses,
+      });
+
+      return {
+        ...state,
+        netCashFlow: {
+          yearOne,
+          yearThree,
+          yearFive,
+        },
+      };
+    }
 
     case "RESTORE_DEFAULT":
       const { price } = state;

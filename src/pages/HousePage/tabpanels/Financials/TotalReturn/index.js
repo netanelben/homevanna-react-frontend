@@ -11,9 +11,7 @@ import {
 } from "../../../../../utils/config";
 import {
   calcLoanPaymentsValue,
-  calcNetCashFlow,
   calcSalesProceed,
-  getYearlyValues,
   calcInvestmentPrice,
 } from "../../../../../utils/formulas";
 
@@ -26,11 +24,9 @@ const TotalReturn = () => {
     downPayment,
     loanInterestRate,
     appreciation,
-    expectedRent,
-    expenses,
-    propertyTaxes,
     closingCosts,
     estImmediateCosts,
+    netCashFlow,
   } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
@@ -43,64 +39,10 @@ const TotalReturn = () => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  const loanPayments = calcLoanPaymentsValue({
-    purchasePrice,
-    downPayment,
-    loanInterestRate,
-  });
+  const { yearOne, yearThree, yearFive } = netCashFlow;
+  const yearTenNetCashFlow = yearFive * 1.159;
 
-  const {
-    yearlyPropertyTaxes: yearOnePropertyTaxes,
-    yearlyExpectedRent: yearOneExpectedRent,
-    yearlyExpenses: yearOneExpenses,
-  } = getYearlyValues("1", { propertyTaxes, expectedRent, expenses });
-
-  const {
-    yearlyPropertyTaxes: yearThreePropertyTaxes,
-    yearlyExpectedRent: yearThreeExpectedRent,
-    yearlyExpenses: yearThreeExpenses,
-  } = getYearlyValues("3", { propertyTaxes, expectedRent, expenses });
-
-  const {
-    yearlyPropertyTaxes: yearFivePropertyTaxes,
-    yearlyExpectedRent: yearFiveExpectedRent,
-    yearlyExpenses: yearFiveExpenses,
-  } = getYearlyValues("5", { propertyTaxes, expectedRent, expenses });
-
-  const yearOneNetCashFlow = _.round(
-    calcNetCashFlow({
-      expectedRent: yearOneExpectedRent,
-      expenses: yearOneExpenses,
-      propertyTaxes: yearOnePropertyTaxes,
-      loanPayments,
-    })
-  );
-
-  const yearThreeNetCashFlow = _.round(
-    calcNetCashFlow({
-      expectedRent: yearThreeExpectedRent,
-      expenses: yearThreeExpenses,
-      propertyTaxes: yearThreePropertyTaxes,
-      loanPayments,
-    })
-  );
-
-  const yearFiveNetCashFlow = _.round(
-    calcNetCashFlow({
-      expectedRent: yearFiveExpectedRent,
-      expenses: yearFiveExpenses,
-      propertyTaxes: yearFivePropertyTaxes,
-      loanPayments,
-    })
-  );
-
-  const yearTenNetCashFlow = yearFiveNetCashFlow * 1.159;
-
-  const cumNetCashFlow =
-    yearOneNetCashFlow +
-    yearThreeNetCashFlow +
-    yearFiveNetCashFlow +
-    yearTenNetCashFlow;
+  const cumNetCashFlow = yearOne + yearThree + yearFive + yearTenNetCashFlow;
   const salesProceed = calcSalesProceed({
     purchasePrice,
     downPayment,
@@ -216,16 +158,16 @@ const TotalReturn = () => {
         <tbody>
           <tr>
             <td>Annual</td>
-            <td>${displayNumber(yearOneNetCashFlow)}</td>
-            <td>${displayNumber(yearThreeNetCashFlow)}</td>
-            <td>${displayNumber(yearFiveNetCashFlow)}</td>
+            <td>${displayNumber(yearOne)}</td>
+            <td>${displayNumber(yearThree)}</td>
+            <td>${displayNumber(yearFive)}</td>
             <td>${displayNumber(yearTenNetCashFlow)}</td>
           </tr>
           <tr>
             <td>Monthly</td>
-            <td>${displayNumber(yearOneNetCashFlow / 12)}</td>
-            <td>${displayNumber(yearThreeNetCashFlow / 12)}</td>
-            <td>${displayNumber(yearFiveNetCashFlow / 12)}</td>
+            <td>${displayNumber(yearOne / 12)}</td>
+            <td>${displayNumber(yearThree / 12)}</td>
+            <td>${displayNumber(yearFive / 12)}</td>
             <td>${displayNumber(yearTenNetCashFlow / 12)}</td>
           </tr>
         </tbody>
