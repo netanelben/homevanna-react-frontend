@@ -1,24 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Chartist from "chartist";
+import { PageContext } from "../../../../../../utils";
+import { getYearTenNetCashFlow } from "../../../../../../utils/formulas";
+
 import "./style.scss";
 
-const CHART_LABELS = [
-  "Year 1",
-  "Year 5",
-  "Year 10",
-  "Year 15",
-  "Year 20",
-  "Year 25",
-  "Year 30",
-];
+const CHART_LABELS = ["Year 1", "Year 3", "Year 5", "Year 10"];
 
-const ChartData = [
-  [250000, 450000, 70000, 71200, 75000, 78000, 80000, 105000],
-  [270000, 455000, 72000, 71500, 75000, 78000, 80000, 100050],
-  [280000, 251000, 453000, 71300, 75000, 78000, 1300000, 230000],
-];
+const CHART_LOW = 0;
+const CHART_HIGH = 1500000;
 
 const Chart = () => {
+  const { netCashFlow } = useContext(PageContext)[0];
+  const { yearOne, yearThree, yearFive } = netCashFlow;
+  const yearTen = getYearTenNetCashFlow(yearFive);
+
+  const ChartData = [[yearOne, yearThree, yearFive, yearTen]];
+
   useEffect(() => {
     new Chartist.Bar(
       ".ct-chart",
@@ -27,8 +25,8 @@ const Chart = () => {
         series: ChartData,
       },
       {
-        low: 0,
-        high: 1500000,
+        low: CHART_LOW,
+        high: CHART_HIGH,
         stackBars: true,
         axisY: {
           labelInterpolationFnc: (value) => {

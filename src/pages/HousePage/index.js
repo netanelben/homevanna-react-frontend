@@ -60,9 +60,7 @@ const HousePage = () => (
           <Route path="/similar-listings">
             <SimilarListing />
           </Route>
-          <Route path="/">
-            <Summary />
-          </Route>
+
           <Redirect exact from="/" to="/summary" />
         </Switch>
       </div>

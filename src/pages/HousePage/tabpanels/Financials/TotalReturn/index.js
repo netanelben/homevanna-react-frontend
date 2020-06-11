@@ -10,9 +10,9 @@ import {
   MAX_APPRECIATION_RATE,
 } from "../../../../../utils/config";
 import {
-  calcLoanPaymentsValue,
   calcSalesProceed,
   calcInvestmentPrice,
+  getYearTenNetCashFlow,
 } from "../../../../../utils/formulas";
 
 import "rc-slider/assets/index.css";
@@ -40,14 +40,17 @@ const TotalReturn = () => {
   };
 
   const { yearOne, yearThree, yearFive } = netCashFlow;
-  const yearTenNetCashFlow = yearFive * 1.159;
+  const yearTenNetCashFlow = getYearTenNetCashFlow(yearFive);
+  const cumNetCashFlow = _.round(
+    yearOne + yearThree + yearFive + yearTenNetCashFlow
+  );
 
-  const cumNetCashFlow = yearOne + yearThree + yearFive + yearTenNetCashFlow;
   const salesProceed = calcSalesProceed({
     purchasePrice,
     downPayment,
     loanInterestRate,
   });
+
   const totalInitialInvestment = _.round(
     calcInvestmentPrice({
       purchasePrice,
@@ -56,6 +59,7 @@ const TotalReturn = () => {
       estImmediateCosts,
     })
   );
+
   const totalReturn = cumNetCashFlow + salesProceed - totalInitialInvestment;
 
   return (
@@ -158,17 +162,17 @@ const TotalReturn = () => {
         <tbody>
           <tr>
             <td>Annual</td>
-            <td>${displayNumber(yearOne)}</td>
-            <td>${displayNumber(yearThree)}</td>
-            <td>${displayNumber(yearFive)}</td>
-            <td>${displayNumber(yearTenNetCashFlow)}</td>
+            <td>${displayNumber(yearOne, true)}</td>
+            <td>${displayNumber(yearThree, true)}</td>
+            <td>${displayNumber(yearFive, true)}</td>
+            <td>${displayNumber(yearTenNetCashFlow, true)}</td>
           </tr>
           <tr>
             <td>Monthly</td>
-            <td>${displayNumber(yearOne / 12)}</td>
-            <td>${displayNumber(yearThree / 12)}</td>
-            <td>${displayNumber(yearFive / 12)}</td>
-            <td>${displayNumber(yearTenNetCashFlow / 12)}</td>
+            <td>${displayNumber(yearOne / 12, true)}</td>
+            <td>${displayNumber(yearThree / 12, true)}</td>
+            <td>${displayNumber(yearFive / 12, true)}</td>
+            <td>${displayNumber(yearTenNetCashFlow / 12, true)}</td>
           </tr>
         </tbody>
       </Table>

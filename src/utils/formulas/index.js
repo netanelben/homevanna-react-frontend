@@ -198,3 +198,5 @@ export const getYearlyNetCashFlow = ({
     yearFive: yearFiveNetCashFlow,
   };
 };
+
+export const getYearTenNetCashFlow = (yearFive) => yearFive * 1.159;
