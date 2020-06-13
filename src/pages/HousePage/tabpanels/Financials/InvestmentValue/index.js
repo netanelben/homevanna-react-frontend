@@ -1,16 +1,55 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { TabContent, TabPane, Nav, NavItem, Table } from "reactstrap";
 import classnames from "classnames";
 import Chart from "./Chart";
 import Tooltip from "../../../../../components/Tooltip";
-import { displayNumber } from "../../../../../utils";
+import { PageContext, displayNumber } from "../../../../../utils";
+import {
+  getYearTenNetCashFlow,
+  calcEquityBuildUp,
+  calcCumAppreciationGain,
+} from "../../../../../utils/formulas";
 
 import "./style.scss";
 
 const InvestmentValue = () => {
+  const {
+    netCashFlow,
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+    loanInterestRate,
+  } = useContext(PageContext)[0];
+
   const [activeTab, setActiveTab] = useState("1");
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
+  };
+
+  const netCashFlowYearTen = getYearTenNetCashFlow(netCashFlow.yearFive);
+  const cumAppreciationGain = calcCumAppreciationGain({ purchasePrice });
+  const equityBuildUp = calcEquityBuildUp({
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+    loanInterestRate,
+  });
+
+  const totalInvestmentValue = {
+    yearOne:
+      netCashFlow.yearOne + cumAppreciationGain.yearOne + equityBuildUp.yearOne,
+    yearThree:
+      netCashFlow.yearThree +
+      cumAppreciationGain.yearThree +
+      equityBuildUp.yearThree,
+    yearFive:
+      netCashFlow.yearFive +
+      cumAppreciationGain.yearFive +
+      equityBuildUp.yearFive,
+    yearTen:
+      netCashFlowYearTen + cumAppreciationGain.yearTen + equityBuildUp.yearTen,
   };
 
   return (
@@ -55,10 +94,10 @@ const InvestmentValue = () => {
             <thead>
               <tr>
                 <th></th>
+                <th>Year 1</th>
+                <th>Year 3</th>
                 <th>Year 5</th>
                 <th>Year 10</th>
-                <th>Year 20</th>
-                <th>Year 30</th>
               </tr>
             </thead>
             <tbody>
@@ -68,17 +107,28 @@ const InvestmentValue = () => {
                   <Tooltip context="CumulativeNetCashFlow" />
                 </td>
                 <td>
-                  ${displayNumber(34974)}
-                  <div className="text-small">$1.709/mo</div>
+                  ${displayNumber(netCashFlow.yearOne, true)}
+                  <div className="text-small">
+                    ${displayNumber(netCashFlow.yearOne / 12)}/mo
+                  </div>
                 </td>
                 <td>
-                  $76,048<div className="text-small">$1.709/mo</div>
+                  ${displayNumber(netCashFlow.yearThree, true)}
+                  <div className="text-small">
+                    ${displayNumber(netCashFlow.yearThree / 12)}/mo
+                  </div>
                 </td>
                 <td>
-                  $45,093<div className="text-small">$1.709/mo</div>
+                  ${displayNumber(netCashFlow.yearFive, true)}
+                  <div className="text-small">
+                    ${displayNumber(netCashFlow.yearFive / 12)}/mo
+                  </div>
                 </td>
                 <td>
-                  $39,962<div className="text-small">$1.709/mo</div>
+                  ${displayNumber(netCashFlowYearTen, true)}
+                  <div className="text-small">
+                    ${displayNumber(netCashFlowYearTen / 12)}/mo
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -86,30 +136,30 @@ const InvestmentValue = () => {
                   Cumulative Appreciation Gain
                   <Tooltip context="CumulativeAppreciationGain" />
                 </td>
-                <td>$34,974</td>
-                <td>$76,048</td>
-                <td>$45,093</td>
-                <td>$39,962</td>
+                <td>${displayNumber(cumAppreciationGain.yearOne, true)}</td>
+                <td>${displayNumber(cumAppreciationGain.yearThree, true)}</td>
+                <td>${displayNumber(cumAppreciationGain.yearFive, true)}</td>
+                <td>${displayNumber(cumAppreciationGain.yearTen, true)}</td>
               </tr>
               <tr>
                 <td>
                   Equity Build Up
                   <Tooltip context="EquityBuildUp" />
                 </td>
-                <td>$34,974</td>
-                <td>$76,048</td>
-                <td>$45,093</td>
-                <td>$39,962</td>
+                <td>${displayNumber(equityBuildUp.yearOne, true)}</td>
+                <td>${displayNumber(equityBuildUp.yearThree, true)}</td>
+                <td>${displayNumber(equityBuildUp.yearFive, true)}</td>
+                <td>${displayNumber(equityBuildUp.yearTen, true)}</td>
               </tr>
               <tr>
                 <td>
                   Total Investment Value
                   <Tooltip context="TotalInvestmentValue" />
                 </td>
-                <td>$466,083</td>
-                <td>$763,048</td>
-                <td>$845,093</td>
-                <td>$2,539,962</td>
+                <td>${displayNumber(totalInvestmentValue.yearOne, true)}</td>
+                <td>${displayNumber(totalInvestmentValue.yearThree, true)}</td>
+                <td>${displayNumber(totalInvestmentValue.yearFive, true)}</td>
+                <td>${displayNumber(totalInvestmentValue.yearTen, true)}</td>
               </tr>
             </tbody>
           </Table>

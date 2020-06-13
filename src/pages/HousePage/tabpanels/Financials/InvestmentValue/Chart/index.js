@@ -1,21 +1,58 @@
 import React, { useContext, useEffect } from "react";
 import Chartist from "chartist";
 import { PageContext } from "../../../../../../utils";
-import { getYearTenNetCashFlow } from "../../../../../../utils/formulas";
+import {
+  getYearTenNetCashFlow,
+  calcCumAppreciationGain,
+  calcEquityBuildUp,
+} from "../../../../../../utils/formulas";
 
 import "./style.scss";
 
 const CHART_LABELS = ["Year 1", "Year 3", "Year 5", "Year 10"];
 
 const CHART_LOW = 0;
-const CHART_HIGH = 1500000;
 
 const Chart = () => {
-  const { netCashFlow } = useContext(PageContext)[0];
-  const { yearOne, yearThree, yearFive } = netCashFlow;
-  const yearTen = getYearTenNetCashFlow(yearFive);
+  const {
+    netCashFlow,
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+    loanInterestRate,
+  } = useContext(PageContext)[0];
 
-  const ChartData = [[yearOne, yearThree, yearFive, yearTen]];
+  const netCashFlowYearTen = getYearTenNetCashFlow(netCashFlow.yearFive);
+  const cumAppreciationGain = calcCumAppreciationGain({ purchasePrice });
+  const equityBuildUp = calcEquityBuildUp({
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+    loanInterestRate,
+  });
+
+  const ChartData = [
+    [
+      netCashFlow.yearOne,
+      netCashFlow.yearThree,
+      netCashFlow.yearFive,
+      netCashFlowYearTen,
+    ],
+    [
+      cumAppreciationGain.yearOne,
+      cumAppreciationGain.yearThree,
+      cumAppreciationGain.yearFive,
+      cumAppreciationGain.yearTen,
+    ],
+    [
+      equityBuildUp.yearOne,
+      equityBuildUp.yearThree,
+      equityBuildUp.yearFive,
+      equityBuildUp.yearTen,
+    ],
+  ];
 
   useEffect(() => {
     new Chartist.Bar(
@@ -26,7 +63,7 @@ const Chart = () => {
       },
       {
         low: CHART_LOW,
-        high: CHART_HIGH,
+        high: equityBuildUp.yearTen * 1.2,
         stackBars: true,
         axisY: {
           labelInterpolationFnc: (value) => {

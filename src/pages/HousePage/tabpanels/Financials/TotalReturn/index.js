@@ -49,6 +49,8 @@ const TotalReturn = () => {
     purchasePrice,
     downPayment,
     loanInterestRate,
+    closingCosts,
+    estImmediateCosts,
   });
 
   const totalInitialInvestment = _.round(

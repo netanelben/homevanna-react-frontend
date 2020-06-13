@@ -69,13 +69,28 @@ export const calcCapRate = ({
   expenses = 0,
   propertyTaxes,
   purchasePrice,
-}) =>
-  _.round(
-    ((Number(expectedRent) - Number(expenses) - Number(propertyTaxes)) /
-      purchasePrice) *
-      100,
+  downPayment,
+  loanInterestRate,
+}) => {
+  const loanPayments = calcLoanPaymentsValue({
+    purchasePrice,
+    downPayment,
+    loanInterestRate,
+  });
+  console.log(expectedRent * 12);
+  console.log({ loanPayments });
+  console.log({ expenses });
+  console.log({ propertyTaxes });
+  console.log(purchasePrice * 100);
+  return _.round(
+    (Number(expectedRent * 12) -
+      Number(expenses) -
+      Number(loanPayments * 12) -
+      Number(propertyTaxes)) /
+      (purchasePrice * 100),
     2
   );
+};
 
 export const calcGrossYield = ({ expectedRent = 0, purchasePrice }) =>
   _.round(((Number(expectedRent) * 12) / purchasePrice) * 100, 2);
@@ -85,20 +100,41 @@ export const calcSalesProceed = ({
   purchasePrice,
   downPayment = 0,
   loanInterestRate = 0,
+  closingCosts,
+  estImmediateCosts,
 }) =>
   _.round(
     purchasePrice * 1.157 -
       purchasePrice * 1.157 * 0.05 -
-      calcLoanBalance({ downPayment, loanInterestRate })
+      calcLoanBalance({
+        purchasePrice,
+        downPayment,
+        closingCosts,
+        estImmediateCosts,
+        loanInterestRate,
+      })
   );
 
 // LoanBalance = B = L[(1 + c)^n - (1 + c)^p]/[(1 + c)^n - 1]
-const calcLoanBalance = ({ downPayment, loanInterestRate }) => {
+const calcLoanBalance = ({
+  purchasePrice,
+  downPayment,
+  closingCosts,
+  estImmediateCosts,
+  loanInterestRate,
+}) => {
   const p = 60;
   const n = 360;
 
+  const investmentPrice = calcInvestmentPrice({
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+  });
+
   return (
-    downPayment *
+    investmentPrice *
     ((Math.pow(1 + loanInterestRate, n) - Math.pow(1 + loanInterestRate, p)) /
       Math.pow(1 + loanInterestRate, n) -
       1)
@@ -200,3 +236,33 @@ export const getYearlyNetCashFlow = ({
 };
 
 export const getYearTenNetCashFlow = (yearFive) => yearFive * 1.159;
+
+export const calcEquityBuildUp = ({
+  purchasePrice,
+  downPayment,
+  closingCosts,
+  estImmediateCosts,
+  loanInterestRate,
+}) => {
+  const loanBalance = calcLoanBalance({
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+    loanInterestRate,
+  });
+
+  return {
+    yearOne: purchasePrice * 1.0314 - loanBalance,
+    yearThree: purchasePrice * 1.0942 - loanBalance,
+    yearFive: purchasePrice * 1.157 - loanBalance,
+    yearTen: purchasePrice * 1.314 - loanBalance,
+  };
+};
+
+export const calcCumAppreciationGain = ({ purchasePrice }) => ({
+  yearOne: purchasePrice * 0.0314,
+  yearThree: purchasePrice * 0.0942,
+  yearFive: purchasePrice * 0.157,
+  yearTen: purchasePrice * 0.314,
+});

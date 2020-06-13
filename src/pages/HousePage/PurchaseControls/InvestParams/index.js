@@ -36,6 +36,8 @@ const InvestParams = () => {
     expenses,
     propertyTaxes,
     purchasePrice,
+    downPayment,
+    loanInterestRate,
   });
 
   const grossYield = calcGrossYield({ expectedRent, purchasePrice });

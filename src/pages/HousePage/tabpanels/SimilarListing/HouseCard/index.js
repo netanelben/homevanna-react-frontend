@@ -25,6 +25,8 @@ const HouseCard = ({
     expenses,
     propertyTaxes,
     purchasePrice,
+    downPayment,
+    loanInterestRate,
   } = useContext(PageContext)[0];
 
   const capRate = calcCapRate({
@@ -32,6 +34,8 @@ const HouseCard = ({
     expenses,
     propertyTaxes,
     purchasePrice,
+    downPayment,
+    loanInterestRate,
   });
 
   return (

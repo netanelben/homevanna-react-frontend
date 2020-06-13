@@ -23,6 +23,10 @@
       font-size: 48px;
       font-weight: 200;
       position: relative;
+
+      @media (max-width: 400px) {
+        font-size: 38px;
+      }
     }
 
     .lower-text {

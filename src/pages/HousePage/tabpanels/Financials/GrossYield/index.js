@@ -13,6 +13,8 @@ const GrossYield = () => {
     propertyTaxes,
     purchasePrice,
     annualizedReturn,
+    downPayment,
+    loanInterestRate,
   } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
@@ -21,6 +23,8 @@ const GrossYield = () => {
     expenses,
     propertyTaxes,
     purchasePrice,
+    downPayment,
+    loanInterestRate,
   });
 
   const grossYield = calcGrossYield({ expectedRent, purchasePrice });
