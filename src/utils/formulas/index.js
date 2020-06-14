@@ -69,27 +69,16 @@ export const calcCapRate = ({
   expenses = 0,
   propertyTaxes,
   purchasePrice,
-  downPayment,
-  loanInterestRate,
+  loanPayments,
 }) => {
-  const loanPayments = calcLoanPaymentsValue({
-    purchasePrice,
-    downPayment,
-    loanInterestRate,
+  const netCashFlow = calcNetCashFlow({
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    loanPayments,
   });
-  console.log(expectedRent * 12);
-  console.log({ loanPayments });
-  console.log({ expenses });
-  console.log({ propertyTaxes });
-  console.log(purchasePrice * 100);
-  return _.round(
-    (Number(expectedRent * 12) -
-      Number(expenses) -
-      Number(loanPayments * 12) -
-      Number(propertyTaxes)) /
-      (purchasePrice * 100),
-    2
-  );
+
+  return _.round((netCashFlow / purchasePrice) * 100, 2);
 };
 
 export const calcGrossYield = ({ expectedRent = 0, purchasePrice }) =>
@@ -265,4 +254,9 @@ export const calcCumAppreciationGain = ({ purchasePrice }) => ({
   yearThree: purchasePrice * 0.0942,
   yearFive: purchasePrice * 0.157,
   yearTen: purchasePrice * 0.314,
+});
+
+export const calcValuation = ({ price }) => ({
+  low: price * 0.9,
+  high: price * 1.033,
 });

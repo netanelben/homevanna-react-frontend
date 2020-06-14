@@ -1,7 +1,11 @@
 import React, { useContext } from "react";
 import { Row, Col } from "reactstrap";
 import Tooltip from "../../../../../components/Tooltip";
-import { calcCapRate, calcGrossYield } from "../../../../../utils/formulas";
+import {
+  calcCapRate,
+  calcGrossYield,
+  calcLoanPaymentsValue,
+} from "../../../../../utils/formulas";
 import { PageContext } from "../../../../../utils";
 
 import "./style.scss";
@@ -18,13 +22,18 @@ const GrossYield = () => {
   } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
+  const loanPayments = calcLoanPaymentsValue({
+    purchasePrice,
+    downPayment,
+    loanInterestRate,
+  });
+
   const capRate = calcCapRate({
     expectedRent,
     expenses,
     propertyTaxes,
     purchasePrice,
-    downPayment,
-    loanInterestRate,
+    loanPayments,
   });
 
   const grossYield = calcGrossYield({ expectedRent, purchasePrice });

@@ -4,7 +4,10 @@ import BeautyStars from "beauty-stars";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PageContext, displayNumber } from "../../../../../utils";
-import { calcCapRate } from "../../../../../utils/formulas";
+import {
+  calcCapRate,
+  calcLoanPaymentsValue,
+} from "../../../../../utils/formulas";
 
 import "./style.scss";
 
@@ -29,13 +32,18 @@ const HouseCard = ({
     loanInterestRate,
   } = useContext(PageContext)[0];
 
+  const loanPayments = calcLoanPaymentsValue({
+    purchasePrice,
+    downPayment,
+    loanInterestRate,
+  });
+
   const capRate = calcCapRate({
     expectedRent,
     expenses,
     propertyTaxes,
     purchasePrice,
-    downPayment,
-    loanInterestRate,
+    loanPayments,
   });
 
   return (

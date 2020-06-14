@@ -31,23 +31,23 @@ const InvestParams = () => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
-  const capRate = calcCapRate({
-    expectedRent,
-    expenses,
-    propertyTaxes,
-    purchasePrice,
-    downPayment,
-    loanInterestRate,
-  });
-
   const grossYield = calcGrossYield({ expectedRent, purchasePrice });
   const loanPayments =
     downPayment === 100
       ? 0
       : calcLoanPaymentsValue({ purchasePrice, downPayment, loanInterestRate });
+
   const cashFlow = _.round(
     calcNetCashFlow({ expectedRent, expenses, propertyTaxes, loanPayments })
   );
+
+  const capRate = calcCapRate({
+    expectedRent,
+    expenses,
+    propertyTaxes,
+    purchasePrice,
+    loanPayments,
+  });
 
   return (
     <div className="InvestParams">

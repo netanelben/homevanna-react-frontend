@@ -1,26 +1,33 @@
-import React from "react";
-import { displayNumber } from "../../../../../utils";
+import React, { useContext } from "react";
+import { PageContext, displayNumber } from "../../../../../utils";
+import { calcValuation } from "../../../../../utils/formulas";
 
 import "./style.scss";
 
-const Valuation = ({ valuationData = null }) => (
-  <div className="Valuation card-box">
-    <div className="card-title">Valuation</div>
-    <div className="prop-value">Property Value</div>
-    <div className="price-large">
-      ${displayNumber(318710)} - ${displayNumber(420000)}
-    </div>
-    <div className="rental-value">Rental Value</div>
+const Valuation = ({ valuationData = null }) => {
+  const { price } = useContext(PageContext)[0];
 
-    <div className="value-date">
-      {!valuationData && "Valuation Data is not available"}
-    </div>
+  const { high, low } = calcValuation({ price });
 
-    <div className="see-more">
-      See more in
-      <a href="#">Property Valuation Report</a>
+  return (
+    <div className="Valuation card-box">
+      <div className="card-title">Valuation</div>
+      <div className="prop-value">Property Value</div>
+      <div className="price-large">
+        ${displayNumber(low)} - ${displayNumber(high)}
+      </div>
+      <div className="rental-value">Rental Value</div>
+
+      <div className="value-date">
+        {!valuationData && "Valuation Data is not available"}
+      </div>
+
+      <div className="see-more">
+        See more in
+        <a href="#">Property Valuation Report</a>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Valuation;
