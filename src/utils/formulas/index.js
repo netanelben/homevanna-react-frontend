@@ -51,18 +51,11 @@ export const calcNetCashFlow = ({
   expenses,
   propertyTaxes = 0,
   loanPayments = 0,
-}) => {
-  if (!expenses) {
-    return 0;
-  }
-
-  return (
-    Number(expectedRent) * 12 -
-    Number(expenses) -
-    Number(propertyTaxes) -
-    Number(loanPayments) * 12
-  );
-};
+}) =>
+  Number(expectedRent) * 12 -
+  Number(expenses) -
+  Number(propertyTaxes) -
+  Number(loanPayments) * 12;
 
 export const calcCapRate = ({
   expectedRent = 0,
@@ -91,18 +84,19 @@ export const calcSalesProceed = ({
   loanInterestRate = 0,
   closingCosts,
   estImmediateCosts,
-}) =>
-  _.round(
-    purchasePrice * 1.157 -
-      purchasePrice * 1.157 * 0.05 -
-      calcLoanBalance({
-        purchasePrice,
-        downPayment,
-        closingCosts,
-        estImmediateCosts,
-        loanInterestRate,
-      })
+}) => {
+  const loanBalance = calcLoanBalance({
+    purchasePrice,
+    downPayment,
+    closingCosts,
+    estImmediateCosts,
+    loanInterestRate,
+  });
+
+  return _.round(
+    purchasePrice * 1.157 - purchasePrice * 1.157 * 0.05 - loanBalance
   );
+};
 
 // LoanBalance = B = L[(1 + c)^n - (1 + c)^p]/[(1 + c)^n - 1]
 const calcLoanBalance = ({
@@ -111,8 +105,14 @@ const calcLoanBalance = ({
   closingCosts,
   estImmediateCosts,
   loanInterestRate,
+  year = 5,
 }) => {
-  const p = 60;
+  const p = {
+    1: 12,
+    3: 36,
+    5: 60,
+    10: 120,
+  };
   const n = 360;
 
   const investmentPrice = calcInvestmentPrice({
@@ -122,12 +122,14 @@ const calcLoanBalance = ({
     estImmediateCosts,
   });
 
-  return (
-    investmentPrice *
-    ((Math.pow(1 + loanInterestRate, n) - Math.pow(1 + loanInterestRate, p)) /
-      Math.pow(1 + loanInterestRate, n) -
-      1)
-  );
+  const trimNum = (num) => String(num).split("e")[0];
+
+  const x =
+    trimNum(Math.pow(1 + loanInterestRate, n)) -
+    trimNum(Math.pow(1 + loanInterestRate, p[year]));
+  const y = trimNum(Math.pow(1 + loanInterestRate, n)) - 1;
+
+  return investmentPrice * (x / y);
 };
 
 export const getYearlyFinancialValues = (
@@ -233,19 +235,21 @@ export const calcEquityBuildUp = ({
   estImmediateCosts,
   loanInterestRate,
 }) => {
-  const loanBalance = calcLoanBalance({
-    purchasePrice,
-    downPayment,
-    closingCosts,
-    estImmediateCosts,
-    loanInterestRate,
-  });
+  const loanBalance = (year) =>
+    calcLoanBalance({
+      purchasePrice,
+      downPayment,
+      closingCosts,
+      estImmediateCosts,
+      loanInterestRate,
+      year,
+    });
 
   return {
-    yearOne: purchasePrice * 1.0314 - loanBalance,
-    yearThree: purchasePrice * 1.0942 - loanBalance,
-    yearFive: purchasePrice * 1.157 - loanBalance,
-    yearTen: purchasePrice * 1.314 - loanBalance,
+    yearOne: purchasePrice * 1.0314 - loanBalance(1),
+    yearThree: purchasePrice * 1.0942 - loanBalance(3),
+    yearFive: purchasePrice * 1.157 - loanBalance(5),
+    yearTen: purchasePrice * 1.314 - loanBalance(10),
   };
 };
 
