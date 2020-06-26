@@ -1,36 +1,27 @@
-import React, { useContext, useState } from "react";
-import Slider from "react-slick";
+import React, { useEffect, useContext, useState } from "react";
 import _ from "lodash";
 import { PageContext } from "../../../utils";
+import Carousel from "@brainhubeu/react-carousel";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "@brainhubeu/react-carousel/lib/style.css";
 import "./style.scss";
 
-const mobileSliderSettings = {
-  dots: false,
-  arrows: false,
-  infinite: false,
-  centerMode: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  centerPadding: 15,
-};
-
-const desktopSliderSettings = {
-  dots: false,
-  arrows: false,
-  speed: 500,
-  slidesToShow: 5,
-  slidesToScroll: 1,
-};
-
-const PageHeader = ({ coverImageUrl }) => {
+const PageHeader = () => {
   const { address, images } = useContext(PageContext)[0];
-  const [currentImage, setCurrentImage] = useState(coverImageUrl);
+  const [currentImage, setCurrentImage] = useState(null);
 
   const handleGalleryImgClick = (imageUrl) => setCurrentImage(imageUrl);
+
+  useEffect(() => {
+    setCurrentImage(images[0]);
+  }, [images]);
+
+  const settings = {
+    arrows: false,
+    dots: false,
+    centered: false,
+    infinite: false,
+  };
 
   return (
     <div className="PageHeader">
@@ -39,13 +30,17 @@ const PageHeader = ({ coverImageUrl }) => {
         style={{ backgroundImage: `url(${currentImage})` }}
       />
 
-      <Slider settings={mobileSliderSettings} className="mobile-slider">
+      <Carousel className="mobile-slider" {...settings}>
         {images.map((imageUrl, key) => (
-          <div key={key}>
-            <img src={imageUrl} />
+          <div>
+            <div
+              key={key}
+              style={{ backgroundImage: `url('${imageUrl}')` }}
+              className="image-wrapper"
+            />
           </div>
         ))}
-      </Slider>
+      </Carousel>
 
       <div className="container flex">
         <div>
@@ -59,22 +54,19 @@ const PageHeader = ({ coverImageUrl }) => {
         <div className="desktop-gallery">
           <div>Gallery ({images.length})</div>
 
-          <Slider settings={desktopSliderSettings} className="desktop-slider">
+          <div className="images">
             {images.map((imageUrl, key) => (
-              <div key={key} onClick={() => handleGalleryImgClick(imageUrl)}>
-                <img src={imageUrl} />
-              </div>
+              <img
+                src={imageUrl}
+                key={key}
+                onClick={() => handleGalleryImgClick(imageUrl)}
+              />
             ))}
-          </Slider>
+          </div>
         </div>
       </div>
     </div>
   );
-};
-
-PageHeader.defaultProps = {
-  coverImageUrl:
-    "https://cdn.rets.ly/67b491ac3cdd2258521d4b13e2c392ac/803638ba952a86aab1fe2480b5d580db/1.jpeg",
 };
 
 export default PageHeader;
