@@ -26,6 +26,15 @@
         position: relative;
         color: #fff;
 
+        &:hover {
+          opacity: 0.7;
+          transition: 0.3s ease;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
         svg {
           font-size: 20px;
         }

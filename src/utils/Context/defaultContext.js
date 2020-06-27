@@ -32,4 +32,5 @@ export const defaultContext = {
   loanInterestRate: DEFAULT_LOAN_INTEREST_RATE,
   downPayment: DEFAULT_DOWNPAYMENT_VALUE,
   estImmediateCosts: DEFAULT_EST_IMMEDIATE_COSTS_RATE,
+  similarListings: [],
 };

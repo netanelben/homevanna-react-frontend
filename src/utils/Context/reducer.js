@@ -22,6 +22,12 @@ const reducer = (state, action) => {
         ...payload,
       };
 
+    case "HYDRATE_SIMILAR_LISTINGS_DATA":
+      return {
+        ...state,
+        similarListings: payload,
+      };
+
     case "PURCHASE_PRICE_CHANGE":
       const propertyTaxes = payload * 0.012;
 

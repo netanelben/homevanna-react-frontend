@@ -25,4 +25,11 @@ export const fetchPropTransactionsData = (parcelId) => {
   return fetch(URL).then((data) => data.json());
 };
 
+export const fetchSimilarListingsData = ({ city, minPrice, maxPrice }) => {
+  const params = `city=${city}&price=${minPrice},${maxPrice}`;
+  const URL = `${API_URL}/properties?${params}`;
+
+  return fetch(URL).then((data) => data.json());
+};
+
 export { PageContext };

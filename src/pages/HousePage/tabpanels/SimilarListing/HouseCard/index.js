@@ -12,12 +12,11 @@ import {
 import "./style.scss";
 
 const HouseCard = ({
-  houseImageUrl,
+  images = [],
   price,
   bedroomsCount,
   bathroomsCount,
   size,
-  marketRent,
   returnYears,
   address,
   rating,
@@ -48,14 +47,13 @@ const HouseCard = ({
 
   return (
     <div className="HouseCard">
-      <div
-        className="header"
-        style={{ backgroundImage: `url(${houseImageUrl})` }}
-      >
+      <div className="header" style={{ backgroundImage: `url(${images[0]})` }}>
         <div className="details">
           <div className="price">${displayNumber(price)}</div>
           <div className="info">
-            {bedroomsCount}bds | {bathroomsCount}ba | {size} Sq Ft
+            {bedroomsCount && `${bedroomsCount}bds`}
+            {bathroomsCount && ` | ${bathroomsCount}ba`}
+            {size && ` | ${size} Sq Ft`}
           </div>
 
           <button className="btn-heart">
@@ -69,7 +67,7 @@ const HouseCard = ({
           <span>Market Rent</span>
           <span>
             <sup>$</sup>
-            {displayNumber(marketRent)}
+            {displayNumber(price / 10000)}
           </span>
         </Col>
         <Col xs="3">
@@ -102,19 +100,6 @@ const HouseCard = ({
       </div>
     </div>
   );
-};
-
-HouseCard.defaultProps = {
-  price: 2889000,
-  marketRent: 4302,
-  capRate: "8.23",
-  totalReturn: 58874,
-  returnYears: "5",
-  address: "123 Fale St. Venice, CA, 90210",
-  bedroomsCount: 2,
-  bathroomsCount: 2,
-  size: "567",
-  rating: 4.5,
 };
 
 export default HouseCard;

@@ -32,9 +32,8 @@ const PageHeader = () => {
 
       <Carousel className="mobile-slider" {...settings}>
         {images.map((imageUrl, key) => (
-          <div>
+          <div key={key}>
             <div
-              key={key}
               style={{ backgroundImage: `url('${imageUrl}')` }}
               className="image-wrapper"
             />
