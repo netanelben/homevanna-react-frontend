@@ -122,7 +122,7 @@ const calcLoanBalance = ({
     estImmediateCosts,
   });
 
-  const trimNum = (num) => String(num).split("e")[0];
+  const trimNum = (num) => _.round(num, 12);
 
   const x =
     trimNum(Math.pow(1 + loanInterestRate, n)) -

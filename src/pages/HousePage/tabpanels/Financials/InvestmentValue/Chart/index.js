@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import _ from "lodash";
 import Chartist from "chartist";
 import { PageContext } from "../../../../../../utils";
 import {
@@ -67,7 +68,7 @@ const Chart = () => {
         stackBars: true,
         axisY: {
           labelInterpolationFnc: (value) => {
-            return `$${value / 1000000}m`;
+            return `$${_.round(value / 1000000, 1)}m`;
           },
         },
       }

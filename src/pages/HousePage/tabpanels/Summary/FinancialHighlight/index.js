@@ -24,16 +24,12 @@ const FinancialHighlight = () => {
   } = useContext(PageContext)[0];
   const dispatch = useContext(PageContext)[1];
 
-  const [isFieldEdit, setIsFieldEdit] = useState(false);
-
   const handleExpectedRentChange = ({ target }) => {
-    setIsFieldEdit(true);
     dispatch({ type: "EXPECTED_RENT_CHANGE", payload: target.value });
     setNetCashFlow();
   };
 
   const handleExpensesChange = ({ target }) => {
-    setIsFieldEdit(true);
     dispatch({ type: "EXPENSES_CHANGE", payload: target.value });
     setNetCashFlow();
   };
@@ -44,12 +40,6 @@ const FinancialHighlight = () => {
 
   const setYear = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
-
-    if (tab === "3" || tab === "5") {
-      setIsFieldEdit(false);
-    } else {
-      setIsFieldEdit(true);
-    }
   };
 
   const loanPayments = _.round(
@@ -110,7 +100,7 @@ const FinancialHighlight = () => {
               <li className="flex">
                 <span>Expected Rent</span>
                 <Tooltip context="ExpectedRent" />
-                {yearlyExpectedRent !== null && !isFieldEdit ? (
+                {activeTab !== "1" ? (
                   <span>${displayNumber(yearlyExpectedRent)}</span>
                 ) : (
                   <span className="input-wrapper">
@@ -128,8 +118,12 @@ const FinancialHighlight = () => {
               <li className="flex">
                 <span>Expenses</span>
                 <Tooltip context="Expenses" />
-                {yearlyExpenses !== null && !isFieldEdit ? (
-                  <span>-${displayNumber(yearlyExpenses)}</span>
+                {activeTab !== "1" ? (
+                  <span>
+                    {yearlyExpenses
+                      ? `-$${displayNumber(yearlyExpenses)}`
+                      : "$0"}
+                  </span>
                 ) : (
                   <span className="input-wrapper">
                     <Input
