@@ -101,6 +101,10 @@
   .mobile-slider {
     margin-bottom: 20px;
 
+    .BrainhubCarousel__track {
+      transform: translateX(-20px);
+    }
+
     .BrainhubCarouselItem > div {
       width: 100%;
     }
@@ -110,6 +114,8 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      margin-left: -16px;
+      border-right: 24px solid #e0edfb;
     }
   }
 }

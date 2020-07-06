@@ -19,7 +19,6 @@ const PageHeader = () => {
   const settings = {
     arrows: false,
     dots: false,
-    centered: false,
     infinite: false,
   };
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
 import BeautyStars from "beauty-stars";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +12,7 @@ import {
 import "./style.scss";
 
 const HouseCard = ({
+  listingId,
   images = [],
   price,
   bedroomsCount,
@@ -45,8 +46,12 @@ const HouseCard = ({
     loanPayments,
   });
 
+  const goToHousePage = () => {
+    window.location.replace(`/listing/${listingId}`);
+  };
+
   return (
-    <div className="HouseCard">
+    <div className="HouseCard" onClick={goToHousePage}>
       <div className="header" style={{ backgroundImage: `url(${images[0]})` }}>
         <div className="details">
           <div className="price">${displayNumber(price)}</div>
@@ -62,28 +67,30 @@ const HouseCard = ({
         </div>
       </div>
 
-      <Row className="content">
-        <Col xs="4">
-          <span>Market Rent</span>
-          <span>
-            <sup>$</sup>
-            {displayNumber(price / 10000)}
-          </span>
-        </Col>
-        <Col xs="3">
-          <span>Cap Rate</span>
-          <span>
-            {capRate} <sup>%</sup>
-          </span>
-        </Col>
-        <Col xs="5">
-          <span>Total Return</span>
-          <span>
-            <sup>$</sup>
-            {displayNumber(totalReturn)} <i>/ {returnYears} Yr</i>
-          </span>
-        </Col>
-      </Row>
+      <Container>
+        <Row className="content">
+          <Col xs="4">
+            <span>Market Rent</span>
+            <span>
+              <sup>$</sup>
+              {displayNumber(price / 10000)}
+            </span>
+          </Col>
+          <Col xs="4">
+            <span>Cap Rate</span>
+            <span>
+              {capRate} <sup>%</sup>
+            </span>
+          </Col>
+          <Col xs="4">
+            <span>Total Return</span>
+            <span>
+              <sup>$</sup>
+              {displayNumber(totalReturn)} <i>/ {returnYears} Yr</i>
+            </span>
+          </Col>
+        </Row>
+      </Container>
 
       <div className="footer flex">
         <div className="address">{address}</div>

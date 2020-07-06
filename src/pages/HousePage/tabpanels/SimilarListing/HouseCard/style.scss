@@ -15,7 +15,13 @@
 
     .details {
       padding: 12px 16px 10px;
-      background-color: rgba(0, 0, 0, 0.2);
+      background: rgb(2, 0, 36);
+      background: linear-gradient(
+        0deg,
+        #3c3c3c 0%,
+        rgba(0, 0, 0, 0.6) 15%,
+        transparent 100%
+      );
 
       .btn-heart {
         background-color: transparent;
@@ -68,12 +74,8 @@
     border-bottom: 1px solid rgba(74, 144, 226, 0.5);
     align-items: center;
 
-    > [class*="col-"]:nth-child(1) {
-      padding-left: 28px;
-    }
-
-    > [class*="col-"]:nth-child(2) {
-      padding-right: 8px;
+    .col-4 {
+      padding: 0 10px;
     }
 
     div {
@@ -87,11 +89,19 @@
 
         &:first-child {
           font-size: 12px;
-          margin-bottom: 3px;
+          margin-bottom: 5px;
+
+          @media (min-width: 768px) and (max-width: 1200px) {
+            font-size: 10px;
+          }
         }
 
         &:last-child {
           font-size: 22px;
+
+          @media (min-width: 768px) and (max-width: 1200px) {
+            font-size: 18px;
+          }
 
           sup {
             font-size: 14px;

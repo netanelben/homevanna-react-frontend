@@ -124,7 +124,7 @@ const InitialInvestment = () => {
         <div className="flex">
           Closing Costs
           <Tooltip context="ClosingCosts" />
-          <span>${closingCosts}%</span>
+          <span>{closingCosts}%</span>
         </div>
         <Slider
           step={0.5}
