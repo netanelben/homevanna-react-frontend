@@ -1,0 +1,62 @@
+.PropertyCharacteristics-section {
+  padding: 18px 16px 20px;
+
+  .card-title:first-of-type {
+    margin-bottom: 29px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #656d72;
+  }
+
+  .list {
+    color: #656d72;
+    padding: 10px 0 0 30px;
+
+    li {
+      margin-bottom: 25px;
+    }
+  }
+
+  .nav-tabs .nav-item {
+    padding: 0;
+    margin-right: 45px;
+  }
+
+  .tab-content {
+    padding-top: 15px;
+  }
+
+  .management {
+    .card-title {
+      margin-bottom: 20px;
+    }
+
+    .why-choose-card {
+      background-color: rgba(74, 144, 226, 0.1);
+      font-size: 16px;
+      color: #656d72;
+      padding: 15px 16px 25px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .row > div {
+      padding-bottom: 30px;
+    }
+
+    .nav-tabs {
+      flex-wrap: nowrap;
+
+      .nav-item {
+        font-size: 18px;
+        line-height: 120%;
+        padding-left: 8px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+}

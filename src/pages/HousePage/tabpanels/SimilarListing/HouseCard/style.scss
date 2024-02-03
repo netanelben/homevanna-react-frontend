@@ -1,0 +1,137 @@
+.HouseCard {
+  border-radius: 4px;
+  overflow: hidden;
+  color: #fff;
+  line-height: 1;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 180px;
+    position: relative;
+
+    .details {
+      padding: 12px 16px 10px;
+      background: rgb(2, 0, 36);
+      background: linear-gradient(
+        0deg,
+        #3c3c3c 0%,
+        rgba(0, 0, 0, 0.6) 15%,
+        transparent 100%
+      );
+
+      .btn-heart {
+        background-color: transparent;
+        float: right;
+        margin-bottom: -30px;
+        top: -25px;
+        right: -8px;
+        position: relative;
+        color: #fff;
+
+        &:hover {
+          opacity: 0.7;
+          transition: 0.3s ease;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        svg {
+          font-size: 20px;
+        }
+      }
+
+      .price {
+        font-size: 24px;
+        margin-bottom: 5px;
+      }
+
+      .info {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .content,
+  .footer {
+    background-color: #fff;
+    color: #383f44;
+    font-size: 12px;
+  }
+
+  .address {
+    max-width: 110px;
+    line-height: 110%;
+  }
+
+  .content {
+    padding: 11px 0 14px;
+    border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+    align-items: center;
+
+    .col-4 {
+      padding: 0 10px;
+    }
+
+    div {
+      &:not(:last-of-type) {
+        border-right: 1px solid rgba(74, 144, 226, 0.5);
+      }
+
+      span {
+        display: block;
+        color: #383f44;
+
+        &:first-child {
+          font-size: 12px;
+          margin-bottom: 5px;
+
+          @media (min-width: 768px) and (max-width: 1200px) {
+            font-size: 10px;
+          }
+        }
+
+        &:last-child {
+          font-size: 22px;
+
+          @media (min-width: 768px) and (max-width: 1200px) {
+            font-size: 18px;
+          }
+
+          sup {
+            font-size: 14px;
+          }
+
+          i {
+            font-size: 12px;
+            font-style: normal;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    padding: 14px 16px;
+    font-size: 14px;
+    justify-content: space-between;
+
+    .nh-rating {
+      font-size: 12px;
+
+      ul {
+        margin-top: 5px !important;
+      }
+
+      svg {
+        height: 11px !important;
+        width: 11px !important;
+      }
+    }
+  }
+}

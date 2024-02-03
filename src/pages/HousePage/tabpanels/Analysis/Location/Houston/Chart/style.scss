@@ -1,0 +1,28 @@
+.Houston {
+  .ct-chart-line {
+    padding: 0 8px;
+  }
+
+  .ct-label {
+    width: 33px !important;
+  }
+
+  .ct-series-a .ct-point {
+    display: none;
+  }
+
+  .ct-series-a .ct-line {
+    stroke: #496cb6;
+  }
+
+  .ct-grid {
+    stroke: rgba(74, 144, 226, 0.5);
+    stroke-dasharray: none;
+  }
+
+  .ct-label.ct-vertical.ct-start,
+  .ct-chart-bar .ct-label.ct-horizontal.ct-end {
+    font-size: 16px;
+    color: #656d72;
+  }
+}

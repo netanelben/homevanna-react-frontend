@@ -1,0 +1,15 @@
+@media (min-width: 992px) {
+  .row.narrow-gutter > [class*="col-"]:first-of-type {
+    padding-right: 8px;
+  }
+
+  .row.narrow-gutter > [class*="col-"]:last-of-type {
+    padding-left: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-box {
+    margin-bottom: 25px;
+  }
+}

@@ -1,0 +1,57 @@
+.FinancialHighlight {
+  padding: 18px 16px 17px;
+  min-height: 395px;
+  margin-bottom: 16px;
+
+  .card-title {
+    margin-bottom: 19px;
+  }
+
+  .list {
+    padding: 0;
+    margin-bottom: 44px;
+
+    li {
+      justify-content: space-between;
+      font-size: 16px;
+      color: #656d72;
+      padding: 5px 9px 3px;
+
+      &:not(:last-of-type) {
+        border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+      }
+
+      span:last-of-type {
+        font-size: 18px;
+      }
+
+      .input-wrapper {
+        max-width: 40%;
+        margin: 2px 0;
+        position: relative;
+
+        input {
+          padding-left: 20px;
+        }
+
+        &:before {
+          content: "$";
+          font-size: 18px;
+          position: absolute;
+          top: 5px;
+          left: 7px;
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    padding-top: 9px;
+  }
+
+  .nav-tabs {
+    display: flex;
+    justify-content: space-around;
+  }
+}

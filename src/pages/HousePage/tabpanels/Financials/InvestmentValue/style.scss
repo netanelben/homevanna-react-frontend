@@ -1,0 +1,73 @@
+.InvestmentValue {
+  padding: 29px 0 29px;
+
+  .card-title {
+    margin-bottom: 55px;
+  }
+
+  .nav-tabs {
+    .nav-item {
+      font-size: 16px;
+      width: 124px;
+      text-align: center;
+      padding-bottom: 4px;
+
+      &:not(.active) {
+        line-height: 150%;
+      }
+
+      &.active {
+        color: #383f44;
+        line-height: 150%;
+      }
+    }
+  }
+
+  .tab-content {
+    padding: 24px 29px 0;
+  }
+
+  .title {
+    text-align: left;
+    font-size: 26px;
+    color: #656d72;
+  }
+
+  .table {
+    color: #656d72;
+    font-size: 18px;
+  }
+
+  .table thead th {
+    font-weight: 500;
+  }
+
+  .table thead th,
+  .table tbody tr {
+    border-bottom: 1px solid rgba(74, 144, 226, 0.5);
+  }
+
+  .table tbody tr {
+    font-weight: 300;
+
+    &:last-of-type {
+      background-color: rgba(102, 204, 255, 0.1);
+    }
+  }
+
+  .table td,
+  .table th {
+    padding: 4px 6px;
+    text-align: right;
+  }
+
+  .table td:first-of-type {
+    text-align: left;
+  }
+
+  .table .text-small {
+    font-size: 12px;
+    margin: 3px 0 6px;
+    line-height: 1;
+  }
+}

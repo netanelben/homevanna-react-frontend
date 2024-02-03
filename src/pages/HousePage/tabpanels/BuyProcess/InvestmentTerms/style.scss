@@ -1,0 +1,23 @@
+.InvestmentTerms {
+  padding: 20px 17px 29px;
+  color: #656d72;
+  font-size: 18px;
+
+  .card-title {
+    margin-bottom: 60px;
+  }
+
+  ul {
+    padding: 0 0 0 8px;
+    list-style-type: none;
+    margin-bottom: 43px;
+
+    li:not(:last-of-type) {
+      margin-bottom: 23px;
+    }
+  }
+
+  a {
+    padding-left: 7px;
+  }
+}

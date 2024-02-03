@@ -1,0 +1,54 @@
+.DiligenceDocuments {
+  padding: 17px 16px 18px;
+  min-height: 294px;
+  margin-bottom: 16px;
+
+  .card-title {
+    margin-bottom: 24px;
+  }
+
+  .item-box {
+    justify-content: space-between;
+    border: 1px solid rgba(102, 204, 255, 0.5);
+    border-radius: 4px;
+    padding: 12px 9px 8px 14px;
+    color: #373a3c;
+    line-height: 1;
+    font-size: 20px;
+    margin-bottom: 8px;
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+      span {
+        max-width: 50%;
+      }
+    }
+
+    &.no-document {
+      color: rgba(55, 58, 60, 0.5);
+    }
+  }
+
+  .controls {
+    button {
+      border: 0;
+      background-color: transparent;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    button:first-of-type {
+      margin-right: 4px;
+    }
+
+    svg {
+      color: #66ccff;
+    }
+
+    .na {
+      font-weight: 300;
+      margin-right: 8px;
+    }
+  }
+}

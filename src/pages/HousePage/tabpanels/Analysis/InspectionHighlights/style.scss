@@ -1,0 +1,73 @@
+.InspectionHighlights {
+  padding: 19px 16px 21px;
+  position: relative;
+
+  @media (min-width: 992px) {
+    min-height: 866px;
+  }
+
+  @media (max-width: 992px) {
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    margin-bottom: 24px;
+  }
+
+  .flex {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .list {
+    padding: 14px 16px;
+
+    [class*="col-"] {
+      padding: 0;
+    }
+  }
+
+  .inspection-item {
+    margin-bottom: 32px;
+    line-height: 1;
+
+    .name {
+      font-size: 20px;
+      color: #373a3c;
+      margin-bottom: 6px;
+    }
+
+    .status-label {
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .status-badge {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .status-0 {
+      background-color: #c0c8ce;
+    }
+
+    .status-1 {
+      background-color: #2ab15a;
+    }
+
+    .status-2 {
+      background-color: #fbc46b;
+    }
+  }
+
+  .bottom-link {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    padding-bottom: 22px;
+  }
+}

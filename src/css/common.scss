@@ -1,0 +1,136 @@
+body {
+  background-color: #dfedfb;
+}
+
+button {
+  border: 0;
+}
+
+a {
+  color: #3a9fd1;
+}
+
+input,
+.dropdown button {
+  border-color: #cccccc;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-tabs {
+  border-color: rgba(74, 144, 226, 0.5);
+
+  .nav-item {
+    color: #3a9fd1;
+    font-size: 16px;
+    padding: 0 8px 4px 8px;
+    cursor: pointer;
+
+    &:hover {
+      border: 0;
+    }
+
+    &.active {
+      color: #383f44;
+      border: 0;
+      border-bottom: 4px solid #66ccff;
+      padding: 0 8px 3px 8px;
+    }
+  }
+
+  &.upper-border {
+    .nav-item {
+      padding: 7px 8px;
+
+      &.active {
+        line-height: 150%;
+        padding-top: 3px;
+      }
+    }
+  }
+}
+
+.nav-tabs.upper-border {
+  border-bottom: 0;
+  border-top: 1px solid rgba(74, 144, 226, 0.5);
+
+  .nav-item.active {
+    border-bottom: 0;
+    border-top: 4px solid #66ccff;
+  }
+}
+
+.card-box {
+  background-color: #fff;
+  box-shadow: 0 3px 5px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+
+  .card-title {
+    text-align: left;
+    color: #656d72;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+}
+
+.btn-blue {
+  background-color: #66ccff;
+  color: #fff;
+  border-radius: 2px;
+  padding: 4px 16px;
+}
+
+.rc-slider {
+  .rc-slider-rail {
+    height: 2px;
+    background-color: rgba(75, 145, 226, 0.5);
+  }
+
+  .rc-slider-track {
+    background-color: transparent;
+  }
+
+  .rc-slider-handle {
+    width: 16px;
+    height: 16px;
+    margin-top: -7px;
+  }
+}
+
+.price-large {
+  font-weight: 200;
+  color: #373a3c;
+  font-size: 48px;
+  line-height: 100%;
+}
+
+.list-with-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dropdown {
+  font-size: 16px;
+
+  .dropdown-toggle:after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 17px 14px;
+    z-index: 1;
+  }
+
+  button {
+    background-color: transparent;
+    border-radius: 4px;
+    width: 100%;
+    color: #383f44;
+    text-align: left;
+  }
+}
